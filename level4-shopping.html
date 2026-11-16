@@ -1281,6 +1281,30 @@ function getDownloads(){
   return Promise.resolve(null);
 }
 
+function reportSheet(blob,name){
+  var L=document.documentElement.getAttribute("data-ui")||"ar";
+  var TX={ar:{h:"تقريرك جاهز",p:"أرسل ملف PDF نفسه إلى معلمك. لا تنسخ رابطًا ولا ترسله: رابط التقرير يعمل على هاتفك أنت فقط.",s:"إرسال الملف إلى المعلم",d:"حفظ الملف على الجهاز",c:"إغلاق"},
+    en:{h:"Your report is ready",p:"Send the PDF file itself to your teacher. Do not copy or send a link: a link to the report only works on your own phone.",s:"Send the file to my teacher",d:"Save the file on this device",c:"Close"},
+    ko:{h:"리포트가 준비되었습니다",p:"PDF 파일 자체를 선생님께 보내세요. 링크를 복사해서 보내지 마세요. 리포트 링크는 본인 휴대폰에서만 열립니다.",s:"선생님께 파일 보내기",d:"이 기기에 파일 저장",c:"닫기"}};
+  var t=TX[L]||TX.ar,file=null,url=URL.createObjectURL(blob);
+  try{file=new File([blob],name,{type:"application/pdf"})}catch(e){}
+  var can=false;try{can=!!(file&&navigator.share&&navigator.canShare&&navigator.canShare({files:[file]}))}catch(e){}
+  function dl(){var a=document.createElement("a");a.href=url;a.download=name;a.style.display="none";document.body.appendChild(a);a.click();setTimeout(function(){a.remove()},1000)}
+  if(!can){dl();toast("تم تجهيز التقرير");setTimeout(function(){URL.revokeObjectURL(url)},60000);return}
+  if(!document.getElementById("rsheet-css")){var st=document.createElement("style");st.id="rsheet-css";st.textContent=".rsheet{position:fixed;inset:0;background:rgba(15,23,42,.55);display:flex;align-items:flex-end;justify-content:center;z-index:9999;padding:16px}.rsheet .rbox{background:#fff;color:#1d2433;border-radius:16px;padding:20px;max-width:440px;width:100%;box-shadow:0 12px 40px rgba(0,0,0,.25)}.rsheet h3{margin:0 0 8px;font-size:1.2rem}.rsheet p{margin:0;line-height:1.7}.rsheet .rbtns{display:flex;flex-direction:column;gap:10px;margin-top:16px}.rsheet .rbtns .btn{width:100%;justify-content:center;text-align:center;min-height:48px}@media(min-width:600px){.rsheet{align-items:center}}";document.head.appendChild(st)}
+  var ov=document.createElement("div");ov.className="rsheet";ov.setAttribute("data-notr","");ov.setAttribute("role","dialog");ov.setAttribute("aria-modal","true");ov.setAttribute("aria-label",t.h);ov.dir=L==="ar"?"rtl":"ltr";ov.lang=L;
+  var box=document.createElement("div");box.className="rbox";
+  var h=document.createElement("h3");h.textContent=t.h;var p=document.createElement("p");p.textContent=t.p;
+  var bs=document.createElement("div");bs.className="rbtns";
+  function mk(cls,txt,fn){var b=document.createElement("button");b.type="button";b.className=cls;b.textContent=txt;b.addEventListener("click",fn);bs.appendChild(b);return b}
+  function close(){ov.remove();setTimeout(function(){URL.revokeObjectURL(url)},60000)}
+  var first=mk("btn primary",t.s,function(){navigator.share({files:[file],title:name}).catch(function(){})});
+  mk("btn",t.d,dl);mk("btn ghost",t.c,close);
+  box.appendChild(h);box.appendChild(p);box.appendChild(bs);ov.appendChild(box);
+  ov.addEventListener("click",function(e){if(e.target===ov)close()});
+  ov.addEventListener("keydown",function(e){if(e.key==="Escape")close()});
+  document.body.appendChild(ov);first.focus();
+}
 function exportReport(scope,btn){
   var root=$("#exportRoot"),old=(window.I18N?I18N.origHTML(btn):btn.innerHTML);
   if(btn.disabled) return;
@@ -1294,7 +1318,7 @@ function exportReport(scope,btn){
     root.innerHTML=buildReport(scope);if(window.I18N)I18N.sync();
     var el=root.firstElementChild,opt=PRINT_OPT(name);
     return Promise.resolve(document.fonts&&document.fonts.ready).then(function(){rasterizeArabic(root);keepTogether(root);return waitImages(root)}).then(function(){
-      if(!dl){return html2pdf().set(opt).from(el).save().then(function(){toast("تم تجهيز التقرير")})}
+      if(!dl){return html2pdf().set(opt).from(el).outputPdf("blob").then(function(blob){reportSheet(blob,name)})}
       return html2pdf().set(opt).from(el).outputPdf("blob").then(function(blob){
         return dl.save({filename:name,data:blob}).then(function(){toast("التقرير جاهز")});
       });
