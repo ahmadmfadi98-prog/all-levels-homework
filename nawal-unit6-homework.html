@@ -1,0 +1,332 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Unit 6 Homework: Work, Rules and Responsibilities</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+<body>
+
+<style>
+:root{color-scheme:light;--ink:#1d2b36;--mute:#5d6b76;--bg:#f6f8fa;--card:#fff;--line:#d9e1e7;--teal:#1f6f5c;--teal2:#e3f1ed;--coral:#e0553d;--coral2:#fdece8;--violet:#6a4fb3;--violet2:#efeaf9;--sky:#2b86c5;--sky2:#e6f2fa;--gold:#c98a0b;--gold2:#fbf3dc;--ok:#1b8a4b;--okbg:#e5f6ec;--bad:#c0392b;--badbg:#fdeceb}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 -apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif}
+header{background:#14493c;color:#fff;padding:18px 0 12px}
+header h1{margin:0 0 4px;font-size:22px}
+header p{margin:0;color:#cfe8e0;font-size:14px}
+.wrap{max-width:860px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:#14493c}
+.tabs{top:env(safe-area-inset-top,0px)}
+.repview{font-size:14px;line-height:1.45}.repview .r{margin:1px 0;white-space:pre-wrap}
+.who input{min-width:0;flex:1 1 200px;max-width:320px}
+.who{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}
+.who input{padding:8px 10px;border-radius:8px;border:0;font-size:15px;min-width:200px}
+.tabs{display:flex;gap:6px;overflow-x:auto;padding:12px 0 4px;position:sticky;top:0;background:var(--bg);z-index:5}
+.tab{flex:1;min-width:110px;border:2px solid var(--line);background:#fff;border-radius:12px;padding:8px 10px;cursor:pointer;text-align:left;font-size:14px;color:var(--ink)}
+.tab b{display:block;font-size:15px}
+.tab.on{border-color:var(--teal);background:var(--teal2)}
+.bar{height:6px;background:#e5ebef;border-radius:4px;margin-top:5px;overflow:hidden}.bar i{display:block;height:100%;background:var(--teal);width:0}
+.panel{display:none;padding-bottom:50px}.panel.on{display:block}
+h2{font-size:19px;margin:22px 0 6px}
+.sec{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 16px;margin:14px 0}
+.sec>h3{margin:0 0 4px;font-size:17px}
+.sec>p.i{margin:0 0 10px;color:var(--mute);font-size:14px}
+.q{border:1px solid var(--line);border-radius:10px;padding:10px 12px;margin:10px 0;background:#fff}
+.q .t{font-weight:600;margin-bottom:6px}
+.opt{display:block;width:100%;text-align:left;border:1.5px solid var(--line);background:#fff;border-radius:9px;padding:8px 10px;margin:5px 0;font-size:15px;cursor:pointer;color:var(--ink)}
+.opt:hover{background:#f1f5f8}
+.opt.ok{border-color:var(--ok);background:var(--okbg)}.opt.bad{border-color:var(--bad);background:var(--badbg)}
+.fb{margin-top:6px;font-size:14px}.fb.ok{color:var(--ok)}.fb.bad{color:var(--bad)}
+input.txt,textarea{width:100%;padding:9px 10px;border:1.5px solid var(--line);border-radius:9px;font:inherit;color:var(--ink);background:#fff}
+textarea{min-height:90px}
+.btn{border:0;background:var(--teal);color:#fff;border-radius:9px;padding:8px 14px;font-size:14px;cursor:pointer;margin:6px 6px 0 0}
+.btn.alt{background:#fff;color:var(--teal);border:1.5px solid var(--teal)}
+.btn.pdf{background:var(--coral)}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0}
+.chip{border:1.5px solid var(--teal);background:var(--teal2);color:var(--teal);border-radius:8px;padding:5px 10px;font-weight:600;cursor:pointer;font-size:15px}
+.chip.used{opacity:.3;pointer-events:none}
+.chip.pick{background:var(--coral2);border-color:var(--coral);color:var(--coral)}
+.line{min-height:38px;border-bottom:2px dashed var(--line);padding:4px 0;margin:6px 0;font-weight:600}
+details{margin:8px 0;border:1px solid var(--line);border-radius:10px;padding:8px 12px;background:#fafcfd}
+summary{cursor:pointer;font-weight:600;color:var(--sky)}
+audio{width:100%;margin:6px 0}
+.sc{margin:6px 0;font-size:14px;color:var(--mute)}
+.row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.sent{display:flex;gap:10px;align-items:center;border:1px solid var(--line);border-radius:10px;padding:8px 10px;margin:6px 0;background:#fff}
+.sent .n{width:28px;height:28px;border-radius:50%;background:var(--violet);color:#fff;display:flex;align-items:center;justify-content:center;font-size:13px;flex:none}
+.sent .s{flex:1}.sent.done{background:var(--okbg);border-color:var(--ok)}
+.play{border:0;background:var(--sky);color:#fff;border-radius:50%;width:36px;height:36px;font-size:15px;cursor:pointer;flex:none}
+.reading p{margin:0 0 12px}
+.w{border-bottom:2px dotted var(--sky);cursor:pointer;color:#0d4f7c}
+.tip{position:fixed;left:50%;bottom:calc(16px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:#14493c;color:#fff;padding:10px 14px;border-radius:10px;max-width:90%;display:none;z-index:9;font-size:15px}
+table.pt{border-collapse:collapse;width:100%;font-size:14px}table.pt td,table.pt th{border:1px solid var(--line);padding:5px 8px;text-align:left}table.pt th{background:var(--teal2)}
+.done-row{margin-top:18px;padding:12px;background:var(--gold2);border-radius:12px;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.yt{position:relative;width:100%;aspect-ratio:16/9;border-radius:10px;overflow:hidden;background:#000}.yt iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.credit{font-size:13px;color:var(--mute);margin:8px 0 0}
+.pic{max-width:100%;height:auto;display:block;margin:6px 0;border:1px solid var(--line);border-radius:8px}
+.fc{border:1px solid var(--line);border-radius:10px;padding:8px 12px;margin:8px 0;background:#fff}.fc.seen{background:var(--teal2)}
+.fw{font-size:17px;flex:1;min-width:120px}.fm{margin-top:6px}
+.bank{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0 10px}.bank span,.w2{background:var(--gold2);border:1px solid #e6d3a0;border-radius:8px;padding:3px 9px;font-weight:600;display:inline-block;margin:2px}
+@media(max-width:520px){h1{font-size:19px}.tab{min-width:90px}}
+</style>
+<header><div class="wrap">
+<h1>Unit 6 Homework: Work, Rules and Responsibilities</h1>
+<p>Four days of homework. The video day is longer (about 40 minutes); the other days are about 20 to 25 minutes. Write your name first. Your answers are saved automatically on this device.</p>
+<div class="who"><input id="nm" placeholder="Your name" aria-label="Your name"></div>
+</div></header>
+<div class="wrap">
+<div class="tabs" id="tabs"></div>
+<div id="panels"></div>
+</div>
+<div class="tip" id="tip"></div>
+<script>
+const D={"YTID":"-JNjsOX0N0c","YT":[[0,199],[199,450],[450,660],[660,925],[925,1183],[1592,1705]],"PRE": [["small talk", "short, friendly talk about easy topics, like the weather"], ["a handshake", "when two people hold and shake each other's right hand"], ["enthusiasm", "a lot of interest and energy"], ["persistence", "you continue and do not stop when something is difficult"], ["a setback", "a problem that stops your progress for a time"], ["a competitor", "another company that sells the same kind of product"], ["to launch", "to start selling a new product"], ["a weakness", "something you are not good at"], ["stage fright", "fear of speaking in front of many people"], ["ambitious", "wanting to be very successful"], ["to hire", "to give someone a job"]], "VID": [{"title": "Part 1: Small talk", "hint": "Rachel explains how interviews start. Then you see an example.", "len": "3 min 19 s", "mcq": [["How do most interviews start?", ["With questions about money", "With a written test", "With a handshake and some small talk"], 2], ["What should your small talk answers be like?", ["Long and detailed", "Short, polite and friendly", "Very personal"], 1], ["In the example, what did the woman do at the weekend?", ["She celebrated her mom's birthday", "She worked all weekend", "She went to the park with her family for a picnic"], 2]], "tf": [["You can ask the interviewer the same question back, for example \"How was your weekend?\"", true], ["Small talk is the most important part of the interview.", false]], "fill": [["Interviewer: \"Did you have any trouble finding the ______?\"", ["office"], "office"]]}, {"title": "Part 2: Tell me about yourself", "hint": "Rachel answers \"Tell me a little bit about yourself\" and \"How did you hear about this position?\"", "len": "4 min 11 s", "mcq": [["When an interviewer says \"Tell me about yourself\", what do they really want to hear about?", ["Your family", "Your favourite hobbies", "Your education and work history"], 2], ["Where did Rachel study?", ["Business Weekly", "Harvard University", "The University of Florida"], 2], ["What is her job now?", ["Director of Toy Production", "Team leader", "Vice President"], 0], ["How did she hear about the job?", ["Bob Greene told her", "She saw an advert in a newspaper", "A friend saw it on LinkedIn and sent it to her"], 2]], "tf": [["Rachel says you should write a paragraph and memorise it.", false], ["Rachel read an article about the company in Business Weekly.", true]], "fill": [["Rachel: \"I've been there for the past ______ years.\"", ["five", "5"], "five"]]}, {"title": "Part 3: Interest and strengths", "hint": "\"What attracted you to our company?\" and \"What is your greatest strength?\"", "len": "3 min 30 s", "mcq": [["What caught Rachel's eye about the company?", ["Its focus on growth", "Its high salaries", "Its location"], 0], ["The company has \"continuing education initiatives\". What does this mean?", ["The company pays for employees to learn new skills", "The company gives longer holidays", "The company gives free lunch"], 0], ["What is Rachel's greatest strength?", ["Enthusiasm and persistence", "Public speaking", "Flexibility"], 0]], "tf": [["The interviewer says: \"You've obviously done your homework.\"", true], ["In the interview, you should talk about all your strengths.", false]], "fill": [["Example: \"My greatest strength is ______. I find that this is very important when I'm working with lots of different people.\"", ["flexibility"], "flexibility"]]}, {"title": "Part 4: Setbacks and weaknesses", "hint": "\"Tell me about a time when ...\" and \"What is your greatest weakness?\"", "len": "4 min 25 s", "mcq": [["Why do interviewers ask \"Tell me about a time when ...\" questions?", ["To see how you act in stressful situations", "To learn about your family", "To check your spelling"], 0], ["What happened to Rachel's toy project?", ["The toy was too expensive", "Another company launched the same toy", "Her team left the company"], 1], ["What did Rachel ask her team to do?", ["Work every weekend", "Buy the other company's toy and list what it couldn't do", "Stop the project"], 1], ["What is Rachel's real weakness?", ["Small meetings", "Chocolate", "Public speaking"], 2]], "tf": [["Rachel feels uncomfortable in small meetings with her team.", false], ["The interviewer is also afraid of public speaking.", true]], "fill": [["Rachel: \"We launched a far superior product ______ months later.\"", ["six", "6"], "six"]]}, {"title": "Part 5: The future and your questions", "hint": "\"Where do you see yourself in five years?\" and \"Do you have any questions for me?\"", "len": "4 min 18 s", "mcq": [["In five years, what job would Rachel like?", ["Vice President, with a focus on development", "A teacher of toy design", "Director of Toy Production"], 0], ["Why do you ask the interviewer questions at the end?", ["To find out if the company is a good fit for you", "To finish the interview quickly", "To ask for more money"], 0], ["How long have the team members been with the company?", ["Over five years", "About one year", "About four months"], 0], ["When will the interviewer call Rachel?", ["Next month", "Tomorrow morning", "In the next three days"], 2]], "tf": [["Rachel says it is best to practise your answers only in your head.", false]], "fill": [["Interviewer: \"This will be the ______ time we've brought in a new team leader in four years.\"", ["third", "3rd"], "third"]]}, {"title": "Part 6: Body language", "hint": "Rachel talks about the handshake, how to sit, your face, and jokes.", "len": "1 min 53 s", "mcq": [["How should you sit in an interview?", ["Upright, with good energy", "Very stiffly, without moving", "Back in the chair, very relaxed"], 0], ["How many jokes are OK in an interview?", ["None at all", "As many as possible", "One or two"], 2]], "tf": [["A firm handshake makes a good first impression.", true], ["Smiling and nodding show that you are listening.", true]], "fill": []}], "PHR": [["What does \"ace your interview\" mean?", ["Arrive late for it", "Do very well in it", "Prepare for it"], 1], ["\"What really caught my eye was your focus on growth.\" What does \"caught my eye\" mean?", ["Got my attention", "Hurt my eyes", "Made me angry"], 0], ["\"You've obviously done your homework.\" What does this mean here?", ["You found information about us before the interview", "You worked at home", "You finished your school work"], 0], ["\"It was a blessing in disguise.\" What does this mean?", ["A gift from a friend", "A secret plan", "Something bad that became something good"], 2], ["\"I'm in the same boat.\" What does this mean?", ["I have the same problem", "I like sailing", "I work in the same office"], 0], ["\"The team knows the ropes.\" What does this mean?", ["They know how to do the job well", "They are good at sport", "They are new to the job"], 0], ["\"It's hard to think outside the box.\" What does \"think outside the box\" mean?", ["Think very slowly", "Think about your home", "Think in a new, creative way"], 2], ["\"We want to get our team back on track.\" What does \"back on track\" mean?", ["Working well again", "Going on a train trip", "Starting a new job"], 0]], "G_MCQ": [["I usually ___ the bus to work.", ["take", "takes", "am taking"], 0], ["Look! It ___ outside.", ["is raining", "rains", "rain"], 0], ["My organisation ___ families in need.", ["help", "helps", "is helping"], 1], ["This month we ___ a new project for young people.", ["planning", "plan", "are planning"], 2], ["She ___ coffee. She prefers tea.", ["isn't drinking", "don't drink", "doesn't drink"], 2], ["What ___ you working on at the moment?", ["is", "do", "are"], 2], ["How often ___ you have meetings?", ["does", "do", "are"], 1], ["I ___ what you mean.", ["am understanding", "understanding", "understand"], 2], ["Right now, my manager ___ to a donor on the phone.", ["talk", "is talking", "talks"], 1], ["Every Monday, our team ___ a meeting.", ["has", "have", "is having"], 0]], "G_FILL": [["My sister ______ (work) in a hospital.", ["works"], "works"], ["Please be quiet. The baby ______ (sleep).", ["is sleeping", "s sleeping"], "is sleeping"], ["We ______ (not / usually / work) on Fridays.", ["dont usually work", "do not usually work"], "don't usually work"], ["These days, I ______ (learn) English with a private teacher.", ["am learning", "m learning"], "am learning"], ["______ (she / speak) French?", ["does she speak"], "Does she speak"], ["They ______ (not / watch) TV at the moment.", ["arent watching", "are not watching"], "aren't watching"], ["He ______ (need) a new laptop.", ["needs"], "needs"], ["What ______ (you / do) right now?", ["are you doing"], "are you doing"], ["Our office ______ (open) at 8 o'clock.", ["opens"], "opens"], ["I ______ (write) a report this week, so I'm very busy.", ["am writing", "m writing"], "am writing"]], "G_MIS": [[["She", "work", "in", "a", "bank."], 1, "She works in a bank."], [["I", "am knowing", "the", "answer."], 1, "I know the answer."], [["Look!", "The", "children", "play", "in", "the", "garden."], 3, "Look! The children are playing in the garden."], [["Do", "she", "like", "her", "job?"], 0, "Does she like her job?"], [["We", "are having", "a meeting", "every", "Monday."], 1, "We have a meeting every Monday."], [["He", "doesn't", "works", "on", "Saturdays."], 2, "He doesn't work on Saturdays."], [["What", "do", "you", "doing", "now?"], 1, "What are you doing now?"], [["I", "usually", "am starting", "work", "at", "eight."], 2, "I usually start work at eight."]], "G_BUILD": [[["to", "walks", "usually", "She", "work."], "She usually walks to work."], [["at", "moment?", "the", "on", "What", "you", "working", "are"], "What are you working on at the moment?"], [["new", "project.", "a", "Our", "planning", "team", "is"], "Our team is planning a new project."], [["Fridays.", "on", "I", "work", "usually", "don't"], "I don't usually work on Fridays."], [["meetings?", "How", "often", "do", "have", "you"], "How often do you have meetings?"], [["not", "are", "phone", "now.", "the", "right", "answering", "They"], "They are not answering the phone right now."]], "G_SV": [["I ___ her very well.", ["know", "am knowing"], 0], ["She ___ a new car.", ["wants", "is wanting"], 0], ["We ___ more volunteers this month.", ["need", "are needing"], 0], ["At the moment, I ___ a book about leadership.", ["read", "am reading"], 1], ["He ___ the new plan.", ["doesn't understand", "isn't understanding"], 0], ["Today she ___ a blue dress.", ["wears", "is wearing"], 1]], "G_KW": [["What do you usually do at work every day? Use the present simple and a word like usually, always or every.", "\\b(usually|always|often|every|sometimes|never)\\b"], ["What are you working on these days? Use the present continuous.", "\\b(am|is|are|i'm|we're|they're|she's|he's)\\s+(not\\s+)?\\w+ing\\b"], ["Write one sentence with both. Example: I usually start at 8, but this week I'm starting at 9.", "\\b(usually|always|often|every|sometimes|never)\\b.*\\b(am|is|are|i'm|we're|they're|she's|he's)\\s+(not\\s+)?\\w+ing\\b|\\b(am|is|are|i'm|we're|they're|she's|he's)\\s+(not\\s+)?\\w+ing\\b.*\\b(usually|always|often|every|sometimes|never)\\b"]], "SENT": ["I usually start work at eight.", "She works for a charity in Sharjah.", "We help families in need.", "He doesn't work on Fridays.", "How often do you have meetings?", "My manager checks the reports every week.", "Our office opens at half past seven.", "I never eat lunch at my desk.", "Does she speak English at work?", "We always answer emails in the morning.", "The volunteers come on Saturdays.", "I don't like long meetings.", "What time do you finish work?", "She knows everyone in the office.", "I need a new laptop.", "I'm working from home today.", "We're planning a new project.", "She's writing a report this week.", "They're not answering the phone.", "What are you working on at the moment?", "I'm learning English these days.", "The team is preparing for a big event.", "Right now, my manager is talking to a donor.", "Are you looking for a new job?", "We're hiring three new volunteers this month.", "He isn't working today. He's sick.", "I'm reading a book about leadership.", "Prices are going up this year.", "She's meeting the families this afternoon.", "Look! It's raining.", "Tell me a little about yourself.", "I studied at the University of Sharjah.", "I've been working there for ten years.", "I have a lot of experience in social work.", "My greatest strength is patience.", "My greatest weakness is public speaking.", "I'm looking for new opportunities.", "I heard about the job from a friend.", "In five years, I would like to be a manager.", "Do you have any questions for me?", "I usually work in the office, but today I'm working from home.", "She usually drives, but this week she's taking the bus.", "We often visit families, but this month we're working online.", "He normally starts at eight, but today he's starting at ten.", "I don't usually work late, but this week I'm finishing at six.", "Every year, we help more families.", "These days, more people are using online services.", "I love my job, but I'm looking for a new challenge.", "She works hard, and she's learning fast.", "Thank you for meeting with me today."], "SENTH": ["I <b>usually</b> <b>start</b> work at <b>eight</b>.", "She <b>works</b> for a <b>charity</b> in <b>Sharjah</b>.", "We <b>help</b> <b>families</b> in <b>need</b>.", "He <b>doesn't</b> <b>work</b> on <b>Fridays</b>.", "<b>How</b> <b>often</b> do you have <b>meetings</b>?", "My <b>manager</b> <b>checks</b> the <b>reports</b> every <b>week</b>.", "Our <b>office</b> <b>opens</b> at <b>half</b> past <b>seven</b>.", "I <b>never</b> <b>eat</b> <b>lunch</b> at my <b>desk</b>.", "<b>Does</b> she <b>speak</b> <b>English</b> at <b>work</b>?", "We <b>always</b> <b>answer</b> <b>emails</b> in the <b>morning</b>.", "The <b>volunteers</b> <b>come</b> on <b>Saturdays</b>.", "I <b>don't</b> <b>like</b> <b>long</b> <b>meetings</b>.", "<b>What</b> <b>time</b> do you <b>finish</b> <b>work</b>?", "She <b>knows</b> <b>everyone</b> in the <b>office</b>.", "I <b>need</b> a <b>new</b> <b>laptop</b>.", "I'm <b>working</b> from <b>home</b> <b>today</b>.", "We're <b>planning</b> a <b>new</b> <b>project</b>.", "She's <b>writing</b> a <b>report</b> this <b>week</b>.", "They're <b>not</b> <b>answering</b> the <b>phone</b>.", "<b>What</b> are you <b>working</b> <b>on</b> at the <b>moment</b>?", "I'm <b>learning</b> <b>English</b> these <b>days</b>.", "The <b>team</b> is <b>preparing</b> for a <b>big</b> <b>event</b>.", "<b>Right</b> <b>now</b>, my <b>manager</b> is <b>talking</b> to a <b>donor</b>.", "Are you <b>looking</b> for a <b>new</b> <b>job</b>?", "We're <b>hiring</b> <b>three</b> new <b>volunteers</b> this <b>month</b>.", "He <b>isn't</b> <b>working</b> <b>today</b>. He's <b>sick</b>.", "I'm <b>reading</b> a <b>book</b> about <b>leadership</b>.", "<b>Prices</b> are <b>going</b> <b>up</b> this <b>year</b>.", "She's <b>meeting</b> the <b>families</b> this <b>afternoon</b>.", "<b>Look</b>! It's <b>raining</b>.", "<b>Tell</b> me a <b>little</b> about <b>yourself</b>.", "I <b>studied</b> at the <b>University</b> of <b>Sharjah</b>.", "I've been <b>working</b> there for <b>ten</b> <b>years</b>.", "I have a <b>lot</b> of <b>experience</b> in <b>social</b> <b>work</b>.", "My <b>greatest</b> <b>strength</b> is <b>patience</b>.", "My <b>greatest</b> <b>weakness</b> is <b>public</b> <b>speaking</b>.", "I'm <b>looking</b> for <b>new</b> <b>opportunities</b>.", "I <b>heard</b> about the <b>job</b> from a <b>friend</b>.", "In <b>five</b> <b>years</b>, I would <b>like</b> to be a <b>manager</b>.", "Do you have any <b>questions</b> for <b>me</b>?", "I <b>usually</b> <b>work</b> in the <b>office</b>, but <b>today</b> I'm <b>working</b> from <b>home</b>.", "She <b>usually</b> <b>drives</b>, but this <b>week</b> she's <b>taking</b> the <b>bus</b>.", "We <b>often</b> <b>visit</b> <b>families</b>, but this <b>month</b> we're <b>working</b> <b>online</b>.", "He <b>normally</b> <b>starts</b> at <b>eight</b>, but <b>today</b> he's <b>starting</b> at <b>ten</b>.", "I <b>don't</b> <b>usually</b> <b>work</b> <b>late</b>, but this <b>week</b> I'm <b>finishing</b> at <b>six</b>.", "<b>Every</b> <b>year</b>, we <b>help</b> more <b>families</b>.", "<b>These</b> <b>days</b>, more <b>people</b> are <b>using</b> <b>online</b> <b>services</b>.", "I <b>love</b> my <b>job</b>, but I'm <b>looking</b> for a <b>new</b> <b>challenge</b>.", "She <b>works</b> <b>hard</b>, and she's <b>learning</b> <b>fast</b>.", "<b>Thank</b> you for <b>meeting</b> with <b>me</b> <b>today</b>."], "GROUPS": [["Set A: Present simple at work (1-15)", 0, 15], ["Set B: Present continuous: now and these days (16-30)", 15, 30], ["Set C: Job interview phrases (31-40)", 30, 40], ["Set D: Both tenses together (41-50)", 40, 50]], "READ": [["", "Welcome to the Al Noor Family Support Centre. Our centre helps families in Sharjah with food, school costs and advice. This page explains the everyday rules for all staff and volunteers. Please read it carefully and keep it. If something is not clear, ask your team leader."], ["1. Working hours", "The centre opens at 7:30 a.m. and closes at 3:30 p.m., Monday to Friday. Staff work eight hours a day. Volunteers usually work four-hour shifts, in the morning or in the afternoon. If you are late, please call your team leader before 8 a.m."], ["2. ID cards and visitors", "Everybody wears their ID card at all times in the building. Visitors sign in at reception, and a member of staff stays with them. Please do not let visitors walk around the building alone."], ["3. Clothes", "We meet families every day, so please dress modestly and smartly. Jeans are fine on Thursdays. When we visit families at home, staff wear the centre's blue polo shirt."], ["4. Privacy", "The families who come to us trust us with private information. We never share their names, addresses or stories outside the centre. Do not take photos of families, and do not post anything about them on social media. All files stay in the office. Please do not take them home."], ["5. Phones", "You can use your phone during your breaks. In meetings with families, please put your phone on silent and keep it in your bag."], ["6. Breaks", "Staff take a 30-minute lunch break between 12 and 2 p.m. Short tea breaks are fine, but please tell your team when you leave your desk. Food stays in the kitchen, not on your desk."], ["7. Gifts", "Sometimes families want to say thank you with a gift. We thank them politely, but we do not accept money or expensive gifts. Small things, like a box of dates or a card, are fine. Please tell your team leader about every gift."], ["8. Sick days and holidays", "If you are sick, call your team leader before 8 a.m. If you are sick for more than two days, bring a note from your doctor. Staff have 30 days of holiday a year. Please ask for a holiday at least two weeks before."], ["9. Meetings and reports", "Every team meets on Monday at 8 a.m. to plan the week. On Thursday, each team leader writes a short report about the families the team helped. If you cannot come to a meeting, please tell your team leader the day before."], ["10. Training", "All new staff and volunteers join a training day in their first week. During the year, the centre also offers free courses in first aid, English and computer skills. Staff who finish a course receive a certificate."], ["11. Problems and safety", "If you see a problem, report it to your team leader on the same day. In an emergency, call 999 for the police or 998 for an ambulance, and then tell reception."], ["", "Thank you for helping us to keep our centre a safe, friendly and respectful place."]], "READ_N": 476, "WORDS": {"handbook": "a small book with information and rules for staff", "volunteers": "people who work without pay to help others", "team leader": "the person who manages a small team", "shifts": "periods of work", "reception": "the desk near the entrance where visitors arrive", "sign in": "write your name when you arrive", "modestly": "in a way that covers the body and is not too showy", "privacy": "keeping personal information secret", "trust": "believe that someone is honest and will not hurt you", "polo shirt": "a shirt with a collar and short sleeves", "politely": "in a kind and respectful way", "accept": "take something that someone gives you", "report": "tell someone in charge about something", "emergency": "a sudden, dangerous situation", "respectful": "showing respect to other people", "certificate": "an official paper that shows you finished a course", "first aid": "simple help for someone who is hurt, before the doctor comes"}, "S_MCQ": [["What does the Al Noor Family Support Centre do?", ["It is a school for children", "It helps families with food, school costs and advice", "It sells food to families"], 1], ["What time does the centre open?", ["9 a.m.", "7:30 a.m.", "8 a.m."], 1], ["How long is a volunteer's shift?", ["Four hours", "Thirty minutes", "Eight hours"], 0], ["What happens when a visitor arrives?", ["They sign in, and a member of staff stays with them", "They wear the blue polo shirt", "They walk around the building alone"], 0], ["When can staff wear jeans?", ["Never", "Every day", "On Thursdays"], 2], ["Where does food stay?", ["In the kitchen", "In the meeting room", "On your desk"], 0], ["A family gives a staff member some money. What does the staff member do?", ["Keeps it", "Gives it to reception", "Thanks them politely, but does not accept it"], 2], ["How many days of holiday do staff have?", ["Two weeks a year", "Two days a month", "30 days a year"], 2]], "S_TF": [["Staff and volunteers wear their ID card at all times in the building.", true], ["Staff can take family files home to finish their work.", false], ["You can use your phone in meetings with families.", false], ["Small gifts, like a box of dates, are fine.", true], ["If you are sick for three days, you bring a note from your doctor.", true], ["In an emergency, you call reception first.", false], ["Team leaders write a report every Monday.", false], ["Staff who finish a course receive a certificate.", true]], "S_SEC": [["A volunteer wants to post a photo of a family on Instagram.", ["4. Privacy", "5. Phones", "3. Clothes"], 0], ["You are going to visit a family at home tomorrow. What do you wear?", ["2. ID cards and visitors", "3. Clothes", "7. Gifts"], 1], ["Your friend comes to see you at work.", ["1. Working hours", "2. ID cards and visitors", "6. Breaks"], 1], ["You want to take a holiday next month.", ["6. Breaks", "8. Sick days and holidays", "1. Working hours"], 1], ["A light in the car park is broken.", ["8. Sick days and holidays", "11. Problems and safety", "2. ID cards and visitors"], 1], ["You want to have lunch at 1 p.m.", ["1. Working hours", "6. Breaks", "5. Phones"], 1], ["You cannot come to the meeting on Monday.", ["9. Meetings and reports", "1. Working hours", "8. Sick days and holidays"], 0], ["You want to learn first aid.", ["3. Clothes", "10. Training", "11. Problems and safety"], 1]], "S_VOC": [["A small book with information and rules for staff is a ______.", ["handbook"], "handbook"], ["People who work without pay to help others are ______.", ["volunteers"], "volunteers"], ["Visitors write their name at reception. They ______ in.", ["sign"], "sign"], ["When you see a problem, you ______ it to your team leader.", ["report"], "report"], ["A sudden, dangerous situation is an ______.", ["emergency"], "emergency"], ["We thank families ______, but we do not accept money.", ["politely"], "politely"]], "S_KW": [["Write one rule at your workplace that is the same as at Al Noor. Use the present simple. Example: At my work, we also wear an ID card.", "\\b(we|staff|employees|everyone|everybody|our|my|people|they)\\b"], ["Write one rule at your workplace that is different. Example: At Al Noor, staff take 30 minutes for lunch, but we take one hour.", "\\b(but|different|however)\\b"]]};
+const KEY='u6hw_v1';
+let S={};try{S=JSON.parse(localStorage.getItem(KEY))||{}}catch(e){S={}}
+['a','c','m','rep','rv','o','done'].forEach(k=>S[k]=S[k]||{});S.name=S.name||'';
+function save(){try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}}
+const esc=s=>String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+const norm=s=>String(s||'').toLowerCase().replace(/[^a-z0-9 ]/g,'').replace(/\s+/g,' ').trim();
+const DAYS=[['thu','Thursday','Video'],['fri','Friday','Grammar'],['sat','Saturday','Repeat after me'],['sun','Sunday','Reading']];
+const Q={}; // id -> {day,label,html(),res()} ; res returns {user,correct,ok} (ok null = not scored)
+let cur=(function(){try{return localStorage.getItem(KEY+'_tab')||'thu'}catch(e){return'thu'}})();
+
+function reg(id,day,label,html,res){Q[id]={day,label,html,res};return '<div id="q-'+id+'">'+html()+'</div>'}
+function refresh(id){const e=document.getElementById('q-'+id);if(e)e.innerHTML=Q[id].html();updateBars()}
+
+// ---------- widgets ----------
+function mcq(id,day,text,opts,ans,n,pic){
+  return reg(id,day,text,()=>{
+    const a=S.a[id];let h='<div class="q"><div class="t">'+(n?n+'. ':'')+esc(text)+'</div>'+(pic?'<img class="pic" alt="" src="'+D.IMG[pic]+'">':'');
+    opts.forEach((o,i)=>{let c='opt';if(a!==undefined){if(i===ans)c+=' ok';else if(i===a)c+=' bad'}
+      h+='<button class="'+c+'" onclick="pickMcq(\''+id+'\','+i+')">'+(pic?'':String.fromCharCode(97+i)+') ')+esc(o)+'</button>'});
+    if(a!==undefined)h+='<div class="fb '+(a===ans?'ok':'bad')+'">'+(a===ans?'Correct!':'Correct answer: '+esc(opts[ans]))+'</div>';
+    return h+'</div>'},
+    ()=>{const a=S.a[id];return{user:a===undefined?'':opts[a],correct:opts[ans],ok:a===undefined?false:a===ans}});
+}
+function pickMcq(id,i){if(S.a[id]!==undefined)return;S.a[id]=i;save();refresh(id)}
+function tf(id,day,text,ans,n){
+  return reg(id,day,text,()=>{
+    const a=S.a[id];let h='<div class="q"><div class="t">'+(n?n+'. ':'')+esc(text)+'</div><div class="row">';
+    [true,false].forEach(v=>{let c='opt';if(a!==undefined){if(v===ans)c+=' ok';else if(v===a)c+=' bad'}
+      h+='<button class="'+c+'" style="width:auto;min-width:110px" onclick="pickTf(\''+id+'\','+v+')">'+(v?'True':'False')+'</button>'});
+    h+='</div>';if(a!==undefined)h+='<div class="fb '+(a===ans?'ok':'bad')+'">'+(a===ans?'Correct!':'Correct answer: '+(ans?'True':'False'))+'</div>';
+    return h+'</div>'},
+    ()=>{const a=S.a[id];return{user:a===undefined?'':(a?'True':'False'),correct:ans?'True':'False',ok:a===undefined?false:a===ans}});
+}
+function pickTf(id,v){if(S.a[id]!==undefined)return;S.a[id]=v;save();refresh(id)}
+function fill(id,day,text,accept,show,n){
+  return reg(id,day,text,()=>{
+    const a=S.a[id]||'';const c=S.c[id];
+    let h='<div class="q"><div class="t">'+(n?n+'. ':'')+esc(text)+'</div><input class="txt" id="in-'+id+'" value="'+esc(a)+'" placeholder="Type your answer" oninput="S.a[\''+id+'\']=this.value;save()" '+(c?'readonly':'')+'>';
+    if(!c)h+='<button class="btn" onclick="chkFill(\''+id+'\')">Check</button>';
+    else{const ok=accept.includes(norm(a));h+='<div class="fb '+(ok?'ok':'bad')+'">'+(ok?'Correct!':'Correct answer: '+esc(show))+'</div>'}
+    return h+'</div>'},
+    ()=>{const a=S.a[id]||'';return{user:a,correct:show,ok:accept.includes(norm(a))}});
+}
+function chkFill(id){S.c[id]=1;save();refresh(id)}
+function mistake(id,day,words,wrong,correct,n){
+  return reg(id,day,words.join(' '),()=>{
+    const a=S.a[id];const c=S.c[id];
+    let h='<div class="q"><div class="t">'+(n?n+'. ':'')+'Tap the wrong word.</div><div class="chips">';
+    words.forEach((w,i)=>{let k='chip';if(c){if(i===wrong)k+=' pick';}else if(a===i)k+=' pick';
+      h+='<span class="'+k+'" onclick="pickMis(\''+id+'\','+i+')">'+esc(w)+'</span>'});
+    h+='</div>';
+    if(!c)h+='<button class="btn" onclick="chkMis(\''+id+'\')">Check</button>';
+    else h+='<div class="fb '+(a===wrong?'ok':'bad')+'">'+(a===wrong?'Correct! ':'The mistake is "'+esc(words[wrong])+'". ')+'Correct sentence: <b>'+esc(correct)+'</b></div>';
+    return h+'</div>'},
+    ()=>({user:S.a[id]===undefined?'':words[S.a[id]],correct:words[wrong]+' -> '+correct,ok:S.a[id]===wrong}));
+}
+function pickMis(id,i){if(S.c[id])return;S.a[id]=i;save();refresh(id)}
+function chkMis(id){if(S.a[id]===undefined)return;S.c[id]=1;save();refresh(id)}
+function build(id,day,words,answer,n){
+  return reg(id,day,'Build: '+words.join(' / '),()=>{
+    const a=S.a[id]||[];const c=S.c[id];
+    let h='<div class="q"><div class="t">'+(n?n+'. ':'')+'Tap the words in the correct order.</div><div class="chips">';
+    words.forEach((w,i)=>h+='<span class="chip'+(a.includes(i)?' used':'')+'" onclick="addW(\''+id+'\','+i+')">'+esc(w)+'</span>');
+    h+='</div><div class="line">'+esc(a.map(i=>words[i]).join(' '))+'</div>';
+    if(!c)h+='<button class="btn" onclick="chkB(\''+id+'\')">Check</button><button class="btn alt" onclick="clrB(\''+id+'\')">Clear</button>';
+    else{const ok=norm(a.map(i=>words[i]).join(' '))===norm(answer);h+='<div class="fb '+(ok?'ok':'bad')+'">'+(ok?'Correct!':'Correct sentence: <b>'+esc(answer)+'</b>')+'</div>'}
+    return h+'</div>'},
+    ()=>{const a=S.a[id]||[];const u=a.map(i=>words[i]).join(' ');return{user:u,correct:answer,ok:norm(u)===norm(answer)}});
+}
+function addW(id,i){if(S.c[id])return;S.a[id]=(S.a[id]||[]).concat(i);save();refresh(id)}
+function clrB(id){S.a[id]=[];save();refresh(id)}
+function chkB(id){if(!(S.a[id]||[]).length)return;S.c[id]=1;save();refresh(id)}
+function writeBox(id,day,text,n){
+  return reg(id,day,text,()=>{
+    const a=S.a[id]||'';const wc=a.trim()?a.trim().split(/\s+/).length:0;
+    return '<div class="q"><div class="t">'+(n?n+'. ':'')+esc(text)+'</div><textarea oninput="S.a[\''+id+'\']=this.value;save();wcount(\''+id+'\');updateBars()">'+esc(a)+'</textarea><div class="sc" id="wc-'+id+'">'+wc+' words</div></div>'},
+    ()=>({user:S.a[id]||'',correct:'',ok:null,teacher:true}));
+}
+function wcount(id){const a=S.a[id]||'';const e=document.getElementById('wc-'+id);if(e)e.textContent=(a.trim()?a.trim().split(/\s+/).length:0)+' words'}
+function selfCheck(id,day,q,model,n){
+  return reg(id,day,q,()=>{
+    const a=S.a[id]||'';const c=S.c[id];const m=S.m[id];
+    let h='<div class="q"><div class="t">'+(n?n+'. ':'')+esc(q)+'</div><textarea oninput="S.a[\''+id+'\']=this.value;save()" placeholder="Write a complete sentence">'+esc(a)+'</textarea>';
+    if(!c)h+='<button class="btn" onclick="showModel(\''+id+'\')">Show model answer</button>';
+    else{h+='<div class="fb ok">Model answer: <b>'+esc(model)+'</b></div><div class="row"><span>Was your answer correct?</span>'
+      +'<button class="btn'+(m===1?'':' alt')+'" onclick="selfMark(\''+id+'\',1)">Yes</button><button class="btn'+(m===0?'':' alt')+'" onclick="selfMark(\''+id+'\',0)">Not yet</button></div>'}
+    return h+'</div>'},
+    ()=>({user:S.a[id]||'',correct:model,ok:S.m[id]===undefined?false:S.m[id]===1}));
+}
+function showModel(id){S.c[id]=1;save();refresh(id)}
+function selfMark(id,v){S.m[id]=v;save();refresh(id)}
+function audioBlock(key,title){
+  return '<div class="q"><div class="t">'+esc(title)+'</div><audio controls preload="metadata" src="'+D.AUD[key]+'"></audio>'
+   +'<details><summary>Show the script (read after you listen)</summary>'+D.SCRIPTS[key].map(l=>'<p style="margin:6px 0">'+esc(l)+'</p>').join('')+'</details></div>';
+}
+function sec(title,instr,body){return '<div class="sec"><h3>'+title+'</h3><p class="i">'+instr+'</p>'+body+'</div>'}
+
+// ---------- DAY PANELS ----------
+function thu(){
+  let h=sec('Video: A Job Interview in English','Watch the video in six short parts. Watch one part, answer its questions, then go to the next part. You can stop after Part 3 and finish later. (About 21 minutes of video)',
+    '<p class="credit">Video: "English Job Interview Dos &amp; Don\'ts" by Rachel\'s English, played from YouTube.</p><details open><summary>Words to learn first</summary>'+D.PRE.map(w=>'<p style="margin:4px 0"><b>'+esc(w[0])+'</b>: '+esc(w[1])+'</p>').join('')+'</details>');
+  D.VID.forEach((c,k)=>{
+    const T=D.YT[k];let b='<div class="q"><div class="yt"><iframe src="https://www.youtube-nocookie.com/embed/'+D.YTID+'?start='+T[0]+'&end='+T[1]+'&rel=0&playsinline=1" title="'+esc(c.title)+'" allow="encrypted-media; picture-in-picture; fullscreen" allowfullscreen loading="lazy"></iframe></div>'
+      +'<div class="sc">Video not playing? <a href="https://www.youtube.com/watch?v='+D.YTID+'&t='+T[0]+'s" target="_blank" rel="noopener">Open this part on YouTube</a> (from '+Math.floor(T[0]/60)+':'+String(T[0]%60).padStart(2,'0')+' to '+Math.floor(T[1]/60)+':'+String(T[1]%60).padStart(2,'0')+').</div></div>';
+    let n=0;
+    c.mcq.forEach((q,i)=>{b+=mcq('v'+k+'m'+i,'thu',q[0],q[1],q[2],++n)});
+    c.tf.forEach((q,i)=>{b+=tf('v'+k+'t'+i,'thu',q[0],q[1],++n)});
+    c.fill.forEach((q,i)=>{b+=fill('v'+k+'f'+i,'thu',q[0],q[1],q[2],++n)});
+    h+=sec(esc(c.title)+' ('+c.len+')',esc(c.hint),b);
+  });
+  h+=sec('Useful phrases from the video','Choose the correct meaning.',D.PHR.map((q,i)=>mcq('ph'+i,'thu',q[0],q[1],q[2],i+1)).join(''));
+  h+=sec('Your turn','Answer like Rachel. Write 3 to 5 sentences for each. Your teacher will check them.',
+    writeBox('vy1','thu','Tell me a little about yourself. (I studied ... / I have been working at ... for ... years. / I have a lot of experience in ...)',1)
+   +writeBox('vy2','thu','What is your greatest strength? (My greatest strength is ... I find that this is very important when I ...)',2));
+  return h;
+}
+function fri(){
+  let h='<div class="sec"><h3>Remember</h3><p class="i">Present simple: routines, habits and facts. Present continuous: actions now, and temporary things these days.</p>'
+    +'<div class="sc">I <b>work</b> / she <b>works</b> &nbsp;|&nbsp; I <b>don\'t</b> work / she <b>doesn\'t</b> work &nbsp;|&nbsp; <b>Do</b> you work? <b>Does</b> she work?<br>'
+    +'I <b>am working</b> / she <b>is working</b> / they <b>are working</b> &nbsp;|&nbsp; <b>Are</b> you working?<br>'
+    +'<b>usually, always, every day, often, never</b> &rarr; present simple &nbsp;|&nbsp; <b>now, at the moment, this week, these days</b> &rarr; present continuous<br>'
+    +'Some verbs are not usually continuous: <b>know, understand, like, want, need, believe</b>.</div></div>';
+  h+=sec('1. Choose the correct form','Choose a, b or c.',D.G_MCQ.map((q,i)=>mcq('g1_'+i,'fri',q[0],q[1],q[2],i+1)).join(''));
+  h+=sec('2. Write the verb','Write the verb in the present simple or the present continuous. Then press Check.',D.G_FILL.map((q,i)=>fill('g2_'+i,'fri',q[0],q[1],q[2],i+1)).join(''));
+  h+=sec('3. Find the mistake','Each sentence has one mistake. Tap the wrong part, then check.',D.G_MIS.map((m,i)=>mistake('g3_'+i,'fri',m[0],m[1],m[2],i+1)).join(''));
+  h+=sec('4. Build the sentence','Tap the words in the correct order.',D.G_BUILD.map((b,i)=>build('g4_'+i,'fri',b[0],b[1],i+1)).join(''));
+  h+=sec('5. Action or state?','Choose the correct form. Remember: know, want, need and understand are not usually continuous.',D.G_SV.map((q,i)=>mcq('g5_'+i,'fri',q[0],q[1],q[2],i+1)).join(''));
+  h+=sec('6. Your sentences','Write true sentences about your work. The page checks the key words. Your teacher will check the grammar.',D.G_KW.map((q,i)=>writeKw('g6_'+i,'fri',q[0],q[1],i+1)).join(''));
+  return h;
+}
+let voice=null;
+function pickVoice(){try{const v=speechSynthesis.getVoices();voice=v.find(x=>/en-GB/i.test(x.lang))||v.find(x=>/^en/i.test(x.lang))||null}catch(e){}}
+function sayT(txt,slow){try{speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(txt);u.lang='en-GB';if(voice)u.voice=voice;u.rate=slow?0.7:0.95;speechSynthesis.speak(u)}catch(e){tip('Audio is not available on this device.')}}
+function say(i,slow){sayT(D.SENT[i],slow)}
+function sat(){
+  let h='<div class="sec"><h3>Listen and repeat</h3><p class="i">Press the blue button to hear the sentence. Say it aloud 2 times. Say the <b>bold</b> words louder and longer: this is sentence stress. Then tick the box. Press the turtle for slow speed.</p><div class="sc" id="repc"></div></div>';
+  D.GROUPS.forEach(g=>{
+    h+='<div class="sec"><h3>'+g[0]+'</h3>';
+    for(let i=g[1];i<g[2];i++)h+='<div class="sent'+(S.rep[i]?' done':'')+'" id="s-'+i+'"><div class="n">'+(i+1)+'</div><div class="s">'+D.SENTH[i]+'</div><button class="play" title="Play" onclick="say('+i+',false)">&#9654;</button><button class="play" style="background:var(--gold)" title="Slow" onclick="say('+i+',true)">&#128034;</button><input type="checkbox" '+(S.rep[i]?'checked':'')+' onchange="tickRep('+i+',this.checked)" style="width:22px;height:22px" aria-label="Repeated"></div>';
+    h+='</div>';
+  });
+  return h;
+}
+function tickRv(i,v){S.rv[i]=v?1:0;save();const e=document.getElementById('v-'+i);if(e)e.classList.toggle('done',!!v);updateBars()}
+function tickRep(i,v){S.rep[i]=v?1:0;save();const e=document.getElementById('s-'+i);if(e)e.classList.toggle('done',!!v);updateBars()}
+function sun(){
+  let text='<p class="sc" style="margin-top:0">This is an example handbook from an imaginary organisation.</p>';D.READ.forEach(p=>{text+=(p[0]?'<h4 style="margin:12px 0 4px">'+esc(p[0])+'</h4>':'')+'<p>'+markWords(esc(p[1]))+'</p>'});
+  let h=sec('Reading: Staff and Volunteer Handbook','Read the handbook page. Tap a dotted word to see its meaning. Then do the exercises. (About '+D.READ_N+' words)','<div class="reading">'+text+'</div>');
+  h+=sec('1. Multiple choice','Choose the best answer.',D.S_MCQ.map((q,i)=>mcq('s1_'+i,'sun',q[0],q[1],q[2],i+1)).join(''));
+  h+=sec('2. True or false','Choose True or False.',D.S_TF.map((q,i)=>tf('s2_'+i,'sun',q[0],q[1],i+1)).join(''));
+  h+=sec('3. Which section?','Read each situation. Which section of the handbook answers it?',D.S_SEC.map((q,i)=>mcq('s3_'+i,'sun',q[0],q[1],q[2],i+1)).join(''));
+  h+=sec('4. Vocabulary','Complete each sentence with a word or phrase from the text.',D.S_VOC.map((q,i)=>fill('s4_'+i,'sun',q[0],q[1],q[2],i+1)).join(''));
+  h+=sec('5. Your workplace','Write one sentence for each. The page checks the key words. Your teacher will check the grammar.',D.S_KW.map((q,i)=>writeKw('s5_'+i,'sun',q[0],q[1],i+1)).join(''));
+  h+=sec('6. Your opinion (optional)','Which rule in the handbook is the most important? Why? Write 3 sentences.',writeBox('s6_0','sun','Your opinion',1));
+  return h;
+}
+function writeKw(id,day,text,re,n){
+  const R=new RegExp(re,'i');
+  setTimeout(()=>{if(Q[id])Q[id].re=R},0);
+  return reg(id,day,text,()=>{
+    const a=S.a[id]||'';const ok=R.test(a)&&a.trim().split(/\s+/).length>=5;
+    return '<div class="q"><div class="t">'+(n?n+'. ':'')+esc(text)+'</div><textarea style="min-height:60px" oninput="S.a[\''+id+'\']=this.value;save();kwFb(\''+id+'\');updateBars()">'+esc(a)+'</textarea><div class="fb" id="kw-'+id+'">'+(a.trim()?(ok?'<span class="ok">Key words found.</span>':'<span class="bad">Use the key words and write a full sentence.</span>'):'')+'</div></div>'},
+    ()=>{const a=S.a[id]||'';return{user:a,correct:'',ok:null,teacher:true}});
+}
+function kwFb(id){const a=S.a[id]||'';const R=Q[id].re;const r={user:a,ok:R?(R.test(a)&&a.trim().split(/\s+/).length>=5):true};const e=document.getElementById('kw-'+id);if(e)e.innerHTML=(r.user.trim()?(r.ok?'<span style="color:var(--ok)">Key words found.</span>':'<span style="color:var(--bad)">Use the key words and write a full sentence.</span>'):'')}
+function markWords(t){Object.keys(D.WORDS).sort((a,b)=>b.length-a.length).forEach(w=>{const re=new RegExp('\\b('+w+')\\b','gi');t=t.replace(re,m=>'<span class="w" onclick="meaning(\''+w+'\')">'+m+'</span>')});return t}
+function meaning(w){tip('<b>'+w+'</b>: '+D.WORDS[w])}
+let tipT;function tip(h){const e=document.getElementById('tip');e.innerHTML=h;e.style.display='block';clearTimeout(tipT);tipT=setTimeout(()=>e.style.display='none',4000)}
+
+// ---------- progress ----------
+function dayProg(d){
+  if(d==='sat'){const n=Object.values(S.rep).filter(Boolean).length;return{done:n,total:50,pts:n,max:50}}
+  let done=0,total=0,pts=0,max=0;
+  Object.keys(Q).forEach(id=>{const q=Q[id];if(q.day!==d)return;const r=q.res();
+    total++;
+    if(r.ok===null){if(String(S.a[id]||'').trim())done++;}
+    else{max++;const answered=(S.a[id]!==undefined&&S.a[id]!==''&&!(Array.isArray(S.a[id])&&!S.a[id].length));if(answered)done++;if(r.ok)pts++}});
+  return{done,total,pts,max};
+}
+function updateBars(){
+  DAYS.forEach(d=>{const p=dayProg(d[0]);const e=document.getElementById('bar-'+d[0]);if(e)e.style.width=(p.total?Math.round(100*p.done/p.total):0)+'%';
+    const s=document.getElementById('sum-'+d[0]);if(s)s.textContent=p.done+' / '+p.total+(p.max?'   Score: '+p.pts+' / '+p.max:'');
+    const r=document.getElementById('repc');if(r&&d[0]==='sat')r.textContent=p.done+' of 50 sentences repeated'});
+}
+
+// ---------- report ----------
+function reportText(d){
+  const dn=DAYS.find(x=>x[0]===d);const p=dayProg(d);const L=[];
+  L.push('Unit 6 Homework: '+dn[1]+' ('+dn[2]+')');
+  L.push('Name: '+(S.name||'(not written)')+'   Date: '+new Date().toLocaleDateString('en-GB'));
+  L.push(p.max?('Score: '+p.pts+' / '+p.max+' | Completed: '+p.done+' / '+p.total):('Completed: '+p.done+' / '+p.total));L.push('');
+  const rows=[];
+  if(d==='sat'){D.SENT.forEach((s,i)=>rows.push({t:(i+1)+'. ['+(S.rep[i]?'x':' ')+'] '+s,c:S.rep[i]?'ok':''}))}
+  else{let n=0;Object.keys(Q).forEach(id=>{const q=Q[id];if(q.day!==d)return;n++;const r=q.res();
+    rows.push({t:n+'. '+q.label,b:1});
+    const mark=r.ok===null?(r.teacher?'  [teacher to check]':''):(r.ok?'  [correct]':'  [check]');
+    rows.push({t:'   Your answer: '+(r.user===''?'(no answer)':r.user)+mark,c:r.ok===null?'':(r.ok?'ok':'bad')});
+    if(r.ok===false&&r.correct)rows.push({t:'   Correct: '+r.correct,c:'ok'});rows.push({t:''})})}
+  return {head:L,rows:rows,text:L.join('\n')+'\n'+rows.map(r=>r.t).join('\n')};
+}
+function pdfReport(d){
+  if(!S.name||!S.name.trim()){tip('Please write your name at the top first.');window.scrollTo(0,0);const e=document.getElementById('nm');if(e){e.focus();e.style.outline='3px solid #e0553d'}return}
+  const R=reportText(d);let e=document.getElementById('rep-'+d);
+  if(!e){e=document.createElement('div');e.className='sec repview';e.id='rep-'+d;document.getElementById('p-'+d).appendChild(e)}
+  e.innerHTML='<h3>Your report</h3><p class="i">Press <b>Copy report</b> and paste it into WhatsApp, or press <b>Download PDF</b> and send the file to your teacher.</p>'
+    +'<button class="btn" onclick="copyRep(\''+d+'\')">Copy report</button><button class="btn pdf" onclick="pdfDl(\''+d+'\')">Download PDF</button>'
+    +'<div style="margin-top:10px">'+R.head.map(x=>'<div class="r"><b>'+esc(x)+'</b></div>').join('')+R.rows.map(r=>'<div class="r" style="'+(r.b?'font-weight:600;':'')+(r.c==='ok'?'color:var(--ok)':r.c==='bad'?'color:var(--bad)':'')+'">'+(esc(r.t)||'&nbsp;')+'</div>').join('')+'</div>'
+    +'<textarea id="rt-'+d+'" readonly hidden style="min-height:160px;margin-top:10px"></textarea>';
+  e.scrollIntoView({behavior:'smooth'});
+}
+function pdfDl(d){
+  if(!window.jspdf){tip('The PDF tool is still loading. Check your internet and try again, or use Copy report.');return}
+  const R=reportText(d);const doc=new window.jspdf.jsPDF({unit:'mm',format:'a4'});let y=18;
+  const clean=s=>String(s).replace(/[‘’]/g,"'").replace(/[“”]/g,'"').replace(/[–—]/g,'-').replace(/…/g,'...').replace(/[^\x20-\x7E]/g,'');
+  const put=(t,sz,bold,col)=>{doc.setFontSize(sz);doc.setFont('helvetica',bold?'bold':'normal');doc.setTextColor.apply(doc,col);
+    doc.splitTextToSize(clean(t)||' ',180).forEach(l=>{if(y>282){doc.addPage();y=18}doc.text(l,15,y);y+=sz*0.5+1.4})};
+  R.head.forEach((h,i)=>put(h,i===0?15:10.5,i!==1,i===0?[20,73,60]:[30,40,50]));
+  R.rows.forEach(r=>put(r.t,10,!!r.b,r.c==='ok'?[27,138,75]:r.c==='bad'?[192,57,43]:[30,40,50]));
+  doc.save('Unit6_'+DAYS.find(x=>x[0]===d)[1]+'_Report_'+clean(S.name).replace(/\s+/g,'_')+'.pdf');
+}
+function copyRep(d){
+  const txt=reportText(d).text;const ta=document.getElementById('rt-'+d);
+  const fallback=()=>{ta.value=txt;ta.hidden=false;ta.focus();ta.select();tip('Select all the text in the box and copy it.')};
+  try{navigator.clipboard.writeText(txt).then(()=>tip('Report copied. Now paste it to your teacher.')).catch(fallback)}catch(e){fallback()}
+}
+
+// ---------- render ----------
+function setTab(t){cur=t;try{localStorage.setItem(KEY+'_tab',t)}catch(e){}
+  document.querySelectorAll('.tab').forEach(b=>b.classList.toggle('on',b.dataset.t===t));
+  document.querySelectorAll('.panel').forEach(p=>p.classList.toggle('on',p.id==='p-'+t));window.scrollTo(0,0)}
+function init(){
+  const nm=document.getElementById('nm');nm.value=S.name;nm.oninput=()=>{S.name=nm.value;save()};
+  const fns={thu,fri,sat,sun};
+  let tabs='',panels='';
+  DAYS.forEach(d=>{
+    tabs+='<button class="tab" data-t="'+d[0]+'" onclick="setTab(\''+d[0]+'\')"><b>'+d[1]+'</b>'+d[2]+'<div class="bar"><i id="bar-'+d[0]+'"></i></div></button>';
+    panels+='<div class="panel" id="p-'+d[0]+'"><h2>'+d[1]+': '+d[2]+'</h2><div class="sc" id="sum-'+d[0]+'"></div>'+fns[d[0]]()
+      +'<div class="done-row"><label><input type="checkbox" id="dn-'+d[0]+'" '+(S.done[d[0]]?'checked':'')+' onchange="S.done[\''+d[0]+'\']=this.checked?1:0;save()"> I finished '+d[1]+'</label><button class="btn pdf" onclick="pdfReport(\''+d[0]+'\')">My report</button></div></div>';
+  });
+  document.getElementById('tabs').innerHTML=tabs;document.getElementById('panels').innerHTML=panels;
+  pickVoice();try{speechSynthesis.onvoiceschanged=pickVoice}catch(e){}
+  setTab(DAYS.some(d=>d[0]===cur)?cur:'thu');updateBars();
+}
+init();
+</script>
+
+</body>
+</html>
