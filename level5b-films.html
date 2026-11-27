@@ -1,0 +1,1276 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Level 5B Homework – Films and Film Stars</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=Figtree:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+
+:root{
+  /* Layout: right-to-left sticky header (title, PDF button, five day tabs) over one working panel per day.
+     Arabic for every instruction; English only for the lesson material itself. Light theme only. */
+  color-scheme: light;
+  --bg:#F2F4F8; --surface:#FFFFFF; --surface2:#E9EDF6; --ink:#0F1A36; --muted:#56627F; --line:#D5DCEA;
+  --accent:#2845F5; --accent-ink:#FFFFFF; --accent-soft:#E3E8FF;
+  --signal:#FFB21A; --signal-ink:#2A1C00;
+  --ok:#0F7A49; --ok-bg:#DDF4E8; --bad:#B7322A; --bad-bg:#FBE3E0;
+  --paper:#FFFFFF; --paper-ink:#111827; --paper-line:#C3CAD8; --paper-muted:#4B5563; --paper-accent:#2845F5;
+  --f-ar:'Cairo','Segoe UI',Tahoma,system-ui,sans-serif;
+  --f-en:'Figtree','Segoe UI',system-ui,sans-serif;
+  --f-mono:'IBM Plex Mono',ui-monospace,Menlo,Consolas,monospace;
+}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-ar);font-size:16px;line-height:1.6;padding-inline:16px;padding-block:0 56px}
+.wrap{max-width:940px;margin-inline:auto;direction:rtl;text-align:right}
+button{font:inherit;color:inherit;cursor:pointer}
+:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+h1,h2,h3,h4{font-family:var(--f-ar);text-wrap:balance;margin:0;line-height:1.35}
+p{margin:0}
+bdi,.en{font-family:var(--f-en)}
+.en{direction:ltr;text-align:left;unicode-bidi:isolate}
+
+/* header */
+.head{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--bg);padding-block:14px 10px;border-bottom:1px solid var(--line);margin-inline:-16px;padding-inline:16px}
+.head-in{max-width:940px;margin-inline:auto}
+.bar{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.brand h1{font-size:1.45rem;font-weight:700}
+.brand p{color:var(--muted);font-size:.875rem}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:42px;padding:6px 16px;border-radius:10px;border:1.5px solid var(--line);background:var(--surface);font-weight:600;font-size:.9375rem}
+.btn:hover{border-color:var(--accent)}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.btn.primary:hover{filter:brightness(1.08)}
+.btn.ghost{background:transparent}
+.btn[disabled]{opacity:.6;cursor:progress}
+.btn.sm{min-height:36px;padding:2px 12px;font-size:.875rem}
+.tabs{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;margin-top:12px}
+.tab{display:flex;flex-direction:column;align-items:flex-start;padding:6px 10px;border-radius:10px;border:1.5px solid transparent;background:var(--surface2);text-align:right;min-width:0;line-height:1.35}
+.tab .d{font-weight:700;font-size:1rem}
+.tab .t{font-size:.75rem;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%}
+.tab[aria-selected="true"]{background:var(--accent);color:var(--accent-ink)}
+.tab[aria-selected="true"] .t{color:inherit;opacity:.9}
+@media (max-width:560px){.tab .t{display:none}.tab{align-items:center;text-align:center}.tab .d{font-size:.9rem}}
+
+/* panels */
+.panel{padding-top:22px}
+.phead{display:flex;flex-direction:column;gap:6px;margin-bottom:18px}
+.phead .kick{font-size:.8rem;font-weight:600;color:var(--accent)}
+.phead h2{font-size:clamp(1.5rem,4.5vw,2.1rem);font-weight:700}
+.phead p{color:var(--muted);max-width:64ch}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px;margin-bottom:16px;min-width:0}
+.card h3{font-size:1.2rem;font-weight:700;margin-bottom:4px}
+.card .sub{color:var(--muted);font-size:.92rem;margin-bottom:12px}
+.tag{display:inline-block;font-size:.78rem;font-weight:600;padding:2px 10px;border-radius:999px;background:var(--accent-soft);color:var(--accent)}
+.toolbar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:14px}
+.toolbar .grow{flex:1}
+.count{font-size:.88rem;color:var(--muted)}
+
+/* listen rows (English sentences, so the row itself runs left to right) */
+.group-t{font-size:.85rem;font-weight:700;color:var(--muted);margin:18px 0 8px}
+.row{display:grid;grid-template-columns:44px 1fr auto;gap:10px;align-items:center;padding:10px 12px;border:1px solid var(--line);border-radius:12px;background:var(--surface);margin-bottom:8px;direction:ltr;text-align:left}
+.row.speaking{border-color:var(--signal);box-shadow:0 0 0 3px color-mix(in srgb,var(--signal) 35%,transparent)}
+.row .txt{font-size:1.0625rem;min-width:0;overflow-wrap:anywhere;font-family:var(--f-en)}
+.row .n{font-family:var(--f-mono);font-size:.75rem;color:var(--muted);margin-right:8px}
+.blind .row:not(.reveal) .txt .s{filter:blur(7px);user-select:none}
+.play{width:42px;height:42px;border-radius:50%;border:0;background:var(--signal);color:var(--signal-ink);display:grid;place-items:center;flex:none}
+.play:hover{filter:brightness(1.07)}
+.play svg{width:18px;height:18px;fill:currentColor}
+.done{display:flex;align-items:center;gap:6px;font-size:.85rem;color:var(--muted);cursor:pointer;user-select:none;direction:rtl}
+.done input{width:20px;height:20px;accent-color:var(--ok)}
+@media (max-width:520px){.row{grid-template-columns:42px 1fr}.row .done{grid-column:2;justify-self:start}}
+.switch{display:inline-flex;align-items:center;gap:8px;font-size:.9rem;cursor:pointer}
+.switch input{width:20px;height:20px;accent-color:var(--accent)}
+.fmt{display:inline-block;font-size:.72rem;font-weight:700;padding:0 8px;border-radius:6px;margin-right:8px;vertical-align:1px;direction:rtl;font-family:var(--f-ar)}
+.fmt.pos{background:var(--ok-bg);color:var(--ok)}
+.fmt.neg{background:var(--bad-bg);color:var(--bad)}
+.fmt.q{background:var(--accent-soft);color:var(--accent)}
+.fmt.sa{background:var(--surface2);color:var(--muted)}
+.fmt.casual{background:var(--signal);color:var(--signal-ink);margin-left:6px;margin-right:0;font-family:var(--f-en)}
+
+/* questions (English material runs left to right; feedback is Arabic) */
+.qlist{margin:0;padding:0;list-style:none;counter-reset:q;display:flex;flex-direction:column;gap:12px}
+.qi{counter-increment:q;border:1px solid var(--line);border-radius:12px;padding:12px 14px;background:var(--surface);direction:ltr;text-align:left;font-family:var(--f-en)}
+.qi .qt{font-weight:600;overflow-wrap:anywhere}
+.qi .qt::before{content:counter(q) ".";font-family:var(--f-mono);color:var(--muted);margin-right:8px;font-weight:500}
+.opts{display:flex;flex-direction:column;gap:6px;margin-top:8px}
+.opts.inline{flex-direction:row;flex-wrap:wrap}
+.opt{display:block;cursor:pointer}
+.opt input{position:absolute;opacity:0;pointer-events:none}
+.opt>span{display:flex;gap:10px;align-items:baseline;padding:8px 12px;border:1.5px solid var(--line);border-radius:10px;background:var(--bg);min-height:40px}
+.opt b{font-family:var(--f-mono);font-weight:500;color:var(--muted);text-transform:uppercase}
+.opt:hover>span{border-color:var(--accent)}
+.opt input:checked+span{border-color:var(--accent);background:var(--accent-soft)}
+.opt input:focus-visible+span{outline:3px solid var(--accent);outline-offset:2px}
+.qi.ok{border-color:var(--ok);background:var(--ok-bg)}
+.qi.bad{border-color:var(--bad);background:var(--bad-bg)}
+.fb{margin-top:8px;font-size:.9rem;font-weight:600;direction:rtl;text-align:right;font-family:var(--f-ar)}
+.qi.ok .fb{color:var(--ok)}
+.qi.bad .fb{color:var(--bad)}
+.actions{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-top:14px}
+.score{font-weight:700}
+.chk{display:flex;gap:10px;align-items:flex-start;cursor:pointer}
+.chk input{width:22px;height:22px;margin-top:1px;accent-color:var(--accent);flex:none}
+textarea{width:100%;min-height:72px;padding:10px 12px;border:1.5px solid var(--line);border-radius:10px;background:var(--bg);color:var(--ink);font:inherit;font-family:var(--f-en);direction:ltr;text-align:left;resize:vertical}
+.reason{margin-top:8px;direction:rtl;text-align:right;font-family:var(--f-ar)}
+.reason label{font-size:.82rem;color:var(--muted)}
+
+/* book pointer */
+.bookbox{display:flex;gap:14px;align-items:center;padding:14px;border-radius:12px;background:var(--accent-soft);margin-bottom:14px}
+.bookbox .pg{font-weight:700;font-size:1.7rem;line-height:1.1;color:var(--accent);min-width:3.4rem;text-align:center;font-family:var(--f-en)}
+.bookbox .pg small{display:block;font-family:var(--f-ar);font-size:.72rem;font-weight:600}
+.bookbox p{font-size:.95rem}
+
+/* wednesday */
+.audio{display:grid;grid-template-columns:auto 1fr;gap:18px;align-items:center;margin-bottom:14px}
+@media (max-width:520px){.audio{grid-template-columns:1fr;justify-items:start}}
+.qr{width:168px;height:168px;background:#fff;padding:8px;border-radius:12px;border:1px solid var(--line);image-rendering:pixelated}
+.audio h3{margin-bottom:6px}
+.audio audio{width:100%;max-width:420px;display:block;margin-top:4px}
+.audio>div{min-width:0}
+.script{margin-top:12px;border-top:1px dashed var(--line);padding-top:12px;direction:ltr;text-align:left;font-family:var(--f-en)}
+.script p{margin-bottom:10px;max-width:70ch}
+.script .sp{font-family:var(--f-mono);font-size:.72rem;text-transform:uppercase;letter-spacing:.06em;color:var(--accent);margin-right:8px}
+.script .a .sp{color:var(--muted)}
+.sec{font-weight:700;font-size:1.05rem;margin:20px 0 4px}
+.instr{color:var(--muted);font-size:.95rem;margin-bottom:10px}
+.q-en{font-family:var(--f-en);direction:ltr;text-align:left;font-weight:600;margin-bottom:8px}
+
+/* vocab */
+.mgrid{display:grid;grid-template-columns:1fr 1fr;gap:10px 14px;direction:ltr}
+.mcol{display:flex;flex-direction:column;gap:8px;min-width:0}
+.mi{display:flex;align-items:center;justify-content:space-between;gap:8px;min-height:46px;padding:8px 12px;border:1.5px solid var(--line);border-radius:10px;background:var(--bg);text-align:left;font-weight:600;font-family:var(--f-en)}
+.mi.ar{font-family:var(--f-ar);direction:rtl;text-align:right;font-size:1.05rem}
+.mi.sel{border-color:var(--accent);background:var(--accent-soft)}
+.mi.good{border-color:var(--ok);background:var(--ok-bg);color:var(--ok);pointer-events:none}
+.mi.nope{animation:shake .35s}
+@keyframes shake{25%{transform:translateX(-5px)}75%{transform:translateX(5px)}}
+@media (prefers-reduced-motion:reduce){.mi.nope{animation:none;border-color:var(--bad)}}
+.sc{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px 12px;align-items:center;padding:10px 12px;border:1px solid var(--line);border-radius:12px;background:var(--surface);margin-bottom:8px;direction:ltr}
+.sc .w{font-weight:600;font-size:1.05rem;font-family:var(--f-en)}
+.sc .w .ar{font-family:var(--f-ar);font-weight:400;color:var(--muted);margin-left:10px;font-size:.95rem;direction:rtl;unicode-bidi:isolate;display:inline-block}
+.seg{display:flex;gap:6px}
+.seg button{min-height:38px;padding:2px 14px;border-radius:9px;border:1.5px solid var(--line);background:var(--bg);font-size:.9rem;font-weight:600}
+.seg button.on{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.sc.ok{border-color:var(--ok);background:var(--ok-bg)}
+.sc.bad{border-color:var(--bad);background:var(--bad-bg)}
+.sc .fb{grid-column:1/-1;margin:0;font-size:.88rem}
+.sc.ok .fb{color:var(--ok)}.sc.bad .fb{color:var(--bad)}
+@media (max-width:520px){.sc{grid-template-columns:1fr}}
+.bank{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px;direction:ltr}
+.chip{padding:3px 12px;border-radius:999px;background:var(--surface2);font-weight:600;font-size:.9rem;font-family:var(--f-en)}
+.fill{display:flex;flex-wrap:wrap;align-items:center;gap:8px;padding:10px 12px;border:1px solid var(--line);border-radius:12px;margin-bottom:8px;background:var(--surface);direction:ltr;text-align:left;font-family:var(--f-en)}
+.fill.ok{border-color:var(--ok);background:var(--ok-bg)}
+.fill.bad{border-color:var(--bad);background:var(--bad-bg)}
+.fill select{min-height:38px;border-radius:9px;border:1.5px solid var(--line);background:var(--bg);color:var(--ink);font:inherit;font-family:var(--f-en);padding:2px 8px;max-width:100%}
+.fill .fb{flex-basis:100%;margin:0;font-size:.88rem}
+.fill.ok .fb{color:var(--ok)}.fill.bad .fb{color:var(--bad)}
+
+/* grammar */
+.sub-tabs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px}
+.pill{padding:6px 14px;border-radius:999px;border:1.5px solid var(--line);background:var(--surface);font-weight:600;font-size:.92rem}
+.pill[aria-selected="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.forms{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:12px}
+.form{border:1px solid var(--line);border-radius:12px;padding:12px 14px;background:var(--bg);min-width:0}
+.form h4{margin:0 0 6px;font-size:1rem}
+.formula{font-family:var(--f-mono);font-size:.8rem;background:var(--surface2);padding:6px 8px;border-radius:8px;margin-bottom:8px;overflow-wrap:anywhere;direction:ltr;text-align:left}
+.form ul{margin:0;padding-left:18px;direction:ltr;text-align:left;font-family:var(--f-en)}
+.form li{margin-bottom:2px}
+.tip{margin-top:12px;padding:10px 14px;border-radius:10px;background:var(--surface2)}
+.tip b{color:var(--accent)}
+
+/* misc */
+#toast{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(20px + env(safe-area-inset-bottom,0px));background:var(--ink);color:var(--bg);padding:10px 16px;border-radius:10px;font-weight:600;z-index:50;max-width:calc(100% - 32px);text-align:center;direction:rtl}
+.novoice{padding:10px 14px;border-radius:10px;background:var(--bad-bg);color:var(--bad);font-weight:600;margin-bottom:14px}
+
+/* export (paper, always white) */
+#exportRoot{position:absolute;left:0;top:0;width:718px;opacity:0;pointer-events:none;z-index:-1;overflow:hidden;height:0}
+.paper{width:718px;background:var(--paper);color:var(--paper-ink);font-family:var(--f-ar);font-size:13px;line-height:1.5;direction:rtl;text-align:right}
+.paper h1,.paper h2,.paper h3{font-family:var(--f-ar);color:var(--paper-ink)}
+.paper .cover{border-bottom:3px solid var(--paper-accent);padding-bottom:10px;margin-bottom:14px}
+.paper .cover h1{font-size:26px}
+.paper .cover p{color:var(--paper-muted)}
+.paper .who{display:flex;gap:30px;margin-top:12px}
+.paper .who span{flex:1;border-bottom:1px solid var(--paper-ink);padding-bottom:2px;font-size:13px}
+.paper .pb{page-break-before:always;padding-top:2px}
+.paper .dayh{border-right:6px solid var(--paper-accent);padding:2px 12px 2px 0;margin:0 0 12px}
+.paper .dayh h2{font-size:21px}
+.paper .dayh p{color:var(--paper-muted);font-size:12.5px}
+.paper h3{font-size:15px;margin:14px 0 4px}
+.paper .instr{color:var(--paper-muted);font-size:12.5px;margin:0 0 6px}
+.paper .en{font-family:var(--f-en)}
+.paper ol{margin:0 0 6px;padding-left:22px;padding-right:0}
+.paper ol.en,.paper .scr{direction:ltr;text-align:left}
+.paper li{margin-bottom:6px}
+.paper .xi{page-break-inside:avoid}
+.paper .xo{display:flex;flex-wrap:wrap;gap:4px 18px;margin-top:2px}
+.paper .xo b{text-transform:uppercase;margin-right:4px}
+.paper .box{display:inline-block;width:12px;height:12px;border:1.5px solid var(--paper-ink);border-radius:2px;margin-right:7px;vertical-align:-2px}
+.paper .ln{display:block;border-bottom:1px solid var(--paper-line);height:20px}
+.paper table{border-collapse:collapse;width:100%;margin-bottom:8px;direction:ltr;table-layout:fixed}
+.paper td,.paper th{border:1px solid var(--paper-line);padding:4px 8px;text-align:left;vertical-align:middle;font-family:var(--f-en)}
+.paper th{background:#EEF1F7;font-size:12px;font-family:var(--f-ar)}
+.paper td.ar{font-family:var(--f-ar);direction:rtl;text-align:right}
+.paper .qrrow{display:flex;gap:16px;align-items:center;margin:6px 0}
+.paper .qrrow img{width:120px;height:120px;border:1px solid var(--paper-line);padding:4px;background:#fff}
+.paper .scr p{margin:0 0 6px;font-family:var(--f-en)}
+.paper .scr .sp{font-weight:700;margin-right:6px}
+.paper .bank{gap:6px;margin-bottom:8px;display:flex;flex-wrap:wrap;direction:ltr}
+.paper .chip{background:#EEF1F7;color:var(--paper-ink);padding:2px 10px;font-size:12px}
+.paper .fm{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px}
+.paper .fm div{border:1px solid var(--paper-line);padding:6px 8px;border-radius:6px}
+.paper .fm code{display:block;font-family:var(--f-mono);font-size:10.5px;background:#EEF1F7;padding:3px 6px;border-radius:4px;margin:3px 0;direction:ltr;text-align:left}
+.paper .fm ul{margin:0;padding-left:16px;direction:ltr;text-align:left;font-family:var(--f-en)}
+.paper .gtag{font-size:11px;font-weight:700;color:var(--paper-muted);margin-right:8px}
+
+/* ---- pack 2 additions ---- */
+.barbtns{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.saved{font-size:.8rem;color:var(--muted);display:inline-flex;align-items:center;gap:6px}
+.saved::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--ok)}
+.saved.flash{color:var(--ok);font-weight:600}
+.tab .chip2{white-space:nowrap;font-size:.64rem;font-weight:600;padding:0 7px;border-radius:999px;background:var(--surface);color:var(--muted);margin-top:2px;border:1px solid var(--line)}
+.tab[aria-selected="true"] .chip2{background:rgba(255,255,255,.2);color:inherit;border-color:transparent}
+.tab .chip2.done{background:var(--ok-bg);color:var(--ok);border-color:transparent}
+.welcome{margin-top:18px;border-color:var(--accent);background:linear-gradient(0deg,var(--surface),var(--surface))}
+.welcome h2{font-size:1.5rem;margin-bottom:6px}
+.welcome p{color:var(--muted);max-width:68ch}
+.welcome .steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;margin:14px 0}
+.welcome .step{background:var(--bg);border-radius:12px;padding:10px 12px;font-size:.92rem}
+.welcome .step b{display:block;color:var(--accent);margin-bottom:2px}
+.namebox{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.namebox label{font-weight:600}
+.namebox input{min-height:42px;padding:6px 12px;border:1.5px solid var(--line);border-radius:10px;background:var(--bg);color:var(--ink);font:inherit;min-width:200px;flex:1;max-width:320px}
+.slim{margin-top:14px;display:flex;flex-wrap:wrap;align-items:center;gap:12px;justify-content:space-between}
+.slim .g{font-weight:700}
+.meter{height:10px;border-radius:999px;background:var(--surface2);overflow:hidden;flex:1;min-width:140px;max-width:340px}
+.meter i{display:block;height:100%;width:0;background:var(--accent);border-radius:999px;transition:width .3s}
+@media (prefers-reduced-motion:reduce){.meter i{transition:none}}
+.dayprog{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-top:6px}
+.dayprog .txt2{font-size:.88rem;color:var(--muted)}
+.fin{border-color:var(--ok);background:var(--ok-bg)}
+.fin h3{color:var(--ok)}
+.fin p{margin-bottom:12px}
+.wcard{border:1px solid var(--line);border-radius:14px;padding:8px;margin-bottom:12px;background:var(--surface)}
+.wcard .row{margin-bottom:6px;border:0;padding:6px 8px;background:transparent}
+.wcard .row.ex{margin-left:26px;background:var(--bg);border-radius:10px;grid-template-columns:36px 1fr}
+.wcard .row.ex .play{width:34px;height:34px}
+.wcard .row.ex .play svg{width:14px;height:14px}
+.wmean{font-family:var(--f-ar);color:var(--muted);direction:rtl;unicode-bidi:isolate;display:inline-block;margin-left:12px;font-size:.98rem}
+.wcard b{font-family:var(--f-en);font-size:1.1rem}
+.gap{min-height:38px;width:11ch;min-width:8ch;max-width:100%;padding:2px 10px;border:0;border-bottom:2px solid var(--accent);background:var(--accent-soft);color:var(--ink);font:inherit;font-family:var(--f-en);border-radius:6px 6px 0 0;direction:ltr;text-align:left}
+.qi .qt .gap{margin:0 4px}
+.rd{direction:ltr;text-align:left;font-family:var(--f-en);font-size:1.0625rem;max-width:68ch}
+.rd h3{font-family:var(--f-en);font-size:1.3rem;margin-bottom:8px}
+.rd p{margin-bottom:12px}
+.gloss{width:100%;border-collapse:collapse;direction:ltr;font-size:.95rem}
+.gloss td{padding:6px 10px;border-bottom:1px solid var(--line);font-family:var(--f-en)}
+.gloss td.ar{font-family:var(--f-ar);direction:rtl;text-align:right}
+.foot{margin-top:32px;display:flex;justify-content:center}
+details.hint{margin:8px 0 12px}
+details.hint summary{cursor:pointer;font-weight:600;color:var(--accent)}
+.say-q{direction:ltr;text-align:left}
+.paper .okc{color:#0F7A49;font-weight:700}
+.paper .badc{color:#B7322A;font-weight:700}
+.paper .sumt td,.paper .sumt th{padding:5px 8px}
+.paper .ans{white-space:pre-wrap;border:1px solid var(--paper-line);border-radius:6px;padding:8px 10px;direction:ltr;text-align:left;font-family:var(--f-en);margin-bottom:8px}
+.paper table.rep{table-layout:fixed}
+.paper table.rep td{overflow-wrap:anywhere;font-size:12px}
+.hl{color:var(--accent);font-weight:700;border-bottom:2px solid var(--accent-soft)}
+.crow.yourturn{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
+.crow.yourturn::after{content:"دورك الآن";position:absolute;inset-inline-end:10px;top:6px;font-size:.72rem;font-weight:700;color:var(--accent);font-family:var(--f-ar)}
+.crow{position:relative}
+.mi.emo{justify-content:center;font-size:1.7rem;direction:ltr;min-height:52px}
+.sc-h{font-weight:700;margin-top:12px;color:var(--muted)}
+a.btn{text-decoration:none;display:inline-flex;align-items:center}
+.group-t{font-weight:700;font-size:1.1rem;color:var(--accent);margin:18px 0 8px}
+.match{margin-bottom:4px}
+
+.dsel{min-height:36px;margin:2px 4px;padding:2px 8px;border:1.5px solid var(--line);border-radius:8px;background:var(--bg);color:var(--ink);font:inherit;font-family:var(--f-en);max-width:100%;direction:ltr}
+.dsel.ok{border-color:var(--ok);background:var(--ok-bg)}
+.dsel.bad{border-color:var(--bad);background:var(--bad-bg)}
+.dialog{direction:ltr;text-align:left;font-family:var(--f-en)}
+.dline{margin-bottom:10px;line-height:2.1}
+.dline .sp,.dialog .txt .sp{font-family:var(--f-mono);font-size:.74rem;color:var(--accent);margin-right:8px;font-weight:700}
+.dfb{margin:10px 0;padding-inline-start:22px}
+.dfb li{margin-bottom:4px;font-weight:600}
+.dfb li.ok{color:var(--ok)}.dfb li.bad{color:var(--bad)}
+.rep-box{margin-top:16px;border-top:1px dashed var(--line);padding-top:14px}
+.gap.wide{width:min(100%,38ch)}
+
+
+.langsw{display:inline-flex;border:1.5px solid var(--line);border-radius:10px;overflow:hidden;background:var(--surface);direction:ltr}
+.langsw button{border:0;background:transparent;padding:6px 10px;font:600 .82rem 'Figtree','Noto Sans KR','Vazirmatn','Cairo',system-ui,sans-serif;color:var(--muted);cursor:pointer;min-height:36px}
+.langsw button+button{border-inline-start:1px solid var(--line)}
+.langsw button[aria-pressed="true"]{background:var(--accent);color:var(--accent-ink)}
+html[data-ui="en"]{--f-ar:'Figtree','Segoe UI',system-ui,sans-serif}
+html[data-ui="ko"]{--f-ar:'Noto Sans KR','Malgun Gothic','Apple SD Gothic Neo','Segoe UI',system-ui,sans-serif}
+html[data-ui="ko"] body{word-break:keep-all}
+html[data-ui="fa"]{--f-ar:'Vazirmatn','Cairo',Tahoma,system-ui,sans-serif}
+html:not([data-ui="ar"]):not([data-ui="fa"]) .wrap{direction:ltr;text-align:left}
+html:not([data-ui="ar"]):not([data-ui="fa"]) :is(.tab,.done,.fmt,.fb,.reason,.mi.ar,.sc .w .ar,.wmean,.gloss td.ar,.paper,.paper td.ar){direction:ltr;text-align:left}
+html:not([data-ui="ar"]):not([data-ui="fa"]) .paper .dayh{border-right:0;border-left:6px solid var(--paper-accent);padding:2px 0 2px 12px}
+html:not([data-ui="ar"]):not([data-ui="fa"]) .row .n,html:not([data-ui="ar"]):not([data-ui="fa"]) .fmt{margin-right:8px}
+.rd p{line-height:1.75}
+.script p{line-height:1.7}
+.vid{position:relative;width:100%;padding-top:56.25%;border-radius:12px;overflow:hidden;background:#000;margin-top:10px}
+.vid iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.bank{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0 4px;direction:ltr}
+.bank span{background:var(--surface);border:1.5px solid var(--accent);border-radius:999px;padding:4px 12px;font:700 .95rem 'Figtree',system-ui,sans-serif}
+@media(max-width:560px){.langsw{flex-wrap:nowrap}.langsw button{padding:6px 7px;font-size:.76rem}}
+</style>
+
+<div class="wrap" lang="ar" dir="rtl">
+  <header class="head">
+    <div class="head-in">
+      <div class="bar">
+        <div class="brand">
+          <h1>واجبات المستوى الخامس (ب) · الأفلام ونجومها</h1>
+          <p id="greet">فيديو · قواعد · قراءة · مفردات</p>
+        </div>
+        <div class="barbtns">
+          <div class="langsw" data-notr dir="ltr" role="group" aria-label="Language"><button type="button" data-lang="ar" aria-pressed="true" lang="ar">العربية</button><button type="button" data-lang="en" aria-pressed="false">English</button></div>
+          <span class="saved" id="saved" role="status">يُحفظ تقدّمك تلقائيًا</span>
+          <button class="btn primary" id="weekBtn" type="button">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m0 0l-4-4m4 4l4-4M5 21h14"/></svg>
+            <span id="weekLabel">تقرير الأسبوع PDF</span>
+          </button>
+        </div>
+      </div>
+      <nav class="tabs" role="tablist" aria-label="أيام الأسبوع">
+        <button class="tab" role="tab" id="tab-mon" data-day="mon" aria-selected="true" aria-controls="p-mon"><span class="d">الخميس</span><span class="t">فيديو</span><span class="chip2" id="chip-mon"></span></button>
+        <button class="tab" role="tab" id="tab-tue" data-day="tue" aria-selected="false" aria-controls="p-tue"><span class="d">الجمعة</span><span class="t">قواعد</span><span class="chip2" id="chip-tue"></span></button>
+        <button class="tab" role="tab" id="tab-wed" data-day="wed" aria-selected="false" aria-controls="p-wed"><span class="d">السبت</span><span class="t">قواعد</span><span class="chip2" id="chip-wed"></span></button>
+        <button class="tab" role="tab" id="tab-thu" data-day="thu" aria-selected="false" aria-controls="p-thu"><span class="d">الأحد</span><span class="t">قراءة</span><span class="chip2" id="chip-thu"></span></button>
+        <button class="tab" role="tab" id="tab-fri" data-day="fri" aria-selected="false" aria-controls="p-fri"><span class="d">الاثنين</span><span class="t">مفردات</span><span class="chip2" id="chip-fri"></span></button>
+      </nav>
+    </div>
+  </header>
+
+  <section class="card welcome" id="welcome">
+    <h2>مرحبًا بك في واجبات هذا الأسبوع!</h2>
+    <p>خمسة أيام من التدريب: فيديو عن الأفلام، وقواعد <bdi dir="ltr">would rather</bdi>، ومراجعة <bdi dir="ltr">present perfect</bdi> مع <bdi dir="ltr">for</bdi> و <bdi dir="ltr">since</bdi>، ونص قراءة عن توم كروز، ثم مراجعة المفردات مع الاستماع والتكرار. أنجز مهام كل يوم بالترتيب. تقدّمك يُحفظ تلقائيًا على هذا الجهاز، فيمكنك الإغلاق والعودة في أي وقت.</p>
+    <div class="steps">
+      <div class="step"><b>1. اختر اليوم</b>اضغط على اسم اليوم في الأعلى وابدأ بالمهمة الأولى.</div>
+      <div class="step"><b>2. تحقّق من إجاباتك</b>بعد كل مهمة اضغط «تحقّق» لترى النتيجة وتصحّح أخطاءك.</div>
+      <div class="step"><b>3. حمّل تقريرك</b>عند إنهاء اليوم يظهر زر تقرير PDF. حمّله وأرسله لمعلمك.</div>
+    </div>
+    <div class="namebox">
+      <label for="studentName">اكتب اسمك ليظهر في التقرير:</label>
+      <input type="text" id="studentName" autocomplete="name" placeholder="الاسم">
+      <button class="btn primary" type="button" id="startBtn">ابدأ الآن</button>
+    </div>
+  </section>
+  <div class="slim" id="slim" hidden>
+    <span class="g" id="slimGreet"></span>
+    <span class="meter" role="progressbar" aria-label="التقدّم الكلي" aria-valuemin="0" aria-valuemax="100" id="slimMeter"><i id="slimFill"></i></span>
+    <span class="count" id="slimTxt"></span>
+  </div>
+
+  <main id="panels"></main>
+  <footer class="foot"><button class="btn ghost sm" id="resetBtn" type="button">بدء من جديد (يمسح تقدّمك)</button></footer>
+</div>
+<div id="toast" role="status" hidden></div>
+<div id="exportRoot" aria-hidden="true"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+<script>
+(function(){
+"use strict";
+var DICT={"واجبات الوحدة": ["Homework: Unit", "숙제: 단원", "Homework: Unit"], "للمستوى الخامس": ["for Level 5", "(레벨 5)", "for Level 5"], "دورك الآن": ["Your turn", "당신 차례", "نوبت توست"], "واجبات المستوى الخامس": ["Level 5 Homework", "레벨 5 숙제", "تکالیف سطح ۵"], "الوحدة": ["Unit", "단원", "Unit"], "استماع": ["Listening", "듣기", "شنیدن"], "مفردات": ["Vocabulary", "어휘", "واژگان"], "محادثات": ["Dialogues", "대화", "Dialogues"], "قراءة": ["Reading", "읽기", "خواندن"], "قواعد": ["Grammar", "문법", "گرامر"], "يُحفظ تقدّمك تلقائيًا": ["Your progress is saved automatically", "진행 상황이 자동으로 저장됩니다", "پیشرفتت به‌طور خودکار ذخیره می‌شود"], "تقرير الأسبوع": ["Weekly report", "주간 보고서", "گزارش هفته"], "أيام الأسبوع": ["Days of the week", "요일", "روزهای هفته"], "الاثنين": ["Monday", "월요일", "دوشنبه"], "الثلاثاء": ["Tuesday", "화요일", "Tuesday"], "الأربعاء": ["Wednesday", "수요일", "Wednesday"], "الخميس": ["Thursday", "목요일", "پنجشنبه"], "الجمعة": ["Friday", "금요일", "جمعه"], "مرحبًا بك في واجبات الوحدة": ["Welcome to the homework for Unit", "환영합니다! 숙제 단원", "Welcome to the homework for Unit"], "خمسة أيام من التدريب على الوحدة": ["Five days of practice on Unit", "5일 동안 연습합니다: 단원", "Five days of practice on Unit"], "تكوين صداقات جديدة»: استماع ومشاهدة": ["Making new friends”: listening and watching", "새 친구 사귀기”: 듣기와 시청", "Making new friends”: listening and watching"], "ومفردات": ["vocabulary", "어휘", "vocabulary"], "ومحادثات للتمثيل": ["role-play dialogues", "역할극 대화", "role-play dialogues"], "وقراءة": ["reading", "읽기", "خواندن"], "وقواعد. أنجز مهام كل يوم بالترتيب. تقدّمك يُحفظ تلقائيًا على هذا الجهاز": ["and grammar. Complete each day’s tasks in order. Your progress is saved automatically on this device", "문법. 매일 과제를 순서대로 끝내세요. 진행 상황은 이 기기에 자동 저장되므로", "and grammar. Complete each day’s tasks in order. Your progress is saved automatically on this device"], "فيمكنك الإغلاق والعودة في أي وقت": ["so you can close the page and come back at any time", "언제든지 닫았다가 다시 돌아와도 됩니다", "پس می‌توانی هر وقت خواستی صفحه را ببندی و دوباره برگردی"], "اختر اليوم": ["Choose a day", "요일 선택", "روز را انتخاب کن"], "اضغط على اسم اليوم في الأعلى وابدأ بالمهمة الأولى": ["Tap the day name at the top and start with the first task", "위의 요일 이름을 누르고 첫 번째 과제부터 시작하세요", "روی اسم روز در بالای صفحه بزن و از تمرین اول شروع کن"], "تحقّق من إجاباتك": ["Check your answers", "답 확인하기", "جواب‌هایت را چک کن"], "بعد كل مهمة اضغط «تحقّق» لترى النتيجة وتصحّح أخطاءك": ["After each task, tap “Check” to see your result and correct your mistakes", "과제를 마칠 때마다 “확인”을 눌러 결과를 보고 틀린 것을 고치세요", "بعد از هر تمرین روی «بررسی» بزن تا نتیجه را ببینی و اشتباه‌هایت را درست کنی"], "حمّل تقريرك": ["Download your report", "보고서 내려받기", "گزارشت را دانلود کن"], "عند إنهاء اليوم يظهر زر تقرير": ["When you finish a day, a report button appears. Format:", "하루를 끝내면 보고서 버튼이 나타납니다. 형식:", "وقتی یک روز را تمام کنی، دکمهٔ گزارش ظاهر می‌شود. فرمت:"], "حمّله وأرسله لمعلمك": ["Download it and send it to your teacher", "다운로드해서 선생님께 보내세요", "آن را دانلود کن و برای معلمت بفرست"], "اكتب اسمك ليظهر في التقرير": ["Type your name so it appears in the report", "보고서에 표시될 이름을 입력하세요", "اسمت را بنویس تا در گزارش دیده شود"], "الاسم": ["Name", "이름", "نام"], "ابدأ الآن": ["Start now", "지금 시작", "شروع کن"], "التقدّم الكلي": ["Overall progress", "전체 진행률", "پیشرفت کلی"], "بدء من جديد": ["Start over", "처음부터 다시", "شروع دوباره"], "يمسح تقدّمك": ["this erases your progress", "진행 상황이 삭제됩니다", "پیشرفتت پاک می‌شود"], "الاستماع": ["Listening", "듣기", "شنیدن"], "المفردات": ["Vocabulary", "어휘", "واژگان"], "المحادثات": ["Dialogues", "대화", "Dialogues"], "القراءة": ["Reading", "읽기", "خواندن"], "القواعد": ["Grammar", "문법", "گرامر"], "التعارف وصناعة الصداقات": ["Meeting people and making friends", "사람을 알아가고 친구 사귀기", "Meeting people and making friends"], "محادثة هاتفية بين تود وكلير عن سرّ لم يُحفظ. الكتاب ص": ["A phone conversation between Todd and Claire about a secret that was not kept. Book p.", "토드와 클레어가 지켜지지 못한 비밀에 대해 나누는 전화 대화. 교재 p.", "A phone conversation between Todd and Claire about a secret that was not kept. Book p."], "و": ["and", "및", "و"], "مدة التسجيل نحو": ["Recording length: about", "녹음 길이: 약", "طول فایل صوتی: حدود"], "دقائق": ["minutes", "분", "دقیقه"], "المهمة": ["Task", "과제", "تمرین"], "صحيح أم خطأ": ["True or False", "참 또는 거짓", "درست یا غلط"], "استمع إلى المحادثة": ["Listen to the conversation", "대화를 들으세요", "به گفت‌وگو گوش بده"], "ثم اختر": ["then choose", "그다음 고르세요:", "بعد انتخاب کن"], "أو": ["or", "또는", "یا"], "لكل عبارة": ["for each statement", "(각 문장마다)", "for each statement"], "اختر الكلمة الصحيحة": ["Choose the correct word", "알맞은 단어를 고르세요", "کلمهٔ درست را انتخاب کن"], "استمع مرة أخرى. اختر الكلمة التي استخدمها المتحدثان لإكمال كل جملة": ["Listen again. Choose the word the speakers used to complete each sentence", "다시 들으세요. 각 문장을 완성하기 위해 화자들이 사용한 단어를 고르세요", "Listen again. Choose the word the speakers used to complete each sentence"], "تفاصيل": ["Details", "세부 내용", "Details"], "استمع مرة ثالثة. اختر الإجابة الصحيحة": ["Listen a third time. Choose the correct answer", "세 번째로 들으세요. 올바른 답을 고르세요", "Listen a third time. Choose the correct answer"], "شخص اجتماعي منفتح": ["an outgoing, sociable person", "외향적이고 사교적인 사람", "an outgoing, sociable person"], "شخص انطوائي": ["a quiet, reserved person", "내향적인 사람", "a quiet, reserved person"], "متمرّد": ["rebellious", "반항적인", "rebellious"], "غيور": ["envious of others", "남을 질투하는", "envious of others"], "ينتقد نفسه كثيرًا": ["criticizes himself or herself a lot", "자신을 지나치게 비판하는", "criticizes himself or herself a lot"], "مهرّج": ["someone who jokes around", "장난꾸러기", "someone who jokes around"], "مستقل": ["self-reliant", "독립적인", "self-reliant"], "مبدع": ["full of new ideas", "창의적인", "full of new ideas"], "محبوب بين الناس": ["liked by many people", "인기 있는", "liked by many people"], "مجتهد": ["works very hard", "열심히 일하는", "works very hard"], "الطفل الأوسط": ["the child between the oldest and the youngest", "중간 자녀", "the child between the oldest and the youngest"], "أصغر أفراد الأسرة": ["the youngest in the family", "가족 중 막내", "the youngest in the family"], "غاضب من": ["very annoyed by", "~에 화난", "very annoyed by"], "مولع بـ": ["very fond of", "~에 푹 빠진", "very fond of"], "متحمّس لـ": ["enthusiastic about", "~에 들뜬", "enthusiastic about"], "منزعج من": ["bothered by", "~에 속상한", "bothered by"], "خائف من": ["scared of", "~을 무서워하는", "scared of"], "سئم من": ["fed up with", "~에 질린", "fed up with"], "ملّ من": ["bored by", "~이 지루한", "bored by"], "سعيد بـ": ["pleased about", "~에 기쁜", "pleased about"], "شخص تعرفه قليلًا": ["a person you know only a little", "조금만 아는 사람", "a person you know only a little"], "صديق مقرّب": ["a friend you are very close to", "가까운 친구", "a friend you are very close to"], "أفضل صديق": ["your closest friend", "가장 친한 친구", "your closest friend"], "توأم الروح": ["a very special person who understands you", "나를 가장 잘 이해하는 특별한 사람", "a very special person who understands you"], "صديق وقت الرخاء فقط": ["a friend only when things are good", "좋을 때만 곁에 있는 친구", "a friend only when things are good"], "صديق على وسائل التواصل": ["a friend on social media", "소셜 미디어 친구", "a friend on social media"], "صديق العائلة": ["a friend of the family", "가족의 친구", "a friend of the family"], "الدرس": ["Lesson", "레슨", "Lesson"], "طالبان يتعرّفان على بعضهما في أول يوم دراسة": ["Two students get to know each other on the first day of school", "두 학생이 개학 첫날 서로를 알아갑니다", "Two students get to know each other on the first day of school"], "صديقان": ["Two friends", "두 친구", "Two friends"], "أحدهما يبدو حزينًا والآخر يحاول أن يرفع معنوياته": ["one looks sad and the other tries to cheer him up", "한 명은 슬퍼 보이고 다른 한 명은 기운을 북돋아 주려고 합니다", "one looks sad and the other tries to cheer him up"], "شاب يخبر صديقه بسرّ ويطلب منه ألا يخبر أحدًا": ["A young man tells his friend a secret and asks him not to tell anyone", "한 청년이 친구에게 비밀을 말하고 아무에게도 말하지 말라고 부탁합니다", "A young man tells his friend a secret and asks him not to tell anyone"], "وحيد": ["alone", "혼자인", "alone"], "بمفرده": ["by oneself", "혼자서", "by oneself"], "هادئ": ["quiet", "조용한", "quiet"], "قليل من الاثنين": ["a little of both", "둘 다 조금씩", "a little of both"], "الأكبر سنًّا": ["the oldest", "가장 나이가 많은", "the oldest"], "ترتيب الولادة": ["birth order", "출생 순서", "birth order"], "خدمة مجتمعية": ["volunteer work for the community", "지역사회 봉사", "volunteer work for the community"], "ثقة": ["trust", "신뢰", "اعتماد"], "يخون": ["to betray", "배신하다", "to betray"], "المصدر بعد أفعال معيّنة": ["Gerunds after certain verbs", "특정 동사 뒤의 동명사(-ing)", "Gerunds after certain verbs"], "القاعدة": ["Rule", "규칙", "Rule"], "الأفعال المهمة": ["Key verbs", "핵심 동사", "Key verbs"], "المنفي": ["Negative", "부정문", "منفی"], "بعد هذه الأفعال نستخدم الفعل مع": ["After these verbs, use the verb with", "이 동사들 뒤에는 동사 +", "After these verbs, use the verb with"], "وليس": ["rather than", "— 이렇게 말하지 않습니다:", "rather than"], "الفعل. مثال صحيح": ["verb. Correct example", "동사는 쓰지 않습니다. 올바른 예", "verb. Correct example"], "مثال خاطئ": ["Incorrect example", "잘못된 예", "Incorrect example"], "الفعل بعد أفعال معيّنة": ["verb after certain verbs", "동사 (특정 동사 뒤)", "verb after certain verbs"], "بعد هذه الأفعال نستخدم": ["After these verbs, use", "이 동사들 뒤에는", "After these verbs, use"], "الفعل الأصلي": ["the base verb", "동사원형을 씁니다", "the base verb"], "مثال صحيح": ["Correct example", "올바른 예", "Correct example"], "المصدر أو": ["Gerund or", "동명사 또는", "Gerund or"], "الفعل": ["verb", "동사", "فعل"], "ملاحظة": ["Note", "참고", "Note"], "المعنى واحد تقريبًا بالشكلين": ["The meaning is almost the same in both forms", "두 형태의 의미는 거의 같습니다", "The meaning is almost the same in both forms"], "مع هذه الأفعال يمكنك استخدام الشكلين بنفس المعنى تقريبًا. لكن لا تضع الشكلين معًا في الجملة نفسها": ["With these verbs you can use either form with almost the same meaning. But do not put both forms together in the same sentence", "이 동사들 뒤에는 두 형태를 거의 같은 의미로 쓸 수 있습니다. 단, 한 문장에 두 형태를 함께 쓰지는 마세요", "With these verbs you can use either form with almost the same meaning. But do not put both forms together in the same sentence"], "المصدر بعد حروف الجر": ["Gerunds after prepositions", "전치사 뒤의 동명사(-ing)", "Gerunds after prepositions"], "صفة": ["Adjective", "형용사", "صفت"], "حرف جر": ["preposition", "전치사", "preposition"], "اقتراحات": ["Suggestions", "제안", "Suggestions"], "بعد حرف الجر": ["After a preposition", "전치사 뒤에는", "After a preposition"], "نستخدم دائمًا الفعل مع": ["always use the verb with", "항상 다음 형태를 씁니다: 동사 +", "always use the verb with"], "ولا نستخدم": ["and never use", "절대 쓰지 않는 형태:", "and never use"], "الفعل أبدًا": ["verb", "동사", "فعل"], "مراجعة شاملة": ["Full review", "종합 복습", "Full review"], "المصدر": ["Gerund", "동명사", "Gerund"], "الاثنان": ["Both", "둘 다", "Both"], "قبل أن تجيب اسأل نفسك: هل الفعل من مجموعة": ["Before you answer, ask yourself: is the verb from the group", "답하기 전에 스스로 물어보세요: 이 동사는 어느 그룹입니까?", "Before you answer, ask yourself: is the verb from the group"], "أم": ["or", "또는", "یا"], "أم الاثنين": ["or both", "또는 둘 다", "or both"], "وهل قبل الفراغ حرف جر": ["And is there a preposition before the blank", "그리고 빈칸 앞에 전치사가 있습니까", "And is there a preposition before the blank"], "مثبت": ["Positive", "긍정문", "مثبت"], "منفي": ["Negative", "부정문", "منفی"], "سؤال": ["Question", "의문문", "سؤال"], "سؤال منفي": ["Negative question", "부정 의문문", "سؤال منفی"], "إجابة قصيرة": ["Short answer", "짧은 대답", "جواب کوتاه"], "هذا المتصفح لا يحتوي على صوت مدمج. جرّب": ["This browser has no built-in voice. Try", "이 브라우저에는 내장 음성이 없습니다. 다음을 사용해 보세요:", "این مرورگر صدای داخلی ندارد. این را امتحان کن:"], "استمع": ["Listen", "듣기", "گوش بده"], "السرعة": ["Speed", "속도", "سرعت"], "بطيئة": ["Slow", "느리게", "آهسته"], "عادية": ["Normal", "보통", "عادی"], "متصفحك لا يحتوي على صوت مدمج. افتح الصفحة في": ["Your browser has no built-in voice. Open the page in", "브라우저에 내장 음성이 없습니다. 다음에서 페이지를 여세요:", "مرورگرت صدای داخلی ندارد. صفحه را در این مرورگر باز کن:"], "لسماع الجمل": ["to hear the sentences", "문장을 들으려면", "تا جمله‌ها را بشنوی"], "تحقّق من الإجابات": ["Check answers", "답 확인", "بررسی جواب‌ها"], "حاول مرة أخرى": ["Try again", "다시 시도", "دوباره امتحان کن"], "تقدّم اليوم": ["Today’s progress", "오늘의 진행", "پیشرفت امروز"], "تقرير اليوم": ["Day report", "일일 보고서", "گزارش روز"], "أحسنت! أنهيت يوم": ["Well done! You finished", "잘했어요! 완료한 날:", "آفرین! تمام شد: روز"], "نتيجتك محفوظة. حمّل تقرير اليوم بصيغة": ["Your result is saved. Download today’s report as", "결과가 저장되었습니다. 오늘 보고서 형식:", "نتیجه‌ات ذخیره شد. گزارش امروز را دانلود کن، با فرمت"], "وأرسله لمعلمك": ["and send it to your teacher", "다운로드해서 선생님께 보내세요", "و آن را برای معلمت بفرست"], "تحميل تقرير يوم": ["Download the report for", "보고서 내려받기:", "دانلود گزارش روز"], "الكلمة الناقصة": ["Missing word", "빈칸에 들어갈 단어", "کلمهٔ جاافتاده"], "إجابتك": ["Your answer", "내 답", "جواب تو"], "تمت مطابقتها": ["matched", "연결 완료", "وصل شد"], "إظهار النص المكتوب": ["Show the script", "대본 보기", "نمایش متن"], "الاستماع والمشاهدة": ["Listening and watching", "듣기와 보기", "Listening and watching"], "استماع وفيديو: الوحدة": ["Listening and video: Unit", "듣기와 영상: 단원", "Listening and video: Unit"], "أولًا استمع إلى التسجيل وأجب عن ثلاث مهام. ثم شاهد فيديو": ["First, listen to the recording and answer the three tasks. Then watch the", "먼저 녹음을 듣고 세 가지 과제에 답하세요. 그다음 시청하세요:", "First, listen to the recording and answer the three tasks. Then watch the"], "وأجب عن أسئلته. يمكنك فتح النص المكتوب بعد المحاولة": ["video and answer its questions. You can open the script after you try", "영상과 질문에 답하세요. 시도한 후에 대본을 열어 볼 수 있습니다", "video and answer its questions. You can open the script after you try"], "سرعة التسجيل": ["Recording speed", "녹음 속도", "سرعت پخش"], "الفيديو": ["Video", "영상", "ویدیو"], "فيديو قصير عن أندي الذي يريد دعوة زميلته أماندا. اضغط على الزر لفتح الفيديو في نافذة جديدة": ["A short video about Andy, who wants to invite his colleague Amanda. Press the button to open the video in a new window", "동료 아만다를 초대하고 싶은 앤디에 관한 짧은 영상입니다. 버튼을 눌러 새 창에서 영상을 여세요", "A short video about Andy, who wants to invite his colleague Amanda. Press the button to open the video in a new window"], "شاهده مرة أو مرتين": ["watch it once or twice", "한두 번 보세요", "watch it once or twice"], "ثم ارجع وأجب": ["then come back and answer", "그다음 돌아와서 답하세요", "then come back and answer"], "شاهد الفيديو": ["Watch the video", "영상 보기", "Watch the video"], "إذا لم يفتح الفيديو": ["If the video does not open", "영상이 열리지 않으면", "If the video does not open"], "انسخ هذا الرابط في المتصفح": ["copy this link into your browser", "이 링크를 브라우저에 복사하세요", "copy this link into your browser"], "أسئلة الفيديو": ["Video questions", "영상 질문", "Video questions"], "اختر الإجابة الصحيحة حسب الفيديو": ["Choose the correct answer according to the video", "영상에 따라 올바른 답을 고르세요", "Choose the correct answer according to the video"], "مفردات الوحدة": ["Vocabulary: Unit", "어휘: 단원", "Vocabulary: Unit"], "الشخصية": ["Personality", "성격", "شخصیت"], "والصفات مع حروف الجر": ["adjectives with prepositions", "전치사와 함께 쓰는 형용사", "adjectives with prepositions"], "وأنواع الأصدقاء. في كل مجموعة طابق الكلمات": ["and kinds of friends. In each group, match the words", "친구의 종류. 각 그룹에서 단어를 연결하고", "and kinds of friends. In each group, match the words"], "أكمل الجمل": ["complete the sentences", "문장을 완성한 다음", "جمله‌ها را کامل کن"], "ثم استمع وكرّر في النهاية. اضغط على الكلمة الإنجليزية لتسمعها": ["then listen and repeat at the end. Tap the English word to hear it", "마지막에 듣고 따라 하세요. 영어 단어를 누르면 소리가 납니다", "then listen and repeat at the end. Tap the English word to hear it"], "طابق الكلمة بمعناها": ["Match the word with its meaning", "단어와 뜻 연결하기", "کلمه را به معنی‌اش وصل کن"], "اضغط على كلمة إنجليزية ثم على معناها بالعربية": ["Tap an English word, then tap its meaning", "영어 단어를 누른 다음 그 뜻을 누르세요", "روی یک کلمهٔ انگلیسی بزن، بعد روی معنی آن بزن"], "اختر الكلمة المناسبة لإكمال كل جملة": ["Choose the right word to complete each sentence", "각 문장을 완성할 알맞은 단어를 고르세요", "Choose the right word to complete each sentence"], "الصفات مع حروف الجر": ["Adjectives with prepositions", "전치사와 함께 쓰는 형용사", "Adjectives with prepositions"], "طابق العبارة بمعناها": ["Match the phrase with its meaning", "표현과 뜻 연결하기", "Match the phrase with its meaning"], "الصفات": ["Adjectives", "형용사", "صفت‌ها"], "حروف الجر": ["prepositions", "전치사", "حروف اضافه"], "اضغط على العبارة الإنجليزية ثم على معناها بالعربية": ["Tap the English phrase, then tap its meaning", "영어 표현을 누른 다음 그 뜻을 누르세요", "Tap the English phrase, then tap its meaning"], "أكمل الجملة": ["Complete the sentence", "문장 완성", "جمله را کامل کن"], "اكتب العبارة المناسبة. يمكنك الاستعانة بالقائمة": ["Type the right phrase. You can use the list", "알맞은 표현을 쓰세요. 목록을 참고해도 됩니다", "Type the right phrase. You can use the list"], "أنواع الأصدقاء": ["Kinds of friends", "친구의 종류", "Kinds of friends"], "طابق نوع الصديق": ["Match the kind of friend", "친구 종류 연결하기", "Match the kind of friend"], "طابق نوع الصديق بمعناه": ["Match the kind of friend with its meaning", "친구 종류와 뜻 연결하기", "Match the kind of friend with its meaning"], "اكتب نوع الصديق المناسب. يمكنك الاستعانة بالقائمة": ["Type the right kind of friend. You can use the list", "알맞은 친구 종류를 쓰세요. 목록을 참고해도 됩니다", "Type the right kind of friend. You can use the list"], "مراجعة": ["Review", "복습", "مرور"], "اختيار من متعدد": ["Multiple choice", "객관식", "چندگزینه‌ای"], "اختر الإجابة الصحيحة": ["Choose the correct answer", "올바른 답을 고르세요", "جواب درست را انتخاب کن"], "مراجعة المفردات": ["Vocabulary review", "어휘 복습", "Vocabulary review"], "استمع وكرّر": ["Listen and repeat", "듣고 따라 하기", "گوش بده و تکرار کن"], "استمع إلى كل جملة وكرّرها بصوت عالٍ": ["Listen to each sentence and repeat it aloud", "각 문장을 듣고 소리 내어 따라 하세요", "به هر جمله گوش بده و آن را با صدای بلند تکرار کن"], "ثم ضع علامة": ["then tick the box", "그다음 체크하세요", "بعد تیک بزن"], "تشغيل الكل": ["Play all", "전체 재생", "پخش همه"], "إيقاف": ["Stop", "정지", "توقف"], "كرّرتها": ["I repeated it", "따라 했어요", "تکرار کردم"], "ثلاث محادثات للتمثيل": ["Three role-play dialogues", "역할극 대화 3개", "Three role-play dialogues"], "اقرأ كل محادثة بصوت عالٍ مع زميل أو وحدك. اضغط على أي سطر لتسمعه": ["Read each dialogue aloud with a partner or by yourself. Tap any line to hear it", "각 대화를 친구와 또는 혼자 소리 내어 읽으세요. 아무 줄이나 누르면 들을 수 있습니다", "Read each dialogue aloud with a partner or by yourself. Tap any line to hear it"], "أو اختر دورًا": ["or choose a role", "또는 역할을 고르세요", "or choose a role"], "ليقرأ الصوت الدور الآخر وتقرأ أنت دورك. العبارات الزرقاء عبارات مفيدة تذكّرها": ["so the voice reads the other role and you read yours. The blue phrases are useful phrases to remember", "· 그러면 음성이 상대 역할을 읽고 당신은 자기 역할을 읽습니다. 파란색 표현은 기억해 두면 좋은 표현입니다", "so the voice reads the other role and you read yours. The blue phrases are useful phrases to remember"], "تمثيل": ["Role-play", "역할극", "Role-play"], "تشغيل المحادثة": ["Play the dialogue", "대화 재생", "Play the dialogue"], "تمثيل الأدوار": ["Role-play", "역할 연습", "Role-play"], "أنا": ["I am", "나는", "من"], "قرأت المحادثة بدور": ["I read the dialogue as", "대화를 읽은 역할:", "I read the dialogue as"], "أسئلة": ["Questions", "질문", "سؤال‌ها"], "اختر الإجابة الصحيحة حسب المحادثة": ["Choose the correct answer according to the dialogue", "대화에 따라 올바른 답을 고르세요", "Choose the correct answer according to the dialogue"], "استمع إلى النص": ["Listen to the text", "본문 듣기", "Listen to the text"], "قائمة كلمات مساعدة": ["Helpful word list", "도움이 되는 단어 목록", "فهرست کلمه‌های کمکی"], "أسئلة الفهم": ["Comprehension questions", "이해 질문", "سؤال‌های درک مطلب"], "اختر الإجابة الصحيحة حسب النص": ["Choose the correct answer according to the text", "본문에 따라 올바른 답을 고르세요", "طبق متن، جواب درست را انتخاب کن"], "اكتب": ["Write", "쓰세요:", "بنویس:"], "إذا كانت العبارة صحيحة حسب النص": ["if the statement is true according to the text", "본문과 일치하면", "اگر جمله طبق متن درست است"], "إذا كانت خاطئة": ["if it is false", "내용과 다르면", "اگر غلط است"], "ثلاثة نصوص قصيرة": ["Three short texts", "짧은 본문 3개", "Three short texts"], "اقرأ كل نص": ["Read each text", "각 본문을 읽고", "Read each text"], "واستعن بقائمة الكلمات إذا احتجت": ["use the word list if you need it", "필요하면 단어 목록을 참고한 다음", "اگر لازم شد از فهرست کلمه‌ها کمک بگیر"], "ثم أجب عن الأسئلة. يمكنك الاستماع إلى النص بالصوت المدمج": ["then answer the questions. You can listen to the text with the built-in voice", "질문에 답하세요. 내장 음성으로 본문을 들을 수도 있습니다", "then answer the questions. You can listen to the text with the built-in voice"], "رأيك": ["Your opinion", "내 의견", "نظر تو"], "اكتب فقرة قصيرة بالإنجليزية عن صديق جيد أو «توأم روحك». اشرح لماذا هذا الصديق مهم بالنسبة لك": ["Write a short paragraph in English about a good friend or your “soulmate”. Explain why this friend is important to you", "좋은 친구 또는 “영혼의 단짝”에 대해 영어로 짧은 글을 쓰세요. 이 친구가 왜 당신에게 중요한지 설명하세요", "Write a short paragraph in English about a good friend or your “soulmate”. Explain why this friend is important to you"], "قواعد الوحدة": ["Grammar: Unit", "문법: 단원", "Grammar: Unit"], "اختر النقطة النحوية من الأزرار. لكل نقطة: ملخص سريع": ["Choose a grammar point from the buttons. For each point: a quick summary", "버튼에서 문법 항목을 고르세요. 항목마다: 간단 요약", "Choose a grammar point from the buttons. For each point: a quick summary"], "واستمع وكرّر ثلاثين جملة": ["listen and repeat thirty sentences", "30개 문장 듣고 따라 하기", "listen and repeat thirty sentences"], "ثم أسئلة اختيار من متعدد": ["then multiple-choice questions", "그다음 객관식 문제", "then multiple-choice questions"], "وإكمال": ["completion", "빈칸 채우기", "کامل کردن"], "وتصحيح الخطأ": ["find the mistake", "틀린 곳 찾기", "پیدا کردن اشتباه"], "النقاط النحوية": ["Grammar points", "문법 항목", "Grammar points"], "النقطة": ["Point", "항목", "Point"], "من": ["of", "/", "از"], "ملخص سريع": ["Quick summary", "간단 요약", "خلاصهٔ سریع"], "تذكّر": ["Remember", "기억하세요", "یادت باشد"], "جملة": ["sentences", "문장", "جمله"], "اضغط تشغيل الكل أو اضغط على أي جملة": ["Press Play all or tap any sentence", "전체 재생을 누르거나 아무 문장이나 누르세요", "Press Play all or tap any sentence"], "وكرّرها بصوت عالٍ ثم ضع علامة": ["and repeat it aloud, then tick the box", "그리고 소리 내어 따라 한 다음 체크하세요", "and repeat it aloud, then tick the box"], "اكتب الشكل الصحيح للفعل أو الكلمة المطلوبة": ["Type the correct form of the verb or the word needed", "동사 또는 필요한 단어의 올바른 형태를 쓰세요", "Type the correct form of the verb or the word needed"], "ابحث عن الخطأ": ["Find the mistake", "틀린 곳 찾기", "اشتباه را پیدا کن"], "في كل سؤال جملة فيها خطأ. اختر الجملة الصحيحة": ["Each question has a sentence with a mistake. Choose the correct sentence", "각 문제에는 틀린 문장이 있습니다. 올바른 문장을 고르세요", "در هر سؤال جمله‌ای هست که یک اشتباه دارد. جملهٔ درست را انتخاب کن"], "الفراغ": ["Blank", "빈칸", "جای خالی"], "صحيح": ["Correct", "정답", "درست"], "اختر إجابة أولًا": ["Choose an answer first", "먼저 답을 고르세요", "اول یک جواب انتخاب کن"], "غير صحيح": ["Incorrect", "오답", "غلط"], "الإجابة الصحيحة": ["Correct answer", "정답", "جواب درست"], "صحيحة": ["correct", "정답", "درست"], "اكتب الكلمة أولًا": ["Type a word first", "먼저 단어를 쓰세요", "اول کلمه را بنویس"], "اكتملت": ["complete", "완료", "کامل شد"], "تم الحفظ الآن": ["Saved just now", "방금 저장됨", "همین حالا ذخیره شد"], "الحفظ التلقائي غير متاح في هذا المتصفح": ["Auto-save is not available in this browser", "이 브라우저에서는 자동 저장을 사용할 수 없습니다", "ذخیرهٔ خودکار در این مرورگر کار نمی‌کند"], "تعذّر الحفظ التلقائي. لا تغلق الصفحة قبل تحميل تقريرك": ["Auto-save failed. Do not close the page before downloading your report", "자동 저장에 실패했습니다. 보고서를 내려받기 전에 페이지를 닫지 마세요", "ذخیرهٔ خودکار انجام نشد. قبل از دانلود گزارش، صفحه را نبند"], "مكتمل": ["Done", "완료", "کامل"], "المهام المنجزة": ["Tasks completed", "완료한 과제", "تمرین‌های انجام‌شده"], "تم تكرارها": ["repeated", "따라 함", "تکرار شد"], "تم الحفظ تلقائيًا": ["Saved automatically", "자동 저장됨", "به‌طور خودکار ذخیره شد"], "أنهيت": ["You finished", "완료:", "تمام‌شده:"], "أيام": ["days", "일", "روز"], "مرحبًا": ["Hello", "안녕하세요", "سلام"], "تابع من حيث توقفت": ["Continue where you left off", "중단한 곳에서 이어서 하세요", "از همان‌جا که مانده بودی ادامه بده"], "نطق": ["Pronunciation", "발음", "تلفظ"], "مرحبًا بك": ["Welcome", "환영합니다", "خوش آمدی"], "إخفاء النص المكتوب": ["Hide the script", "대본 숨기기", "پنهان کردن متن"], "اضغط مرة أخرى للتأكيد: سيُمسح كل تقدّمك": ["Press again to confirm: all your progress will be erased", "확인하려면 다시 누르세요: 모든 진행 상황이 삭제됩니다", "برای تأیید دوباره بزن: همهٔ پیشرفتت پاک می‌شود"], "تم مسح التقدّم. ابدأ من جديد": ["Progress erased. Start over", "진행 상황이 삭제되었습니다. 처음부터 시작하세요", "پیشرفت پاک شد. از اول شروع کن"], "مكتملة": ["Completed", "완료", "کامل"], "غير مكتملة": ["Not completed", "미완료", "ناقص"], "النتيجة": ["Result", "결과", "نتیجه"], "محاولات خاطئة": ["wrong attempts", "오답 시도", "تلاش اشتباه"], "الكلمة": ["Word", "단어", "کلمه"], "الجملة": ["Sentence", "문장", "جمله"], "الحالة": ["Status", "상태", "وضعیت"], "المعنى": ["Meaning", "뜻", "معنی"], "خطأ": ["Incorrect", "오답", "غلط"], "لم يُصحَّح": ["Not checked", "확인 안 함", "بررسی نشده"], "كرّر الطالب هذه المحادثة": ["The student repeated this dialogue", "학생이 이 대화를 따라 했습니다", "زبان‌آموز این گفت‌وگو را تکرار کرد"], "لم يضع الطالب علامة التكرار بعد": ["The student has not ticked the repeat box yet", "학생이 아직 따라 하기 표시를 하지 않았습니다", "زبان‌آموز هنوز تیک تکرار را نزده است"], "الجمل التي كرّرها الطالب": ["Sentences repeated by the student", "학생이 따라 한 문장", "جمله‌هایی که زبان‌آموز تکرار کرد"], "السؤال": ["Question", "문제", "سؤال"], "تقرير واجبات المستوى الخامس": ["Level 5 Homework Report", "레벨 5 숙제 보고서", "گزارش تکالیف سطح ۵"], "تقرير الأسبوع كاملًا": ["Full weekly report", "전체 주간 보고서", "گزارش کامل هفته"], "تقرير يوم": ["Report for", "일일 보고서:", "گزارش روز"], "التاريخ": ["Date", "날짜", "تاریخ"], "الملخص": ["Summary", "요약", "خلاصه"], "اليوم": ["Day", "요일", "روز"], "جارٍ تجهيز ملف": ["Preparing the file", "준비 중:", "Preparing the file"], "لم تُحمَّل أداة": ["The tool did not load", "도구를 불러오지 못했습니다", "ابزار بارگذاری نشد"], "تأكد من الاتصال بالإنترنت وأعد تحميل الصفحة": ["Check your internet connection and reload the page", "인터넷 연결을 확인하고 페이지를 새로 고치세요", "اتصال اینترنت را چک کن و صفحه را دوباره باز کن"], "تحميل": ["Download", "내려받기", "دانلود"], "غير متاح في هذا العرض": ["Download is not available in this view", "이 보기에서는 내려받기를 사용할 수 없습니다", "دانلود در این حالت ممکن نیست"], "تم تجهيز التقرير": ["Report prepared", "보고서가 준비되었습니다", "گزارش آماده شد"], "التقرير جاهز": ["Report ready", "보고서가 준비되었습니다", "گزارش آماده است"], "تم إلغاء التحميل": ["Download cancelled", "다운로드가 취소되었습니다", "دانلود لغو شد"], "انتظر قليلًا ثم حاول مرة أخرى": ["Wait a moment, then try again", "잠시 기다린 후 다시 시도하세요", "کمی صبر کن و دوباره امتحان کن"], "تعذّر إنشاء ملف": ["Could not create the report", "보고서를 만들 수 없습니다", "گزارش ساخته نشد"], "ليلة الخميس": ["Thursday night", "목요일 밤", "Thursday night"], "السبت": ["Saturday", "토요일", "شنبه"], "الأحد": ["Sunday", "일요일", "یکشنبه"], "أحسنت! أنهيت واجب": ["Well done! You finished", "잘했어요! 완료:", "آفرین! تمام شد: روز"], "تحميل تقرير": ["Download the report for", "보고서 내려받기:", "دانلود گزارش روز"], "تقرير": ["Report for", "보고서:", "گزارش روز"], "واكتب": ["and write", "쓰세요:", "و بنویس:"], "جارٍ تجهيز التقرير": ["Preparing the report…", "보고서 준비 중…", "در حال آماده کردن گزارش…"], "لم تُحمَّل أداة إنشاء التقرير": ["The report tool did not load", "보고서 도구를 불러오지 못했습니다", "ابزار ساخت گزارش بارگذاری نشد"], "تحميل التقرير غير متاح في هذا العرض": ["Report download is not available in this view", "이 보기에서는 보고서를 내려받을 수 없습니다", "دانلود گزارش در این حالت ممکن نیست"], "تعذّر إنشاء التقرير": ["Could not create the report", "보고서를 만들 수 없습니다", "گزارش ساخته نشد"], "التصريف والظروف": ["Participles & adverbs", "과거분사와 부사", "Participles & adverbs"], "قراءة عن منحنى تعلّم الإنجليزية": ["reading about the learning curve of English", "영어 학습 곡선에 관한 읽기", "reading about the learning curve of English"], "واستماع عن وسائل التواصل الاجتماعي": ["listening about social media", "소셜 미디어에 관한 듣기", "listening about social media"], "وقواعد المضارع التام مع التصريف الثالث وظروف الزمن": ["present perfect grammar with past participles and time adverbs", "과거분사와 시간 부사를 포함한 현재완료 문법", "present perfect grammar with past participles and time adverbs"], "ثم": ["then", "그다음", "سپس"], "جملة للاستماع والتكرار. أنجز مهام كل يوم بالترتيب. تقدّمك يُحفظ تلقائيًا على هذا الجهاز": ["sentences to listen to and repeat. Complete each day’s tasks in order. Your progress is saved automatically on this device", "개 문장 듣고 따라 하기. 매일 과제를 순서대로 끝내세요. 진행 상황은 이 기기에 자동 저장되므로", "sentences to listen to and repeat. Complete each day’s tasks in order. Your progress is saved automatically on this device"], "نص القراءة: منحنى تعلّم الإنجليزية": ["Reading: The learning curve of English", "읽기: 영어 학습 곡선", "Reading: The learning curve of English"], "اقرأ النص بهدوء": ["Read the text calmly", "본문을 차분히 읽고", "متن را با آرامش بخوان"], "واستعن بقائمة الكلمات إذا احتجت. ثم أجب عن الأسئلة": ["and use the word list if you need it. Then answer the questions", "필요하면 단어 목록을 참고하세요. 그다음 질문에 답하고", "و اگر لازم شد از فهرست کلمه‌ها کمک بگیر. بعد به سؤال‌ها جواب بده"], "وطابق الكلمات": ["match the words", "단어를 연결하고", "کلمه‌ها را وصل کن"], "واكتب رأيك في النهاية": ["and write your opinion at the end", "마지막에 의견을 쓰세요", "و در آخر نظرت را بنویس"], "منحنى التعلّم": ["a line that shows how your learning grows over time", "학습 곡선 (시간에 따른 학습의 변화)", "a line that shows how your learning grows over time"], "تقدّم": ["moving forward; getting better", "진전, 발전", "پیشرفت"], "فخور بـ": ["feeling good about something you did", "~을 자랑스러워하는", "feeling good about something you did"], "يشعر أنه لا يتقدّم": ["to feel that you are not getting better", "정체되었다고 느끼다", "to feel that you are not getting better"], "يستسلم": ["to stop trying", "포기하다", "to stop trying"], "مرحلة ثبات يتوقف فيها التحسّن": ["a stage when you stop improving for a while", "정체기 (실력이 잠시 늘지 않는 단계)", "a stage when you stop improving for a while"], "الترجمة المكتوبة أسفل الشاشة": ["words written at the bottom of the screen", "자막", "words written at the bottom of the screen"], "معجَب جدًا": ["thinking that someone did something very well", "깊은 인상을 받은", "thinking that someone did something very well"], "رحلة": ["a trip; here, the whole learning experience", "여정", "سفر"], "صبور": ["able to wait calmly", "참을성 있는", "able to wait calmly"], "عالق": ["not able to move forward", "막힌, 정체된", "not able to move forward"], "لا يتقدّم": ["not getting better", "나아지지 않는", "not getting better"], "اكتب من": ["Write", "쓰세요:", "بنویس:"], "إلى": ["to", "~", "تا"], "جمل بالإنجليزية: ما أصعب شيء واجهته في تعلّم الإنجليزية": ["sentences in English: What has been the hardest thing for you in learning English", "개 문장 (영어): 영어를 배우면서 가장 어려웠던 점은 무엇입니까", "sentences in English: What has been the hardest thing for you in learning English"], "وماذا فعلت لتتحسّن": ["And what have you done to get better", "그리고 나아지기 위해 무엇을 했습니까", "And what have you done to get better"], "حاول أن تستخدم المضارع التام": ["Try to use the present perfect", "현재완료를 사용해 보세요", "Try to use the present perfect"], "برنامج إذاعي: وسائل التواصل الاجتماعي": ["Radio program: Social media", "라디오 프로그램: 소셜 미디어", "Radio program: Social media"], "استمع إلى البرنامج": ["Listen to the program", "프로그램을 들으세요", "Listen to the program"], "نحو": ["about", "약", "حدود"], "يمكنك إعادة الاستماع وإبطاء السرعة. حاول الإجابة قبل أن تفتح النص المكتوب": ["You can listen again and slow it down. Try to answer before you open the script", "다시 듣거나 속도를 늦출 수 있습니다. 대본을 열기 전에 먼저 답해 보세요", "You can listen again and slow it down. Try to answer before you open the script"], "التسجيل": ["Recording", "녹음", "فایل صوتی"], "برنامج إذاعي: المذيع مارك يتحدث مع الدكتورة إيما هيل عن مزايا وعيوب وسائل التواصل الاجتماعي. مدة التسجيل نحو": ["Radio program: the host, Mark, talks with Dr. Emma Hill about the advantages and disadvantages of social media. Recording length: about", "라디오 프로그램: 진행자 마크가 에마 힐 박사와 소셜 미디어의 장단점에 대해 이야기합니다. 녹음 길이: 약", "Radio program: the host, Mark, talks with Dr. Emma Hill about the advantages and disadvantages of social media. Recording length: about"], "الفكرة العامة": ["Main idea", "요지", "Main idea"], "استمع إلى البرنامج كاملًا مرة واحدة. اختر الإجابة الصحيحة": ["Listen to the whole program once. Choose the correct answer", "프로그램 전체를 한 번 들으세요. 올바른 답을 고르세요", "Listen to the whole program once. Choose the correct answer"], "التفاصيل": ["Details", "세부 내용", "Details"], "استمع مرة أخرى. اختر الإجابة الصحيحة": ["Listen again. Choose the correct answer", "다시 들으세요. 올바른 답을 고르세요", "Listen again. Choose the correct answer"], "اختر": ["Choose", "고르세요:", "انتخاب کن:"], "ميزة أم عيب": ["Advantage or disadvantage", "장점 또는 단점", "Advantage or disadvantage"], "حسب البرنامج": ["According to the program", "프로그램에 따르면", "According to the program"], "هل كل نقطة ميزة": ["is each point an advantage", "각 항목은 장점", "is each point an advantage"], "أم عيب": ["or a disadvantage", "입니까, 단점", "or a disadvantage"], "التصريف الثالث وظروف الزمن": ["Past participles and time adverbs", "과거분사와 시간 부사", "Past participles and time adverbs"], "اختر النقطة من الأزرار. لكل نقطة: ملخص سريع": ["Choose a point from the buttons. For each point: a quick summary", "버튼에서 항목을 고르세요. 항목마다: 간단 요약", "Choose a point from the buttons. For each point: a quick summary"], "ثم اختيار من متعدد": ["then multiple choice", "그다음 객관식", "then multiple choice"], "ثم استمع وكرّر. أنجز النقاط الخمس": ["then listen and repeat. Complete all five points", "그다음 듣고 따라 하기. 다섯 항목을 모두 끝내세요", "then listen and repeat. Complete all five points"], "التصريف الثالث": ["Past participle", "과거분사", "قسمت سوم فعل"], "الأفعال المنتظمة": ["Regular verbs", "규칙 동사", "Regular verbs"], "الأفعال الشاذة": ["Irregular verbs", "불규칙 동사", "Irregular verbs"], "التركيب": ["Form", "형태", "Form"], "هو الشكل الذي يأتي بعد": ["is the verb form that comes after", "는 다음 뒤에 오는 동사 형태입니다:", "is the verb form that comes after"], "الأفعال المنتظمة تنتهي بـ": ["Regular verbs end in", "규칙 동사는 다음으로 끝납니다:", "Regular verbs end in"], "أما الأفعال الشاذة فيجب حفظها": ["but irregular verbs must be learned by heart", "불규칙 동사는 외워야 합니다", "but irregular verbs must be learned by heart"], "طابق الفعل بتصريفه الثالث": ["Match the verb with its past participle", "동사와 과거분사 연결하기", "Match the verb with its past participle"], "اضغط على الفعل ثم على تصريفه الثالث": ["Tap the verb, then tap its past participle", "동사를 누른 다음 과거분사를 누르세요", "Tap the verb, then tap its past participle"], "اكتب الكلمة أو الشكل الصحيح للفعل": ["Type the word or the correct form of the verb", "단어 또는 동사의 올바른 형태를 쓰세요", "Type the word or the correct form of the verb"], "في السؤال": ["in questions", "은 의문문에서", "در جمله‌های سؤالی"], "لم يحدث أبدًا": ["not at any time", "한 번도 ~ 않음", "not at any time"], "الإجابة": ["Answers", "대답", "جواب"], "تأتي غالبًا في السؤال بمعنى «هل سبق أن": ["usually comes in questions and means “at any time in your life", "는 주로 의문문에 쓰이며 “살면서 한 번이라도", "usually comes in questions and means “at any time in your life"], "تعني «لم يحدث أبدًا» وتأتي قبل التصريف الثالث": ["means “not at any time” and comes before the past participle", "는 “한 번도 ~ 않음”을 뜻하며 과거분사 앞에 옵니다", "means “not at any time” and comes before the past participle"], "ولا نستخدمها مع": ["and we don’t use it with", "그리고 함께 쓰지 않습니다:", "and we don’t use it with"], "قبل قليل": ["a moment ago", "방금", "a moment ago"], "قبل الآن": ["before now", "이미 (지금 전에)", "before now"], "أبكر من المتوقّع": ["earlier than expected", "예상보다 일찍", "earlier than expected"], "في النفي والسؤال": ["in negatives and questions", "부정문과 의문문에서", "در جمله‌های منفی و سؤالی"], "تأتيان بين": ["come between", "는 다음 사이에 옵니다:", "come between"], "والتصريف الثالث": ["and the past participle", "와 과거분사", "and the past participle"], "تأتي في آخر الجملة المنفية أو السؤال": ["comes at the end of a negative sentence or a question", "는 부정문이나 의문문의 끝에 옵니다", "comes at the end of a negative sentence or a question"], "مدة": ["a period of time", "기간", "مدت"], "نقطة بداية": ["a starting point", "시작 시점", "a starting point"], "السؤال عن المدة": ["Asking how long", "기간 묻기", "Asking how long"], "تأتي مع مدة زمنية": ["is used with a period of time", "는 기간과 함께 씁니다", "is used with a period of time"], "كم من الوقت": ["how much time", "얼마 동안", "چقدر زمان"], "تأتي مع نقطة البداية": ["is used with the starting point", "는 시작 시점과 함께 씁니다", "is used with the starting point"], "متى بدأ": ["when did it start", "언제 시작했나요", "از کی شروع شد"], "نسأل عن المدة بـ": ["We ask about the length of time with", "기간은 이렇게 묻습니다:", "We ask about the length of time with"], "مؤخرًا": ["lately", "최근에", "lately"], "حتى الآن": ["until now", "지금까지", "until now"], "تعني «مؤخرًا": ["means “lately", "는 “최근에", "means “lately"], "تعني «حتى الآن». كلاهما يأتي مع المضارع التام": ["means “until now”. Both are used with the present perfect", "는 “지금까지”를 뜻합니다. 둘 다 현재완료와 함께 씁니다", "means “until now”. Both are used with the present perfect"], "ولا نستخدم معهما": ["and we don’t use them with", "그리고 함께 쓰지 않습니다:", "and we don’t use them with"], "ثم استمع وكرّر. أنجز النقاط الثلاث": ["then listen and repeat. Complete all three points", "그다음 듣고 따라 하기. 세 항목을 모두 끝내세요", "then listen and repeat. Complete all three points"], "السؤال والإجابة القصيرة": ["Questions and short answers", "의문문과 짧은 대답", "Questions and short answers"], "مع الأسماء": ["With nouns", "명사와 함께", "With nouns"], "اسم مفرد": ["singular noun", "단수 명사", "singular noun"], "اسم جمع": ["plural noun", "복수 명사", "plural noun"], "مع": ["with", "는 다음과 함께:", "با"], "ومع الاسم المفرد": ["and with singular nouns", "그리고 단수 명사와 함께", "and with singular nouns"], "ومع الاسم الجمع": ["and with plural nouns", "그리고 복수 명사와 함께", "and with plural nouns"], "الشكل الكامل": ["Full form", "완전한 형태", "Full form"], "في النفي نضيف": ["In the negative, we add", "부정문에서는 다음을 넣습니다:", "In the negative, we add"], "بعد": ["after", "다음 뒤에:", "بعد از"], "لا تنسَ أن الفعل بعدها يبقى في التصريف الثالث": ["Don’t forget: the verb after it stays in the past participle form", "잊지 마세요: 그 뒤의 동사는 과거분사 형태를 유지합니다", "Don’t forget: the verb after it stays in the past participle form"], "الإجابة بنعم": ["Yes answers", "긍정 대답", "Yes answers"], "الإجابة بلا": ["No answers", "부정 대답", "No answers"], "في الإجابة القصيرة لا نكرّر الفعل: نقول": ["In short answers, we don’t repeat the verb. We say", "짧은 대답에서는 동사를 반복하지 않습니다. 이렇게 말합니다:", "In short answers, we don’t repeat the verb. We say"], "جملة تراجع الأسبوع كله": ["sentences to review the whole week", "개 문장으로 한 주 전체 복습", "جمله برای مرور کل هفته"], "ثم ضع علامة. الجمل مقسّمة إلى أربع مجموعات: القراءة": ["then tick the box. The sentences are in four groups: reading", "그다음 체크하세요. 문장은 네 그룹으로 나뉩니다: 읽기", "then tick the box. The sentences are in four groups: reading"], "والاستماع": ["listening", "듣기", "listening"], "والتصريف الثالث وظروف الزمن": ["past participles and time adverbs", "과거분사와 시간 부사", "past participles and time adverbs"], "وسائل التواصل الاجتماعي": ["Social media", "소셜 미디어", "Social media"], "عالق / لا يتقدّم": ["not able to move forward", "막힌, 정체된", "not able to move forward"], "منحنى تعلّم الإنجليزية": ["The learning curve of English", "영어 학습 곡선", "The learning curve of English"], "قصص ولهجات": ["Stories and accents", "이야기와 억양", "داستان‌ها و لهجه‌ها"], "مرحبًا بك في واجبات هذا الأسبوع": ["Welcome to this week’s homework", "이번 주 숙제에 오신 것을 환영합니다", "به تکالیف این هفته خوش آمدی"], "خمسة أيام من التدريب: قصص مسموعة بلهجات مختلفة": ["Five days of practice: stories to listen to in different accents", "5일간의 연습: 여러 억양으로 듣는 이야기", "پنج روز تمرین: داستان‌های شنیداری با لهجه‌های مختلف"], "وقواعد الصفات التي تنتهي بـ": ["grammar: adjectives ending in", "다음으로 끝나는 형용사 문법:", "گرامر صفت‌هایی با پایانِ"], "وقراءة عن أهمية التكرار في تعلّم اللغة": ["a reading about the importance of repetition in language learning", "언어 학습에서 반복의 중요성에 관한 읽기", "خواندن متنی دربارهٔ اهمیت تکرار در یادگیری زبان"], "جملة للاستماع والتكرار يوم السبت ومثلها يوم الاثنين. أنجز مهام كل يوم بالترتيب. تقدّمك يُحفظ تلقائيًا على هذا الجهاز": ["sentences to listen to and repeat on Saturday, and 25 more on Monday. Complete each day’s tasks in order. Your progress is saved automatically on this device", "개 문장을 토요일에 듣고 따라 하고, 월요일에 25개를 더 합니다. 매일의 과제를 순서대로 하세요. 진행 상황은 이 기기에 자동으로 저장되므로", "جمله برای گوش دادن و تکرار در روز شنبه و ۲۵ جملهٔ دیگر در روز دوشنبه. تمرین‌های هر روز را به ترتیب انجام بده. پیشرفتت به‌طور خودکار روی همین دستگاه ذخیره می‌شود"], "قصص بلهجات مختلفة": ["Stories in different accents", "여러 억양으로 듣는 이야기", "داستان‌هایی با لهجه‌های مختلف"], "اختر التسجيل من الأزرار. استمع إلى كل تسجيل مرتين على الأقل": ["Choose a recording with the buttons. Listen to each recording at least twice", "버튼으로 녹음을 고르세요. 각 녹음을 두 번 이상 들으세요", "با دکمه‌ها فایل صوتی را انتخاب کن. به هر فایل دست‌کم دو بار گوش بده"], "ويمكنك إبطاء السرعة. حاول الإجابة قبل أن تفتح النص المكتوب. في النهاية جرّب تحدّي اللهجات": ["and you can slow it down. Try to answer before you open the script. At the end, try the accent challenge", "속도를 느리게 할 수도 있습니다. 대본을 열기 전에 먼저 답해 보세요. 마지막에는 억양 챌린지에 도전하세요", "می‌توانی سرعت را هم کم کنی. سعی کن قبل از باز کردن متن جواب بدهی. در آخر، چالش لهجه‌ها را امتحان کن"], "تسجيل الكتاب": ["Book recording", "교재 녹음", "فایل صوتی کتاب"], "اللهجة البريطانية": ["British accent", "영국식 억양", "لهجهٔ بریتانیایی"], "اللهجة الأمريكية": ["American accent", "미국식 억양", "لهجهٔ آمریکایی"], "اللهجة الأسترالية": ["Australian accent", "호주식 억양", "لهجهٔ استرالیایی"], "تحدّي اللهجات": ["Accent challenge", "억양 챌린지", "چالش لهجه‌ها"], "ثلاثة أشخاص يحكون ثلاث قصص حقيقية من حياتهم. مدة التسجيل نحو": ["Three people tell three true stories from their lives. The recording is about", "세 사람이 자신의 실제 이야기 세 가지를 들려줍니다. 녹음 길이: 약", "سه نفر سه داستان واقعی از زندگی‌شان تعریف می‌کنند. طول فایل صوتی حدود"], "إخفاء ملخّص القصص": ["Hide the story summaries", "이야기 요약 숨기기", "پنهان کردن خلاصهٔ داستان‌ها"], "إظهار ملخّص القصص": ["Show the story summaries", "이야기 요약 보기", "نمایش خلاصهٔ داستان‌ها"], "طابق القصة بموضوعها": ["Match the story with its topic", "이야기와 주제 연결하기", "داستان را به موضوعش وصل کن"], "اضغط على رقم القصة ثم على موضوعها": ["Tap the story number, then its topic", "이야기 번호를 누른 다음 그 주제를 누르세요", "روی شمارهٔ داستان بزن، بعد روی موضوع آن"], "أسئلة الكتاب": ["Questions from the book", "교재 질문", "سؤال‌های کتاب"], "هذه أسئلة التمرين": ["These are the questions from Exercise", "다음은 교재 연습 문제", "این سؤال‌ها همان سؤال‌های کتاب در تمرین"], "في الكتاب. اختر الإجابة الصحيحة حسب التسجيل": ["in the book. Choose the correct answer according to the recording", "의 질문입니다. 녹음 내용에 따라 올바른 답을 고르세요", "هستند. طبق فایل صوتی، جواب درست را انتخاب کن"], "إذا كانت العبارة صحيحة حسب التسجيل": ["if the statement is true according to the recording", "녹음 내용과 일치하면", "اگر جمله طبق فایل صوتی درست است"], "اختر الصفة الصحيحة": ["Choose the correct adjective", "알맞은 형용사를 고르세요", "صفت درست را انتخاب کن"], "اختر الصفة الصحيحة لتكمل الجملة": ["Choose the correct adjective to complete the sentence", "문장을 완성할 알맞은 형용사를 고르세요", "صفت درست را برای کامل کردن جمله انتخاب کن"], "التالي: اللهجة البريطانية": ["Next: British accent", "다음: 영국식 억양", "بعدی: لهجهٔ بریتانیایی"], "التالي: اللهجة الأمريكية": ["Next: American accent", "다음: 미국식 억양", "بعدی: لهجهٔ آمریکایی"], "التالي: اللهجة الأسترالية": ["Next: Australian accent", "다음: 호주식 억양", "بعدی: لهجهٔ استرالیایی"], "التالي: تحدّي اللهجات": ["Next: Accent challenge", "다음: 억양 챌린지", "بعدی: چالش لهجه‌ها"], "لهجة بريطانية": ["British accent", "영국식 억양", "لهجهٔ بریتانیایی"], "لهجة أمريكية": ["American accent", "미국식 억양", "لهجهٔ آمریکایی"], "لهجة أسترالية": ["Australian accent", "호주식 억양", "لهجهٔ استرالیایی"], "أوليفر من مانشستر يحكي عن رحلة محرجة بالقطار. مدة التسجيل نحو دقيقتين": ["Oliver from Manchester talks about an embarrassing train journey. The recording is about two minutes", "맨체스터에 사는 올리버가 창피했던 기차 여행 이야기를 합니다. 녹음 길이는 약 2분입니다", "الیور از منچستر دربارهٔ یک سفر خجالت‌آور با قطار حرف می‌زند. طول فایل صوتی حدود دو دقیقه است"], "جيسيكا من شيكاغو تحكي كيف تعلّمت الطبخ. مدة التسجيل نحو دقيقتين": ["Jessica from Chicago talks about how she learned to cook. The recording is about two minutes", "시카고에 사는 제시카가 요리를 배운 이야기를 합니다. 녹음 길이는 약 2분입니다", "جسیکا از شیکاگو تعریف می‌کند که چطور آشپزی یاد گرفت. طول فایل صوتی حدود دو دقیقه است"], "ميا من سيدني تحكي عن أول درس لها في ركوب الأمواج. مدة التسجيل نحو دقيقتين": ["Mia from Sydney talks about her first surfing lesson. The recording is about two minutes", "시드니에 사는 미아가 첫 서핑 수업 이야기를 합니다. 녹음 길이는 약 2분입니다", "میا از سیدنی دربارهٔ اولین کلاس موج‌سواری‌اش حرف می‌زند. طول فایل صوتی حدود دو دقیقه است"], "اختر الإجابة الصحيحة حسب التسجيل": ["Choose the correct answer according to the recording", "녹음 내용에 따라 올바른 답을 고르세요", "طبق فایل صوتی، جواب درست را انتخاب کن"], "استمع إلى كل مقطع قصير ثم اختر اللهجة. ركّز على نطق حرف": ["Listen to each short clip, then choose the accent. Focus on how speakers say the letter", "짧은 클립을 하나씩 듣고 억양을 고르세요. 다음 글자의 발음에 집중하세요:", "به هر قطعهٔ کوتاه گوش بده و لهجه را انتخاب کن. به تلفظ این حرف دقت کن:"], "وعلى الحروف المتحركة في كلمات مثل": ["and on the vowels in words like", "그리고 다음과 같은 단어의 모음에도 집중하세요:", "و همین‌طور به مصوت‌ها در کلمه‌هایی مثل"], "تلميح: كيف أفرّق بين اللهجات": ["Hint: how can I tell the accents apart", "힌트: 억양을 어떻게 구별하나요", "راهنمایی: چطور لهجه‌ها را از هم تشخیص بدهم"], "الأمريكية": ["American", "미국식", "آمریکایی"], "البريطانية": ["British", "영국식", "بریتانیایی"], "الأسترالية": ["Australian", "호주식", "استرالیایی"], "حرف": ["the letter", "글자", "حرف"], "وحرف": ["and the letter", "그리고 글자", "و حرف"], "يُنطق بوضوح في آخر الكلمة مثل": ["is pronounced clearly at the end of a word, as in", "는 단어 끝에서 분명하게 발음됩니다. 예:", "در آخر کلمه واضح تلفظ می‌شود، مثل"], "بين حرفين متحركين يقترب من": ["between two vowels sounds close to", "는 모음 사이에서 다음 소리에 가까워집니다:", "بین دو مصوت شبیه این صدا می‌شود:"], "مثل": ["as in", "예:", "مثل"], "لا يُنطق في آخر الكلمة": ["is not pronounced at the end of a word", "는 단어 끝에서 발음되지 않습니다", "در آخر کلمه تلفظ نمی‌شود"], "طويل في كلمات مثل": ["is long in words like", "는 다음 단어에서 길게 발음됩니다:", "کشیده تلفظ می‌شود، در کلمه‌هایی مثل"], "قريبة من البريطانية في حرف": ["It is close to British for the letter", "영국식과 비슷한 글자:", "شبیه بریتانیایی است در حرف"], "لكن الحروف المتحركة مختلفة: كلمة": ["but the vowels are different: the word", "하지만 모음이 다릅니다. 단어", "اما مصوت‌ها فرق دارند: کلمهٔ"], "تقترب من": ["sounds close to", "는 다음에 가깝게 들립니다:", "شبیه این می‌شود:"], "ونغمة الجملة ترتفع كثيرًا في آخرها": ["and the voice often goes up at the end of a sentence", "그리고 문장 끝에서 억양이 많이 올라갑니다", "و آهنگ صدا در آخر جمله خیلی بالا می‌رود"], "صفات": ["Adjectives with", "형용사:", "صفت‌های"], "اقرأ الملخص السريع أولًا": ["Read the quick summary first", "먼저 간단 요약을 읽고", "اول خلاصهٔ سریع را بخوان"], "ثم أنجز المهام الخمس: المطابقة": ["then complete the five tasks: matching", "그다음 다섯 가지 과제를 하세요: 연결하기", "بعد پنج تمرین را انجام بده: وصل کردن"], "والاختيار من متعدد": ["multiple choice", "객관식", "چندگزینه‌ای"], "وإكمال الجملة": ["complete the sentence", "문장 완성", "کامل کردن جمله"], "وإعادة كتابة الجملة": ["and rewrite the sentence", "문장 다시 쓰기", "و بازنویسی جمله"], "كيف يشعر الشخص": ["how a person feels", "사람이 느끼는 감정", "احساس خودِ شخص"], "الشيء الذي يسبّب الشعور": ["the thing that causes the feeling", "그 감정을 일으키는 것", "چیزی که باعث آن احساس می‌شود"], "حروف الجر الشائعة بعد": ["Common prepositions after", "다음 뒤에 자주 쓰는 전치사:", "حروف اضافهٔ رایج بعد از"], "اسأل نفسك: من يشعر": ["Ask yourself: who has the feeling", "스스로 물어보세요: 누가 그 감정을 느끼나요", "از خودت بپرس: چه کسی این احساس را دارد"], "استخدم": ["Use", "다음을 쓰세요:", "استفاده کن از"], "ما السبب": ["What causes it", "원인은 무엇인가요", "علتش چیست"], "وانتبه إلى الفرق": ["Notice the difference", "차이에 주의하세요", "به این تفاوت دقت کن"], "معناها أشعر بالملل": ["means I feel bored", "= 나는 지루함을 느낀다", "یعنی حوصله‌ام سر رفته است"], "أما": ["but", "반면", "اما"], "فمعناها أنا شخص مملّ": ["means I am a boring person", "= 나는 지루한 사람이다", "یعنی من آدم کسل‌کننده‌ای هستم"], "طابق الموقف بالشعور": ["Match the situation with the feeling", "상황과 감정 연결하기", "موقعیت را به احساس وصل کن"], "اضغط على الموقف ثم على الشعور المناسب له": ["Tap the situation, then the feeling that fits it", "상황을 누른 다음 알맞은 감정을 누르세요", "روی موقعیت بزن، بعد روی احساسی که به آن می‌خورد"], "حوّل الفعل الذي بين القوسين إلى صفة تنتهي بـ": ["Change the verb in brackets into an adjective ending in", "괄호 안의 동사를 다음으로 끝나는 형용사로 바꾸세요:", "فعل داخل پرانتز را به صفتی تبدیل کن با پایانِ"], "أعد كتابة الجملة": ["Rewrite the sentence", "문장 다시 쓰기", "جمله را دوباره بنویس"], "اكتب الصفة المناسبة لتكمل الجملة الثانية بالمعنى نفسه": ["Write the adjective that completes the second sentence with the same meaning", "같은 뜻이 되도록 두 번째 문장을 완성하는 형용사를 쓰세요", "صفتی بنویس که جملهٔ دوم را با همان معنی کامل کند"], "جملة من قصص الخميس وقواعد الجمعة": ["sentences from Thursday’s stories and Friday’s grammar", "개 문장: 목요일 이야기와 금요일 문법", "جمله از داستان‌های پنجشنبه و گرامر جمعه"], "استمع إلى كل جملة وكرّرها بصوت عالٍ مرتين": ["Listen to each sentence and repeat it aloud twice", "각 문장을 듣고 소리 내어 두 번 따라 하세요", "به هر جمله گوش بده و آن را دو بار با صدای بلند تکرار کن"], "ثم ضع علامة. انتبه إلى نطق نهاية الصفات": ["then tick it. Pay attention to how the adjective endings are pronounced", "그다음 체크하세요. 형용사 끝소리 발음에 주의하세요", "بعد تیک بزن. به تلفظ آخر صفت‌ها دقت کن"], "جمل من قصص الخميس": ["Sentences from Thursday’s stories", "목요일 이야기의 문장", "جمله‌هایی از داستان‌های پنجشنبه"], "جمل من قواعد الجمعة": ["Sentences from Friday’s grammar", "금요일 문법의 문장", "جمله‌هایی از گرامر جمعه"], "نص القراءة: لماذا ينجح التكرار": ["Reading: Why does repetition work", "읽기: 반복은 왜 효과가 있을까요", "متن خواندن: چرا تکرار جواب می‌دهد"], "التكرار": ["saying or doing something again", "반복", "تکرار"], "التعزيز والتثبيت": ["making something stronger", "강화", "تقویت و تثبیت"], "يراجع": ["to study something again", "복습하다", "مرور کردن"], "منحنى النسيان": ["a line that shows how fast we forget", "망각 곡선", "منحنی فراموشی"], "مشجِّع": ["giving you hope", "격려가 되는", "دلگرم‌کننده"], "الذاكرة قصيرة المدى": ["memory that keeps things for a short time", "단기 기억", "حافظهٔ کوتاه‌مدت"], "الذاكرة طويلة المدى": ["memory that keeps things for a long time", "장기 기억", "حافظهٔ بلندمدت"], "التكرار المتباعد": ["reviewing again after longer and longer breaks", "간격을 두고 하는 반복", "تکرار با فاصله"], "بصوت مسموع": ["in a voice people can hear", "소리 내어", "با صدای بلند"], "محبَط": ["upset because you can’t do something", "답답한, 좌절한", "کلافه و ناامید"], "عادة يومية": ["the things you do every day", "일과", "برنامهٔ روزانه"], "هدف": ["a reason for doing something", "목적", "هدف"], "يقوّي ويثبّت": ["to make stronger", "강화하다", "تقویت کردن"], "جمل بالإنجليزية: كيف تراجع الكلمات الجديدة": ["sentences in English: How do you review new words", "문장을 영어로: 새 단어를 어떻게 복습하나요", "جمله به انگلیسی: کلمه‌های جدید را چطور مرور می‌کنی"], "وما الذي ستغيّره بعد قراءة هذا النص": ["And what will you change after reading this text", "그리고 이 글을 읽은 뒤 무엇을 바꿀 건가요", "و بعد از خواندن این متن چه چیزی را تغییر می‌دهی"], "ثم ضع علامة. الجمل مقسّمة إلى ثلاث مجموعات: القصص": ["then tick it. The sentences are in three groups: the stories", "그다음 체크하세요. 문장은 세 그룹입니다: 이야기", "بعد تیک بزن. جمله‌ها سه گروه هستند: داستان‌ها"], "والقواعد": ["the grammar", "문법", "گرامر"], "ونص القراءة": ["and the reading text", "읽기 본문", "و متن خواندن"], "من القصص": ["From the stories", "이야기에서", "از داستان‌ها"], "من القواعد": ["From the grammar", "문법에서", "از گرامر"], "من نص القراءة": ["From the reading text", "읽기 본문에서", "از متن خواندن"], "التسجيلات": ["Recordings", "녹음", "فایل‌های صوتی"], "أ": ["A", "A", "الف"], "ب": ["B", "B", "ب"], "الاختيارات والسلوك": ["Choices and behaviour", "선택과 행동", "انتخاب‌ها و رفتار"], "أربعة أيام من التدريب: محادثة عن مشكلة في العمل والكراسي الخمسة": ["Four days of practice: a conversation about a problem at work and the five chairs", "4일간의 연습: 직장 문제와 다섯 개의 의자에 관한 대화", "چهار روز تمرین: گفت‌وگویی دربارهٔ یک مشکل در محل کار و پنج صندلی"], "وقواعد": ["grammar:", "문법:", "گرامر"], "ومراجعة": ["and a review of", "그리고 복습:", "و مرور"], "ومراجعة صفات الشخصية مع الاستماع والتكرار": ["a review of personality adjectives with listen and repeat", "성격 형용사 복습과 듣고 따라 하기", "مرور صفت‌های شخصیت همراه با گوش دادن و تکرار"], "ثم نص قراءة عن الثقة بالنفس دون عدوانية. أنجز مهام كل يوم بالترتيب. تقدّمك يُحفظ تلقائيًا على هذا الجهاز": ["and a reading about being confident without being aggressive. Complete each day’s tasks in order. Your progress is saved automatically on this device", "그리고 공격적이지 않으면서 자신 있게 말하기에 관한 읽기가 있습니다. 매일의 과제를 순서대로 하세요. 진행 상황은 이 기기에 자동으로 저장되므로", "و متنی دربارهٔ اعتمادبه‌نفس بدون پرخاشگری. تمرین‌های هر روز را به ترتیب انجام بده. پیشرفتت به‌طور خودکار روی همین دستگاه ذخیره می‌شود"], "محادثة: مشكلة في العمل": ["Conversation: a problem at work", "대화: 직장에서 생긴 문제", "گفت‌وگو: یک مشکل در محل کار"], "استمع إلى المحادثة مرتين على الأقل": ["Listen to the conversation at least twice", "대화를 두 번 이상 들으세요", "دست‌کم دو بار به گفت‌وگو گوش بده"], "ويمكنك إبطاء السرعة. حاول الإجابة قبل أن تفتح النص المكتوب": ["and you can slow it down. Try to answer before you open the script", "속도를 느리게 할 수도 있습니다. 대본을 열기 전에 먼저 답해 보세요", "می‌توانی سرعت را کم کنی. سعی کن قبل از باز کردن متن جواب بدهی"], "محادثة": ["Conversation", "대화", "گفت‌وگو"], "دانيال ورانيا زميلان في العمل. عندهما مشكلة مع زميل اسمه توم. مدة التسجيل نحو": ["Daniel and Rania work together. They have a problem with a colleague called Tom. The recording is about", "다니엘과 라니아는 함께 일합니다. 톰이라는 동료와 문제가 생겼습니다. 녹음 길이: 약", "دنیل و رانیا همکارند. آن‌ها با همکاری به اسم تام مشکلی دارند. طول فایل صوتی حدود"], "من قال ذلك": ["Who said it", "누가 말했나요", "چه کسی این را گفت"], "اختر اسم المتحدث: دانيال أم رانيا": ["Choose the speaker: Daniel or Rania", "말한 사람을 고르세요: 다니엘 또는 라니아", "گوینده را انتخاب کن: دنیل یا رانیا"], "اختر إجابة أولًا. الإجابة الصحيحة": ["Choose an answer first. Correct answer", "Choose an answer first. Correct answer", "Choose an answer first. Correct answer"], "اكتب الكلمة أولًا. الإجابة الصحيحة": ["Type a word first. Correct answer", "Type a word first. Correct answer", "Type a word first. Correct answer"], "أيّ كرسي": ["Which chair", "어떤 의자일까요", "کدام صندلی"], "اضغط على الموقف ثم على الكرسي المناسب له": ["Tap the situation, then the chair that matches it", "상황을 누른 다음 알맞은 의자를 누르세요", "روی موقعیت بزن، بعد روی صندلی مناسب"], "أحسنت! أنهيت يوم الخميس": ["Well done! You finished Thursday", "Well done! You finished Thursday", "Well done! You finished Thursday"], "أحسنت! أنهيت يوم الجمعة": ["Well done! You finished Friday", "Well done! You finished Friday", "Well done! You finished Friday"], "أحسنت! أنهيت يوم السبت": ["Well done! You finished Saturday", "Well done! You finished Saturday", "Well done! You finished Saturday"], "أحسنت! أنهيت يوم الأحد": ["Well done! You finished Sunday", "Well done! You finished Sunday", "Well done! You finished Sunday"], "أحسنت! أنهيت يوم الاثنين": ["Well done! You finished Monday", "Well done! You finished Monday", "Well done! You finished Monday"], "تحميل تقرير يوم الخميس": ["Download the report for Thursday", "Download the report for Thursday", "Download the report for Thursday"], "تحميل تقرير يوم الجمعة": ["Download the report for Friday", "Download the report for Friday", "Download the report for Friday"], "تحميل تقرير يوم السبت": ["Download the report for Saturday", "Download the report for Saturday", "Download the report for Saturday"], "تحميل تقرير يوم الأحد": ["Download the report for Sunday", "Download the report for Sunday", "Download the report for Sunday"], "تحميل تقرير يوم الاثنين": ["Download the report for Monday", "Download the report for Monday", "Download the report for Monday"], "اقرأ الملخص السريع في كل قسم": ["Read the quick summary in each section", "각 영역의 간단 요약을 읽고", "خلاصهٔ سریع هر بخش را بخوان"], "ثم أنجز المهام. انتقل بين الأقسام الثلاثة من الأزرار في الأعلى": ["then do the tasks. Move between the three sections with the buttons at the top", "그다음 과제를 하세요. 위의 버튼으로 세 영역 사이를 이동하세요", "بعد تمرین‌ها را انجام بده. با دکمه‌های بالا بین سه بخش جابه‌جا شو"], "ثم أنجز المهام. انتقل بين القسمين من الأزرار في الأعلى": ["then do the tasks. Move between the two sections with the buttons at the top", "then do the tasks. Move between the two sections with the buttons at the top", "then do the tasks. Move between the two sections with the buttons at the top"], "الإثبات": ["Positive", "Positive", "مثبت"], "النفي": ["Negative", "Negative", "منفی"], "الإثبات والنفي": ["Positive and negative", "긍정과 부정", "مثبت و منفی"], "الظروف": ["Adverbs", "부사", "قیدها"], "نستخدم الفعل في صيغته الأساسية دائمًا": ["always use the base form of the verb", "항상 동사원형을 씁니다", "همیشه شکل سادهٔ فعل را به کار می‌بریم"], "بدون": ["with no", "없이", "بدون"], "وبدون": ["and no", "그리고", "و بدون"], "وبعد": ["After", "다음 뒤에는:", "بعد از"], "نستخدم الصيغة الأساسية أيضًا": ["also use the base form", "에도 동사원형을 씁니다", "هم از شکل ساده استفاده می‌کنیم"], "اكتب الكلمة الناقصة لتكمل الجملة الثانية بالمعنى نفسه": ["Write the missing word to complete the second sentence with the same meaning", "같은 뜻이 되도록 빠진 단어를 써서 두 번째 문장을 완성하세요", "کلمهٔ جاافتاده را بنویس تا جملهٔ دوم با همان معنی کامل شود"], "التالي": ["Next", "다음", "بعدی"], "مراجعة القواعد": ["Grammar review", "문법 복습", "مرور گرامر"], "في الأسئلة": ["in questions", "은 의문문에서", "در جمله‌های سؤالی"], "في الإثبات بمعنى «لم": ["in positive sentences, meaning “not", "는 긍정문에서 「결코", "در جمله‌های مثبت به معنی «هرگز"], "أبدًا": ["ever”", "않다」", "»"], "قبل التصريف الثالث": ["go before the past participle", "는 과거분사 앞에 옵니다", "قبل از قسمت سوم فعل می‌آیند"], "في آخر الجملة في النفي والسؤال": ["goes at the end of negatives and questions", "은 부정문과 의문문의 끝에 옵니다", "در جمله‌های منفی و سؤالی در آخر جمله می‌آید"], "اختر الظرف المناسب": ["Choose the right adverb", "알맞은 부사를 고르세요", "قید مناسب را انتخاب کن"], "اكتب التصريف الثالث": ["Write the past participle", "과거분사를 쓰세요", "قسمت سوم فعل را بنویس"], "اكتب الفعل الذي بين القوسين في صيغة التصريف الثالث": ["Write the verb in brackets as a past participle", "괄호 안의 동사를 과거분사로 쓰세요", "فعل داخل پرانتز را به شکل قسمت سوم فعل بنویس"], "نقطة البداية": ["the starting point", "시작 시점", "نقطهٔ شروع"], "مراجعة صفات الشخصية والسلوك": ["Review: personality and behaviour adjectives", "복습: 성격과 행동 형용사", "مرور: صفت‌های شخصیت و رفتار"], "راجع معاني الكلمات": ["Review the meanings of the words", "단어의 뜻을 복습하고", "معنی کلمه‌ها را مرور کن"], "ثم أنجز المهام الثلاث": ["then complete the three tasks", "그다음 세 가지 과제를 하세요", "بعد سه تمرین را انجام بده"], "ثم أنجز المهام الأربع": ["then complete the four tasks", "then complete the four tasks", "then complete the four tasks"], "وفي النهاية استمع إلى الجمل وكرّرها": ["and at the end, listen to the sentences and repeat them", "마지막으로 문장을 듣고 따라 하세요", "و در آخر به جمله‌ها گوش بده و تکرارشان کن"], "اضغط على كلمة إنجليزية ثم على معناها": ["Tap an English word, then its meaning", "영어 단어를 누른 다음 그 뜻을 누르세요", "روی یک کلمهٔ انگلیسی بزن، بعد روی معنی آن"], "اضغط على الكلمة الإنجليزية ثم على معناها": ["Tap the English word, then its meaning", "Tap the English word, then its meaning", "Tap the English word, then its meaning"], "انتهازي": ["always looking for a chance to get something for yourself", "기회주의적인", "فرصت‌طلب"], "سامّ ومؤذٍ": ["very bad and unpleasant; it makes people unhappy", "해로운, 유독한", "سمّی و آزاردهنده"], "قاسٍ بلا رحمة": ["showing no kindness; very cruel", "무자비한", "بی‌رحم"], "فضولي ويحب المعرفة": ["wanting to know or learn more", "호기심 많은", "کنجکاو"], "واثق وحازم بأدب": ["saying what you want clearly, but politely", "당당하지만 예의 바른", "قاطع و مؤدب"], "عقلاني ومنطقي": ["thinking clearly and using logic, not emotions", "이성적인", "منطقی"], "ضعيف وسهل التأثّر": ["easy to hurt, emotionally or physically", "상처받기 쉬운", "آسیب‌پذیر"], "متسامح ويتقبّل الآخرين": ["accepting people and ideas that are different", "관대한, 다름을 받아들이는", "بردبار و پذیرای دیگران"], "واعٍ ومنتبه": ["aware of something; noticing it", "의식하는, 알아차리는", "آگاه و هوشیار"], "اكتب الكلمة المناسبة من بنك الكلمات. استخدم كل كلمة مرة واحدة": ["Write the right word from the word bank. Use each word once", "단어 상자에서 알맞은 단어를 쓰세요. 각 단어는 한 번씩만 쓰세요", "کلمهٔ مناسب را از بانک کلمات بنویس. هر کلمه را یک بار به کار ببر"], "عائلة الكلمة": ["Word families", "단어 가족", "خانوادهٔ کلمه"], "اختر الصيغة الصحيحة للكلمة": ["Choose the correct form of the word", "단어의 알맞은 형태를 고르세요", "شکل درست کلمه را انتخاب کن"], "جملة. استمع إلى كل جملة وكرّرها بصوت عالٍ": ["sentences. Listen to each sentence and repeat it aloud", "개 문장. 각 문장을 듣고 소리 내어 따라 하세요", "جمله. به هر جمله گوش بده و آن را با صدای بلند تکرار کن"], "من المحادثة": ["From the conversation", "대화에서", "از گفت‌وگو"], "نص القراءة: واثق": ["Reading: Assertive", "읽기: 당당하게", "خواندن: قاطع"], "لا عدواني": ["not aggressive", "공격적이지 않게", "نه پرخاشگر"], "سلبي": ["not saying what you think; staying quiet", "수동적인", "منفعل"], "عدواني": ["angry and ready to attack or fight", "공격적인", "پرخاشگر"], "يندم": ["to feel sorry about something you did", "후회하다", "پشیمان شدن"], "يستغلّ": ["to use someone unfairly for your own benefit", "이용하다", "سوءاستفاده کردن"], "يقاطع": ["to stop someone while they are speaking", "말을 끊다", "حرف کسی را قطع کردن"], "محترم": ["polite and showing respect", "존중하는, 예의 바른", "محترمانه"], "محدّد ودقيق": ["clear and exact", "구체적인, 정확한", "مشخص و دقیق"], "وجهة نظر": ["what someone thinks about something", "관점", "دیدگاه"], "مهارة": ["something you can do well because you practise it", "기술, 능력", "مهارت"], "جمل بالإنجليزية: صِف موقفًا جلست فيه على كرسي ابن آوى أو كرسي القنفذ. ماذا حدث": ["sentences in English: Describe a time you sat in the jackal chair or the hedgehog chair. What happened", "문장을 영어로: 자칼 의자나 고슴도치 의자에 앉았던 때를 설명하세요. 무슨 일이 있었나요", "جمله به انگلیسی: موقعیتی را توصیف کن که روی صندلی شغال یا جوجه‌تیغی نشستی. چه اتفاقی افتاد"], "وماذا يمكنك أن تفعل بشكل مختلف على كرسي السرقاط أو الدلفين": ["And what could you do differently in the meerkat or dolphin chair", "그리고 미어캣이나 돌고래 의자에서는 무엇을 다르게 할 수 있을까요", "و روی صندلی میرکت یا دلفین چه کار متفاوتی می‌توانستی بکنی"], "أقسام القواعد": ["Grammar sections", "문법 영역", "بخش‌های گرامر"], "الأفلام ونجومها": ["Films and film stars", "Films and film stars", "Films and film stars"], "فيديو": ["Video", "영상", "ویدیو"], "خمسة أيام من التدريب: فيديو عن الأفلام": ["Five days of practice: a video about films", "Five days of practice: a video about films", "Five days of practice: a video about films"], "ونص قراءة عن توم كروز": ["a reading about Tom Cruise", "a reading about Tom Cruise", "a reading about Tom Cruise"], "ثم مراجعة المفردات مع الاستماع والتكرار. أنجز مهام كل يوم بالترتيب. تقدّمك يُحفظ تلقائيًا على هذا الجهاز": ["and a vocabulary review with listen and repeat. Complete each day’s tasks in order. Your progress is saved automatically on this device", "and a vocabulary review with listen and repeat. Complete each day’s tasks in order. Your progress is saved automatically on this device", "and a vocabulary review with listen and repeat. Complete each day’s tasks in order. Your progress is saved automatically on this device"], "فيديو: الحديث عن الأفلام": ["Video: talking about films", "Video: talking about films", "Video: talking about films"], "شاهد الفيديو مرة كاملة": ["Watch the whole video once", "Watch the whole video once", "Watch the whole video once"], "ثم شاهده مرة ثانية وأجب عن الأسئلة. يمكنك تشغيل الترجمة من إعدادات يوتيوب": ["then watch it again and answer the questions. You can turn on subtitles in the YouTube settings", "then watch it again and answer the questions. You can turn on subtitles in the YouTube settings", "then watch it again and answer the questions. You can turn on subtitles in the YouTube settings"], "كلمات مفيدة قبل المشاهدة": ["Useful words before you watch", "보기 전에 알아 둘 단어", "کلمه‌های مفید قبل از تماشا"], "كلمات مفيدة قبل الاستماع": ["Useful words before you listen", "듣기 전에 알아 둘 단어", "کلمه‌های مفید قبل از شنیدن"], "حبكة القصة": ["what happens in a film or story", "what happens in a film or story", "what happens in a film or story"], "شخصية": ["a person in a story or film", "등장인물", "شخصیت"], "يشاهد عبر الإنترنت": ["to watch films or TV on the internet", "to watch films or TV on the internet", "to watch films or TV on the internet"], "فيلم أجنبي": ["a film from another country, not in English", "a film from another country, not in English", "a film from another country, not in English"], "يشاهد حلقات كثيرة متتالية": ["to watch many episodes one after another", "to watch many episodes one after another", "to watch many episodes one after another"], "القدرة على التركيز": ["how long you can pay attention", "how long you can pay attention", "how long you can pay attention"], "يهرب من الواقع": ["to forget real life for a while", "to forget real life for a while", "to forget real life for a while"], "ساحر": ["a man with magic powers", "a man with magic powers", "a man with magic powers"], "نيل وجورجي من": ["Neil and Georgie from", "Neil and Georgie from", "Neil and Georgie from"], "يتحدثان عن أفلامهما المفضلة. مدة الفيديو نحو": ["talk about their favourite films. The video is about", "talk about their favourite films. The video is about", "talk about their favourite films. The video is about"], "افتح الفيديو على يوتيوب": ["Open the video on YouTube", "유튜브에서 영상 열기", "ویدیو را در یوتیوب باز کن"], "شاهد الفيديو واختر الإجابة الصحيحة": ["Watch the video and choose the correct answer", "Watch the video and choose the correct answer", "Watch the video and choose the correct answer"], "إذا كانت العبارة صحيحة حسب الفيديو": ["if the statement is true according to the video", "if the statement is true according to the video", "if the statement is true according to the video"], "فيلمي المفضّل": ["My favourite film", "My favourite film", "My favourite film"], "جمل بالإنجليزية عن فيلمك المفضّل: عن ماذا يتحدث": ["sentences in English about your favourite film: What is it about", "sentences in English about your favourite film: What is it about", "sentences in English about your favourite film: What is it about"], "ومن الشخصية الرئيسية": ["And who is the main character", "And who is the main character", "And who is the main character"], "استخدم المضارع البسيط مثل نيل وجورجي": ["Use the present simple, like Neil and Georgie", "Use the present simple, like Neil and Georgie", "Use the present simple, like Neil and Georgie"], "طابق السؤال بالإجابة": ["Match the question with the answer", "질문과 답 연결하기", "سؤال را به جواب وصل کن"], "اضغط على السؤال ثم على الإجابة المناسبة": ["Tap the question, then the right answer", "질문을 누른 다음 알맞은 답을 누르세요", "روی سؤال بزن، بعد روی جواب مناسب"], "نص القراءة: توم كروز": ["Reading: Tom Cruise", "Reading: Tom Cruise", "Reading: Tom Cruise"], "حركة خطرة في فيلم": ["a dangerous action in a film", "a dangerous action in a film", "a dangerous action in a film"], "يؤدّي": ["to do something, for example on stage or in a film", "to do something, for example on stage or in a film", "to do something, for example on stage or in a film"], "الطفولة": ["the time when you are a child", "the time when you are a child", "the time when you are a child"], "عسر القراءة": ["a condition that makes reading and spelling difficult", "a condition that makes reading and spelling difficult", "a condition that makes reading and spelling difficult"], "جاسوس": ["a person who secretly collects information", "a person who secretly collects information", "a person who secretly collects information"], "شاشة خضراء": ["a green background used to add special effects", "a green background used to add special effects", "a green background used to add special effects"], "منحدر صخري": ["a high, steep rock, often next to the sea", "a high, steep rock, often next to the sea", "a high, steep rock, often next to the sea"], "الكاحل": ["the joint between your foot and your leg", "the joint between your foot and your leg", "the joint between your foot and your leg"], "الجمهور": ["the people who watch a film or show", "the people who watch a film or show", "the people who watch a film or show"], "مرشّح لجائزة": ["chosen as one of the people who could win a prize", "chosen as one of the people who could win a prize", "chosen as one of the people who could win a prize"], "فخري": ["given to honour someone", "given to honour someone", "given to honour someone"], "يؤتي ثماره": ["to bring good results", "to bring good results", "to bring good results"], "جمل بالإنجليزية: من ممثلك المفضّل": ["sentences in English: Who is your favourite actor", "sentences in English: Who is your favourite actor", "sentences in English: Who is your favourite actor"], "ما الأفلام التي مثّلها": ["What films has he or she made", "What films has he or she made", "What films has he or she made"], "هل تفضّل أن تكون ممثلًا أم مؤدّي حركات خطرة": ["Would you rather be an actor or a stunt performer", "Would you rather be an actor or a stunt performer", "Would you rather be an actor or a stunt performer"], "ولماذا": ["And why", "And why", "And why"], "مراجعة مفردات الأفلام والصفات": ["Review: film words and adjectives", "Review: film words and adjectives", "Review: film words and adjectives"], "مخرج": ["the person who controls how a film is made", "the person who controls how a film is made", "the person who controls how a film is made"], "مقال نقدي عن فيلم": ["an article that gives an opinion about a film", "an article that gives an opinion about a film", "an article that gives an opinion about a film"], "نوع الفيلم": ["a type of film, for example comedy or horror", "a type of film, for example comedy or horror", "a type of film, for example comedy or horror"], "ترجمة مكتوبة على الشاشة": ["words on the screen that translate what people say", "words on the screen that translate what people say", "words on the screen that translate what people say"], "من بطولة": ["with these actors in the main roles", "with these actors in the main roles", "with these actors in the main roles"], "ما نوع الفيلم": ["What type of film is it", "What type of film is it", "What type of film is it"], "اقرأ الوصف واختر نوع الفيلم": ["Read the description and choose the type of film", "Read the description and choose the type of film", "Read the description and choose the type of film"], "الأفلام": ["Films", "Films", "Films"], "ثم استمع إلى الجمل وكرّرها": ["then listen to the sentences and repeat them", "then listen to the sentences and repeat them", "then listen to the sentences and repeat them"], "واجبات المستوى الرابع": ["Level 4 Homework", "Level 4 Homework", "Level 4 Homework"], "الرياضة والصحة": ["Sport and health", "Sport and health", "Sport and health"], "خمسة أيام من التدريب: محادثة في النادي الرياضي": ["Five days of practice: a conversation at the gym", "Five days of practice: a conversation at the gym", "Five days of practice: a conversation at the gym"], "ومفردات الرياضة والصحة مع الاستماع والتكرار": ["sport and health vocabulary with listen and repeat", "sport and health vocabulary with listen and repeat", "sport and health vocabulary with listen and repeat"], "ثم نص قراءة عن السعرات الحرارية. أنجز مهام كل يوم بالترتيب. تقدّمك يُحفظ تلقائيًا على هذا الجهاز": ["and a reading about calories. Complete each day’s tasks in order. Your progress is saved automatically on this device", "and a reading about calories. Complete each day’s tasks in order. Your progress is saved automatically on this device", "and a reading about calories. Complete each day’s tasks in order. Your progress is saved automatically on this device"], "محادثة: يومي الأول في النادي الرياضي": ["Conversation: my first day at the gym", "Conversation: my first day at the gym", "Conversation: my first day at the gym"], "اقرأ الكلمات المفيدة": ["Read the useful words", "Read the useful words", "Read the useful words"], "ثم استمع إلى المحادثة مرتين على الأقل": ["then listen to the conversation at least twice", "then listen to the conversation at least twice", "then listen to the conversation at least twice"], "لينا في النادي الرياضي لأول مرة. سام مدرّب شخصي ويشرح لها القواعد ويعطيها نصائح. مدة التسجيل نحو": ["Lina is at the gym for the first time. Sam is a personal trainer. He explains the rules and gives her advice. The recording is about", "Lina is at the gym for the first time. Sam is a personal trainer. He explains the rules and gives her advice. The recording is about", "Lina is at the gym for the first time. Sam is a personal trainer. He explains the rules and gives her advice. The recording is about"], "مدرّب شخصي": ["a trainer who helps one person exercise", "a trainer who helps one person exercise", "a trainer who helps one person exercise"], "يصبح لائقًا بدنيًا": ["to become fit and healthy", "to become fit and healthy", "to become fit and healthy"], "يقوم بالإحماء": ["to do light exercise before sport", "to do light exercise before sport", "to do light exercise before sport"], "إصابة": ["harm to your body, for example a hurt knee", "harm to your body, for example a hurt knee", "harm to your body, for example a hurt knee"], "جهاز المشي": ["a running machine", "a running machine", "a running machine"], "خزانة": ["a small cupboard where you keep your things", "a small cupboard where you keep your things", "a small cupboard where you keep your things"], "يسجّل الحضور": ["to write your name when you arrive", "to write your name when you arrive", "to write your name when you arrive"], "قواعد النادي": ["Gym rules", "Gym rules", "Gym rules"], "ضروري": ["necessary", "necessary", "necessary"], "قاعدة أو واجب": ["a rule or a duty", "a rule or a duty", "a rule or a duty"], "غير ضروري": ["not necessary", "not necessary", "not necessary"], "وأنت تختار. بعد": ["and you can choose. After", "and you can choose. After", "and you can choose. After"], "نستخدم الفعل في صيغته الأساسية": ["we use the base form of the verb", "동사원형을 씁니다", "از شکل سادهٔ فعل استفاده می‌کنیم"], "طابق الموقف بالجملة": ["Match the situation with the sentence", "Match the situation with the sentence", "Match the situation with the sentence"], "اضغط على الموقف ثم على الجملة المناسبة": ["Tap the situation, then the right sentence", "Tap the situation, then the right sentence", "Tap the situation, then the right sentence"], "اكتب الكلمة الناقصة": ["Write the missing word", "빠진 단어를 쓰세요", "کلمهٔ جاافتاده را بنویس"], "نصيحة": ["advice", "advice", "advice"], "فكرة جيدة": ["a good idea", "a good idea", "a good idea"], "فكرة سيئة": ["a bad idea", "a bad idea", "a bad idea"], "اقتراح أو فكرة ممكنة": ["a suggestion or a possible idea", "a suggestion or a possible idea", "a suggestion or a possible idea"], "وهي ألطف. بعدها الفعل في صيغته الأساسية بدون": ["and it is softer. After them, use the base form of the verb with no", "and it is softer. After them, use the base form of the verb with no", "and it is softer. After them, use the base form of the verb with no"], "طابق المشكلة بالنصيحة": ["Match the problem with the advice", "Match the problem with the advice", "Match the problem with the advice"], "اضغط على المشكلة ثم على النصيحة المناسبة": ["Tap the problem, then the right advice", "Tap the problem, then the right advice", "Tap the problem, then the right advice"], "الرياضة والمشكلات الصحية": ["Sports and health problems", "Sports and health problems", "Sports and health problems"], "راجع الكلمات": ["Review the words", "Review the words", "Review the words"], "كلمات المراجعة": ["Review words", "복습 단어", "کلمه‌های مرور"], "نذهب للسباحة": ["we go swimming", "we go swimming", "we go swimming"], "الجري": ["running", "running", "running"], "ركوب الدراجة": ["cycling", "cycling", "cycling"], "البولينغ": ["bowling", "bowling", "bowling"], "نلعب التنس": ["we play tennis", "we play tennis", "we play tennis"], "كرة القدم": ["football", "football", "football"], "كرة السلة": ["basketball", "basketball", "basketball"], "نمارس اليوغا": ["we do yoga", "we do yoga", "we do yoga"], "الكاراتيه": ["karate", "karate", "karate"], "التمارين": ["exercise", "exercise", "exercise"], "يرفع الأثقال": ["to lift heavy things to get stronger", "to lift heavy things to get stronger", "to lift heavy things to get stronger"], "صداع": ["a pain in your head", "a pain in your head", "a pain in your head"], "ألم في الظهر": ["a pain in your back", "a pain in your back", "a pain in your back"], "ألم في المعدة": ["a pain in your stomach", "a pain in your stomach", "a pain in your stomach"], "زكام": ["a common illness: a runny nose and sneezing", "a common illness: a runny nose and sneezing", "a common illness: a runny nose and sneezing"], "حمّى": ["a high body temperature", "a high body temperature", "a high body temperature"], "التهاب الحلق": ["pain in your throat when you swallow or talk", "pain in your throat when you swallow or talk", "pain in your throat when you swallow or talk"], "متوتّر": ["worried and nervous", "worried and nervous", "worried and nervous"], "اختر الفعل الصحيح": ["Choose the correct verb", "Choose the correct verb", "Choose the correct verb"], "طابق المشكلة الصحية بمعناها": ["Match the health problem with its meaning", "Match the health problem with its meaning", "Match the health problem with its meaning"], "نص القراءة: خرافات عن السعرات الحرارية": ["Reading: myths about calories", "Reading: myths about calories", "Reading: myths about calories"], "واكتب نصيحتك في النهاية": ["and write your advice at the end", "and write your advice at the end", "and write your advice at the end"], "اعتقاد خاطئ": ["a belief that is not true", "a belief that is not true", "a belief that is not true"], "وحدة": ["an amount used for measuring", "an amount used for measuring", "an amount used for measuring"], "طاقة": ["the power your body needs to move and work", "the power your body needs to move and work", "the power your body needs to move and work"], "بروتين": ["a part of food in meat, fish, eggs and beans", "a part of food in meat, fish, eggs and beans", "a part of food in meat, fish, eggs and beans"], "ألياف": ["a part of food in vegetables, fruit and grains", "a part of food in vegetables, fruit and grains", "a part of food in vegetables, fruit and grains"], "شبعان": ["not hungry because you have eaten", "not hungry because you have eaten", "not hungry because you have eaten"], "يحرق": ["to use energy", "to use energy", "to use energy"], "المزاج": ["how you feel", "how you feel", "how you feel"], "قليل الدسم": ["with only a little fat", "with only a little fat", "with only a little fat"], "الملصق على المنتج": ["the information printed on a product", "the information printed on a product", "the information printed on a product"], "أطعمة طبيعية غير مصنّعة": ["natural food that is not processed", "natural food that is not processed", "natural food that is not processed"], "منتظم": ["happening at the same times, again and again", "happening at the same times, again and again", "happening at the same times, again and again"], "نصيحة لصديق": ["Advice for a friend", "Advice for a friend", "Advice for a friend"], "جمل بالإنجليزية: صديقك يريد أن يعيش حياة صحية أكثر. أعطه نصائح باستخدام": ["sentences in English: Your friend wants to be healthier. Give advice using", "sentences in English: Your friend wants to be healthier. Give advice using", "sentences in English: Your friend wants to be healthier. Give advice using"], "لتكمل الجملة الثانية بالمعنى نفسه": ["to complete the second sentence with the same meaning", "같은 뜻이 되도록 두 번째 문장을 완성하세요", "تا جملهٔ دوم با همان معنی کامل شود"], "أنجز المهام الثلاث": ["Complete the three tasks", "세 가지 과제를 하세요", "سه تمرین را انجام بده"], "حسب التسجيل": ["according to the recording", "녹음 내용에 따라", "طبق فایل صوتی"], "في الجمل المثبتة": ["in positive sentences", "는 긍정문에서", "در جمله‌های مثبت"], "نستخدم": ["We use", "다음을 씁니다:", "استفاده می‌کنیم از"]};
+var IDX={en:0,ko:1,fa:2},LANGS=["ar", "en"],PREF="l5b-wk4-lang",RTL={ar:1,fa:1};
+var AL="\\u0620-\\u065f\\u0670-\\u06d3";
+var RUN=new RegExp("["+AL+"](?:["+AL+" ]|[.!:«»]+(?= ?["+AL+"]))*","g");
+var HAS=new RegExp("["+AL+"]");
+var ORIG=new WeakMap(),LAST=new WeakMap(),AORIG=new WeakMap(),ALAST=new WeakMap();
+var lang="ar",wrap=document.querySelector(".wrap");
+var ATTRS=["placeholder","aria-label","title","alt"];
+function trRun(core,i){
+  var v=DICT[core];if(v)return v[i];
+  var ws=core.split(" "),out=[],p=0;
+  while(p<ws.length){
+    var hit=null,q=Math.min(ws.length,p+40);
+    for(;q>p;q--){
+      var cand=ws.slice(p,q).join(" "),tail="";
+      var d=DICT[cand];
+      if(!d){var m=cand.match(/^(.*?)([.!:]+)$/);if(m&&DICT[m[1]]){d=DICT[m[1]];tail=m[2]}}
+      if(d){hit=d[i]+tail;break}
+    }
+    if(hit!==null){out.push(hit);p=q}else{out.push(ws[p]);p++}
+  }
+  return out.join(" ");
+}
+function tr(s){
+  var i=IDX[lang];
+  var o=s.replace(RUN,function(m){var core=m.replace(/ +$/,"");return trRun(core,i)+m.slice(core.length)});
+  if(lang==="fa")return o;
+  return o.replace(/،/g,",").replace(/؛/g,";").replace(/؟/g,"?").replace(/«/g,"“").replace(/»/g,"”");
+}
+function skip(n){
+  var p=n.parentNode;
+  if(!p)return true;
+  var t=p.nodeName;
+  if(t==="SCRIPT"||t==="STYLE"||t==="TEXTAREA"||t==="NOSCRIPT")return true;
+  return !!(p.closest&&p.closest("[data-notr]"));
+}
+function handleText(n){
+  if(skip(n))return;
+  var cur=n.data,last=LAST.get(n);
+  if(last!==undefined&&cur===last)return;
+  if(HAS.test(cur)){
+    ORIG.set(n,cur);
+    if(lang!=="ar"){var t=tr(cur);LAST.set(n,t);n.data=t}else LAST.set(n,cur);
+  }else{ORIG.delete(n);LAST.delete(n)}
+}
+function handleAttrs(el){
+  if(!el.getAttribute||(el.closest&&el.closest("[data-notr]")))return;
+  ATTRS.forEach(function(a){
+    var v=el.getAttribute(a);if(v==null)return;
+    var m=AORIG.get(el)||{},l=ALAST.get(el)||{};
+    if(l[a]!==undefined&&v===l[a])return;
+    if(HAS.test(v)){
+      m[a]=v;AORIG.set(el,m);
+      if(lang!=="ar"){var t=tr(v);l[a]=t;ALAST.set(el,l);el.setAttribute(a,t)}else{l[a]=v;ALAST.set(el,l)}
+    }else if(m[a]!==undefined){delete m[a];delete l[a]}
+  });
+}
+function walk(root){
+  if(root.nodeType===3){handleText(root);return}
+  if(root.nodeType!==1)return;
+  handleAttrs(root);
+  var w=document.createTreeWalker(root,NodeFilter.SHOW_TEXT|NodeFilter.SHOW_ELEMENT,null),n;
+  while((n=w.nextNode())){if(n.nodeType===3)handleText(n);else handleAttrs(n)}
+}
+var mo=new MutationObserver(function(recs){
+  recs.forEach(function(r){
+    if(r.type==="characterData")handleText(r.target);
+    else if(r.type==="attributes")handleAttrs(r.target);
+    else r.addedNodes.forEach(walk);
+  });
+});
+function observe(){mo.observe(document.documentElement,{subtree:true,childList:true,characterData:true,attributes:true,attributeFilter:ATTRS})}
+function sync(){var r=mo.takeRecords();if(r.length){mo.disconnect();r.forEach(function(x){if(x.type==="characterData")handleText(x.target);else if(x.type==="attributes")handleAttrs(x.target);else x.addedNodes.forEach(walk)});observe()}}
+function retranslate(){
+  mo.disconnect();
+  var w=document.createTreeWalker(document.documentElement,NodeFilter.SHOW_TEXT|NodeFilter.SHOW_ELEMENT,null),n;
+  while((n=w.nextNode())){
+    if(n.nodeType===3){
+      if(skip(n))continue;
+      var o=ORIG.get(n);
+      if(o!==undefined){var t=lang==="ar"?o:tr(o);LAST.set(n,t);n.data=t}
+    }else{
+      var m=AORIG.get(n);
+      if(m){var l=ALAST.get(n)||{};Object.keys(m).forEach(function(a){var t=lang==="ar"?m[a]:tr(m[a]);l[a]=t;n.setAttribute(a,t)});ALAST.set(n,l)}
+    }
+  }
+  observe();
+}
+function origHTML(el){
+  var c=el.cloneNode(true),a=document.createTreeWalker(el,NodeFilter.SHOW_TEXT),b=document.createTreeWalker(c,NodeFilter.SHOW_TEXT),n,m;
+  while((n=a.nextNode())&&(m=b.nextNode())){if(ORIG.has(n))m.data=ORIG.get(n)}
+  return c.innerHTML;
+}
+function setLang(l,noSave){
+  if(LANGS.indexOf(l)<0)l="ar";
+  lang=l;
+  if(wrap){wrap.setAttribute("lang",l);wrap.setAttribute("dir",RTL[l]?"rtl":"ltr")}
+  document.documentElement.setAttribute("data-ui",l);
+  retranslate();
+  Array.prototype.forEach.call(document.querySelectorAll(".langsw button"),function(b){b.setAttribute("aria-pressed",String(b.getAttribute("data-lang")===l))});
+  if(!noSave){try{localStorage.setItem(PREF,l)}catch(e){}}
+}
+window.I18N={sync:sync,origHTML:origHTML,setLang:setLang,get lang(){return lang},tr:tr};
+document.addEventListener("click",function(e){var b=e.target.closest&&e.target.closest(".langsw button");if(b)setLang(b.getAttribute("data-lang"))});
+var saved=null;try{saved=localStorage.getItem(PREF)}catch(e){}
+walk(document.body);
+observe();
+setLang(saved&&LANGS.indexOf(saved)>-1?saved:"ar",true);
+})();
+</script>
+
+<script>
+(function(){
+"use strict";
+var AUD={};
+var $=function(s,r){return (r||document).querySelector(s)};
+var $$=function(s,r){return Array.prototype.slice.call((r||document).querySelectorAll(s))};
+var esc=function(s){return String(s).replace(/[&<>"]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})};
+var E=function(s){return '<bdi dir="ltr" class="en">'+esc(s)+'</bdi>'};
+var L="abcdefgh";
+var PLAY='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>';
+var S={slow:false,stop:false};
+var STANDALONE=!(window.claude&&typeof window.claude.use==="function");
+var DAYS=["mon", "tue", "wed", "thu", "fri"];
+var DN={mon:"الخميس",tue:"الجمعة",wed:"السبت",thu:"الأحد",fri:"الاثنين"};
+var DE={mon:"Thursday",tue:"Friday",wed:"Saturday",thu:"Sunday",fri:"Monday"};
+var DT={mon:"فيديو",tue:"قواعد",wed:"قواعد",thu:"قراءة",fri:"مفردات"};
+var KEY="l5b-wk4-state";
+var STATE={v:1,name:"",day:"mon",welcome:false,inputs:{},checked:{},match:{}};
+var TASKS={},ORDER={mon:[],tue:[],wed:[],thu:[],fri:[]};
+var M={};
+
+
+
+
+
+var SCR={};
+
+/* ---------- shared Level 5 grammar ---------- */
+var G_WR={id:"wr",tab:"would rather",unit:"القواعد",title:"would rather",
+ forms:[
+  {h:"الإثبات",f:"subject + would rather (’d rather) + base verb",e:["I’d rather stay at home tonight.","She’d rather walk than take the bus."]},
+  {h:"النفي",f:"subject + would rather not + base verb",e:["I’d rather not go out.","We’d rather not eat late."]},
+  {h:"السؤال",f:"Would + subject + rather + base verb … or …?",e:["Would you rather read the book or watch the film?","I’d rather watch the film."]}],
+ note:"بعد "+E("would rather")+" نستخدم الفعل في صيغته الأساسية دائمًا، بدون "+E("to")+" وبدون "+E("-ing")+". وبعد "+E("than")+" و "+E("or")+" نستخدم الصيغة الأساسية أيضًا.",
+ tasks:[
+  {id:"wr-match",kind:"match",title:"طابق السؤال بالإجابة",instr:"اضغط على السؤال ثم على الإجابة المناسبة.",items:[
+   ["Would you rather stay in or go out tonight?","I’d rather stay in. I’m really tired."],
+   ["Would you rather travel by plane or by train?","I’d rather fly. It’s much faster."],
+   ["Would you rather have tea or coffee?","I’d rather not have coffee. It keeps me awake."],
+   ["Would you rather live in a city or a village?","I’d rather live in a village. It’s quieter."],
+   ["Would you rather cook or wash the dishes?","I’d rather cook than wash the dishes."],
+   ["Would you rather read the book or watch the film?","I’d rather watch the film. Books take too long."]]},
+  {id:"wr-mcq",title:"اختيار من متعدد",instr:"اختر الإجابة الصحيحة.",inline:true,items:[
+   {q:"I’d rather ____ at home tonight.",o:["stay","to stay","staying"],a:0},
+   {q:"Would you rather ____ pizza or pasta?",o:["eating","eat","to eat"],a:1},
+   {q:"She’d rather ____ drive at night.",o:["not","don’t","not to"],a:0},
+   {q:"We’d rather walk ____ take a taxi.",o:["that","than","then"],a:1},
+   {q:"____ you rather live by the sea or in the mountains?",o:["Do","Would","Are"],a:1},
+   {q:"They’d rather ____ football than tennis.",o:["play","to play","playing"],a:0},
+   {q:"I’d rather not ____ about it now.",o:["talking","to talk","talk"],a:2},
+   {q:"“Would you rather go now or later?” “I’d rather ____ later.”",o:["go","going","to go"],a:0}]},
+  {id:"wr-fix",title:"ابحث عن الخطأ",instr:"في كل سؤال جملة فيها خطأ. اختر الجملة الصحيحة.",items:[
+   {q:"I would rather to stay home.",o:["I would rather stay home.","I would rather staying home.","I would to rather stay home."],a:0},
+   {q:"Would you rather eating out or cooking?",o:["Would you rather eat out or cooking?","Would you rather eat out or cook?","Would you rather to eat out or cook?"],a:1},
+   {q:"He’d rather not to work late.",o:["He’d rather not work late.","He’d not rather work late.","He’d rather don’t work late."],a:0},
+   {q:"We’d rather watch a film than going out.",o:["We’d rather watch a film than to go out.","We’d rather watching a film than go out.","We’d rather watch a film than go out."],a:2},
+   {q:"Do you rather have tea or juice?",o:["Would you rather have tea or juice?","Are you rather have tea or juice?","Would you rather having tea or juice?"],a:0},
+   {q:"My sister would rather reads than plays games.",o:["My sister would rather read than play games.","My sister would rather reading than playing games.","My sister would rather to read than play games."],a:0}]},
+  {id:"wr-rw",kind:"gap",title:"أعد كتابة الجملة",instr:"اكتب الكلمة الناقصة لتكمل الجملة الثانية بالمعنى نفسه.",items:[
+   ["I prefer walking to driving. → I’d rather ____ than drive.","walk"],
+   ["I don’t want to go out tonight. → I’d rather ____ go out tonight.","not"],
+   ["My brother prefers football to basketball. → He’d rather ____ football than basketball.","play",["watch"]],
+   ["Do you prefer the beach or the mountains? → ____ you rather go to the beach or the mountains?","Would"],
+   ["We prefer staying home to going to the cinema. → We’d rather stay home than ____ to the cinema.","go"],
+   ["She prefers tea to coffee. → She’d rather ____ tea than coffee.","have",["drink"]]]}]};
+
+var G_PP={id:"pp",tab:"present perfect",unit:"مراجعة القواعد",title:"Present perfect + ever, never, just, already, yet",
+ forms:[
+  {h:"الإثبات والنفي",f:"I / you / we / they + have (’ve) + past participle\nhe / she / it + has (’s) + past participle",e:["I’ve visited London twice.","She hasn’t finished her work yet."]},
+  {h:"السؤال",f:"Have / Has + subject + past participle …?",e:["Have you ever eaten sushi?","Has he called you yet?"]},
+  {h:"الظروف",f:"ever · never · just · already · yet\nrecently · so far",e:["I’ve just arrived.","We’ve already eaten.","Have you finished yet?"]}],
+ note:"نستخدم "+E("ever")+" في الأسئلة، و "+E("never")+" في الجمل المثبتة. "+E("just")+" و "+E("already")+" قبل التصريف الثالث. "+E("yet")+" في آخر الجملة في النفي والسؤال.",
+ tasks:[
+  {id:"pp-adv",title:"اختر الظرف المناسب",instr:"اختر الكلمة الصحيحة.",inline:true,items:[
+   {q:"Have you ____ been to Japan?",o:["ever","yet","already"],a:0},
+   {q:"I’ve ____ seen snow. I’d love to see it one day.",o:["never","ever","yet"],a:0},
+   {q:"We’ve ____ finished dinner. The plates are still warm.",o:["just","yet","ever"],a:0},
+   {q:"Don’t tell me the ending! I haven’t watched it ____.",o:["already","yet","just"],a:1},
+   {q:"She’s ____ booked the hotel, so we don’t need to do it.",o:["yet","ever","already"],a:2},
+   {q:"Has the bus left ____?",o:["yet","never","just"],a:0},
+   {q:"I’ve read three books ____ this month.",o:["so far","yet","ever"],a:0},
+   {q:"Have you seen any good films ____?",o:["recently","never","already"],a:0}]},
+  {id:"pp-gap",kind:"gap",title:"اكتب التصريف الثالث",instr:"اكتب الفعل الذي بين القوسين في صيغة التصريف الثالث.",items:[
+   ["She has ____ (write) three emails this morning.","written"],
+   ["Have you ever ____ (eat) Korean food?","eaten"],
+   ["I haven’t ____ (see) him since Monday.","seen"],
+   ["They have just ____ (arrive) at the airport.","arrived"],
+   ["We’ve already ____ (buy) the tickets.","bought"],
+   ["He has never ____ (fly) in a plane.","flown"],
+   ["Have you ____ (do) your homework yet?","done"],
+   ["I’ve ____ (know) Sara for ten years.","known"]]},
+  {id:"pp-fix",title:"ابحث عن الخطأ",instr:"في كل سؤال جملة فيها خطأ. اختر الجملة الصحيحة.",items:[
+   {q:"I have saw that film twice.",o:["I have seen that film twice.","I have see that film twice.","I seen that film twice."],a:0},
+   {q:"She have already left.",o:["She has already left.","She has already leave.","She already has leaved."],a:0},
+   {q:"Have you ever went to Paris?",o:["Have you ever go to Paris?","Have you ever been to Paris?","Did you ever been to Paris?"],a:1},
+   {q:"I haven’t finished yet my homework.",o:["I haven’t yet finished my homework yet.","I haven’t finished my homework yet.","I yet haven’t finish my homework."],a:1},
+   {q:"We have just ate lunch.",o:["We have just eaten lunch.","We have just eat lunch.","We just have eaten lunch."],a:0},
+   {q:"He has never be late.",o:["He has never been late.","He never has be late.","He has never was late."],a:0}]}]};
+
+var G_FS={id:"fs",tab:"for / since",unit:"مراجعة القواعد",title:"for and since",
+ forms:[
+  {h:"for",f:"for + a period of time",e:["for ten minutes","for three years","for a long time"]},
+  {h:"since",f:"since + a point in time",e:["since 2020","since Monday","since I was a child"]},
+  {h:"How long …?",f:"How long have you + past participle …?",e:["How long have you lived here?","I’ve lived here for five years.","I’ve lived here since 2021."]}],
+ note:E("for")+" = مدة (كم من الوقت؟). "+E("since")+" = نقطة البداية (متى بدأ؟).",
+ tasks:[
+  {id:"fs-q",title:"for أم since؟",instr:"اختر الكلمة الصحيحة.",items:[
+   {q:"I’ve lived in Dubai ____ 2019.",o:["for","since"],a:1},
+   {q:"She’s worked here ____ six months.",o:["for","since"],a:0},
+   {q:"We haven’t seen him ____ last summer.",o:["for","since"],a:1},
+   {q:"They’ve been married ____ twenty years.",o:["for","since"],a:0},
+   {q:"I’ve known Omar ____ we were at school.",o:["for","since"],a:1},
+   {q:"He’s studied English ____ a long time.",o:["for","since"],a:0},
+   {q:"It has rained ____ Tuesday.",o:["for","since"],a:1},
+   {q:"We’ve waited ____ two hours!",o:["for","since"],a:0}]},
+  {id:"fs-gap",kind:"gap",title:"أكمل الجملة",instr:"اكتب "+E("for")+" أو "+E("since")+" لتكمل الجملة الثانية بالمعنى نفسه.",items:[
+   ["I started this job in 2022. → I’ve had this job ____ 2022.","since"],
+   ["We moved here three years ago. → We’ve lived here ____ three years.","for"],
+   ["He got his phone a month ago. → He’s had his phone ____ a month.","for"],
+   ["I met Laila when I was ten. → I’ve known Laila ____ I was ten.","since"],
+   ["The shop opened at nine o’clock. → The shop has been open ____ nine o’clock.","since"]]},
+  {id:"fs-fix",title:"ابحث عن الخطأ",instr:"في كل سؤال جملة فيها خطأ. اختر الجملة الصحيحة.",items:[
+   {q:"I’ve lived here since five years.",o:["I’ve lived here for five years.","I live here since five years.","I’ve lived here from five years."],a:0},
+   {q:"She has worked here for 2020.",o:["She has worked here since 2020.","She works here for 2020.","She has worked here from 2020."],a:0},
+   {q:"How long do you know him?",o:["How long have you known him?","How long are you knowing him?","How long you have known him?"],a:0},
+   {q:"We are friends since 2018.",o:["We have been friends since 2018.","We have been friends for 2018.","We were friends since 2018."],a:0}]}]};
+
+/* ================= CONTENT ================= */
+var VOC=[],GRAM=[];
+function P(t,a){return a.map(function(s){return [t,s]})}
+var FMT={pos:"مثبت",neg:"منفي",q:"سؤال",nq:"سؤال منفي",sa:"إجابة قصيرة"};
+/* ---------- THURSDAY: video ---------- */
+var V5B={yt:"BSABmr8hX7s",tab:"الفيديو",tag:"فيديو",title:"Real Easy English: Talking about films",
+ sub:"نيل وجورجي من "+E("BBC Learning English")+" يتحدثان عن أفلامهما المفضلة. مدة الفيديو نحو 6 دقائق.",
+ gloss:[["plot","حبكة القصة"],["character","شخصية"],["stream","يشاهد عبر الإنترنت"],["foreign film","فيلم أجنبي"],["binge-watch","يشاهد حلقات كثيرة متتالية"],["attention span","القدرة على التركيز"],["escape reality","يهرب من الواقع"],["wizard","ساحر"]],
+ tasks:[
+  {id:"vd-q",title:"أسئلة الفهم",instr:"شاهد الفيديو واختر الإجابة الصحيحة.",items:[
+   {q:"What kind of films does Neil like?",o:["foreign films","horror films","cartoons"],a:0},
+   {q:"Why does Neil like foreign films?",o:["They’re short.","He likes stories from other countries.","They’re cheap."],a:1},
+   {q:"What was Neil’s favourite film when he was a child?",o:["Harry Potter","Star Wars","Raiders of the Lost Ark"],a:2},
+   {q:"Who was Neil’s hero when he was a child?",o:["Indiana Jones","Harry Potter","James Bond"],a:0},
+   {q:"Which films does Georgie like?",o:["action and adventure films","films you can learn from, and silly or fantasy films","horror and war films"],a:1},
+   {q:"What is Harry Potter about?",o:["a boy who finds out he is a wizard","a teacher at a school for doctors","a family who travels around the world"],a:0},
+   {q:"Why does Georgie prefer TV series to films?",o:["She has a short attention span.","She doesn’t have a TV.","Films are too expensive."],a:0},
+   {q:"What does “stream” mean?",o:["to go to the cinema","to watch films or TV on the internet","to write a film review"],a:1}]},
+  {id:"vd-tf",title:"صحيح أم خطأ",instr:"اختر T إذا كانت العبارة صحيحة حسب الفيديو، و F إذا كانت خاطئة.",items:[
+   {q:"Georgie is a big fan of action and adventure films.",o:["T","F"],a:1},
+   {q:"In Harry Potter, Harry’s friends are Ron and Hermione.",o:["T","F"],a:0},
+   {q:"Neil sometimes binge-watches TV series.",o:["T","F"],a:0},
+   {q:"Neil and Georgie talk a lot about going to the cinema.",o:["T","F"],a:1},
+   {q:"We use the present simple to describe the plot of a film.",o:["T","F"],a:0}]},
+  {id:"vd-write",kind:"write",title:"فيلمي المفضّل",instr:"اكتب من 5 إلى 6 جمل بالإنجليزية عن فيلمك المفضّل: عن ماذا يتحدث؟ ومن الشخصية الرئيسية؟ استخدم المضارع البسيط مثل نيل وجورجي.",prompt:"My favourite film is … It’s about … The main character is …"}]};
+/* ---------- FRIDAY / SATURDAY: grammar ---------- */
+var GL5B1=[G_WR],GL5B2=[G_PP,G_FS];
+/* ---------- SUNDAY: reading ---------- */
+var RD5B={id:"r5b",tab:"القراءة",unit:"القراءة",title:"Tom Cruise: The Greatest Action Star?",p:[
+ "For more than forty years, Tom Cruise has been one of the most famous film stars in the world. He has made more than forty films, and many of them have been huge hits. But what makes him really special is something most actors never do: he performs many of his own dangerous stunts.",
+ "Thomas Cruise Mapother IV was born on July 3, 1962, in Syracuse, New York. His childhood wasn’t easy. His family moved many times, so he changed schools again and again. He also had dyslexia, which made reading very difficult for him. In high school, he acted in a school musical and decided that he wanted to be an actor.",
+ "His first big hit was Risky Business in 1983. Three years later, Top Gun made him a superstar. In 1996, he played the spy Ethan Hunt in Mission: Impossible for the first time. Since then, he has made eight Mission: Impossible films.",
+ "Many people in the UAE remember one famous scene. In Mission: Impossible – Ghost Protocol (2011), Cruise climbed the outside of the Burj Khalifa in Dubai, the tallest building in the world. He wasn’t standing in front of a green screen. He was really hanging from the glass, hundreds of metres above the ground.",
+ "That wasn’t his only crazy stunt. He has hung from the side of a plane during take-off, learned to fly a helicopter for a film, and ridden a motorcycle off a cliff in Norway. In 2017, he broke his ankle while he was jumping between two buildings, but he finished the jump, and the scene is in the film.",
+ "Why does he do it? Cruise says that audiences can feel when a stunt is real. He trains for months before each stunt, and he works with a team of experts to keep everyone as safe as possible.",
+ "His hard work has paid off. In 2022, Top Gun: Maverick earned almost 1.5 billion dollars around the world. Strangely, Cruise has never won a normal Oscar, although he has been nominated three times for acting. But in November 2025, he finally received an honorary Oscar for his whole career. Is he the greatest action star of all time? Many fans would say yes."],
+ gloss:[["stunt","حركة خطرة في فيلم"],["perform","يؤدّي"],["childhood","الطفولة"],["dyslexia","عسر القراءة"],["spy","جاسوس"],["green screen","شاشة خضراء"],["cliff","منحدر صخري"],["ankle","الكاحل"],["audience","الجمهور"],["nominated","مرشّح لجائزة"],["honorary","فخري"],["pay off","يؤتي ثماره"]],
+ tasks:[
+  {id:"r5b-mcq",title:"أسئلة الفهم",instr:"اختر الإجابة الصحيحة حسب النص.",items:[
+   {q:"What is special about Tom Cruise?",o:["He has only made one film.","He performs many of his own dangerous stunts.","He writes all his films."],a:1},
+   {q:"Why was school difficult for him?",o:["He didn’t like his teachers.","He was always ill.","His family moved a lot, and he had dyslexia."],a:2},
+   {q:"Which film made him a superstar?",o:["Top Gun","Risky Business","Ghost Protocol"],a:0},
+   {q:"What did he do in Dubai?",o:["He opened a cinema.","He climbed the outside of the Burj Khalifa.","He jumped from a plane into the sea."],a:1},
+   {q:"What happened in 2017?",o:["He broke his ankle while jumping between buildings.","He learned to fly a plane.","He won an Oscar for acting."],a:0},
+   {q:"What happened in November 2025?",o:["He made his first film.","He stopped acting.","He received an honorary Oscar."],a:2}]},
+  {id:"r5b-tf",title:"صحيح أم خطأ",instr:"اختر T إذا كانت العبارة صحيحة حسب النص، و F إذا كانت خاطئة.",items:[
+   {q:"Tom Cruise was born in the United States.",o:["T","F"],a:0},
+   {q:"He has made eight Mission: Impossible films.",o:["T","F"],a:0},
+   {q:"The Burj Khalifa scene used a green screen.",o:["T","F"],a:1},
+   {q:"Cruise doesn’t train before his stunts.",o:["T","F"],a:1},
+   {q:"He has won several normal Oscars for acting.",o:["T","F"],a:1}]},
+  {id:"r5b-match",kind:"match",title:"طابق الكلمة بمعناها",instr:"اضغط على كلمة إنجليزية ثم على معناها.",items:[["stunt","حركة خطرة في فيلم"],["spy","جاسوس"],["ankle","الكاحل"],["audience","الجمهور"],["nominated","مرشّح لجائزة"],["honorary","فخري"]]},
+  {id:"th-write",kind:"write",title:"رأيك",instr:"اكتب من 5 إلى 6 جمل بالإنجليزية: من ممثلك المفضّل؟ ما الأفلام التي مثّلها؟ هل تفضّل أن تكون ممثلًا أم مؤدّي حركات خطرة؟ ولماذا؟",prompt:"My favourite actor is … He / She has made … I’d rather be … because …"}]};
+/* ---------- MONDAY: vocabulary + listen and repeat ---------- */
+var V5B2={tab:"المفردات",
+ tasks:[
+  {id:"fv-match",kind:"match",title:"طابق الكلمة بمعناها",instr:"اضغط على كلمة إنجليزية ثم على معناها.",items:[
+   ["plot","حبكة القصة"],["character","شخصية"],["stream","يشاهد عبر الإنترنت"],["director","مخرج"],["review","مقال نقدي عن فيلم"],["genre","نوع الفيلم"],["subtitles","ترجمة مكتوبة على الشاشة"],["starring","من بطولة"]]},
+  {id:"fv-genre",title:"ما نوع الفيلم؟",instr:"اقرأ الوصف واختر نوع الفيلم.",items:[
+   {q:"A film with lots of jokes that makes you laugh.",o:["comedy","horror","drama"],a:0},
+   {q:"A film about ghosts and monsters that frightens you.",o:["romance","horror","animation"],a:1},
+   {q:"A film about the future, robots and space.",o:["comedy","documentary","science fiction"],a:2},
+   {q:"A film with cartoon characters, like Toy Story.",o:["animation","thriller","drama"],a:0},
+   {q:"A love story.",o:["action","romance","horror"],a:1},
+   {q:"A film with car chases, fights and explosions.",o:["documentary","romance","action"],a:2}]},
+  {id:"fv-edg",title:"صفات "+E("-ed")+" و "+E("-ing"),instr:"اختر الصفة الصحيحة.",items:[
+   {q:"The film was so ____ that I fell asleep.",o:["bored","boring"],a:1},
+   {q:"I was ____ when the hero died.",o:["shocked","shocking"],a:0},
+   {q:"The ending was really ____.",o:["surprised","surprising"],a:1},
+   {q:"Are you ____ about the new Mission: Impossible film?",o:["excited","exciting"],a:0},
+   {q:"Horror films are too ____ for me.",o:["frightened","frightening"],a:1},
+   {q:"We were ____ with the ending.",o:["disappointed","disappointing"],a:0},
+   {q:"The plot is very ____. I didn’t understand it.",o:["confused","confusing"],a:1},
+   {q:"The audience was ____ by the stunts.",o:["amazed","amazing"],a:0}]}],
+ repCount:20,
+ rep:[
+  {id:"r1",title:"الأفلام",s:["My favourite film is Harry Potter.","It’s about a boy who finds out he is a wizard.","I like foreign films with subtitles.","I usually stream films at home.","The plot was confusing, but the ending was amazing.","I was bored, so I stopped watching.","Tom Cruise performs his own stunts."]},
+  {id:"r2",title:"would rather",s:["I’d rather watch a comedy than a horror film.","Would you rather go to the cinema or stream a film?","I’d rather not watch scary films.","She’d rather read the book first.","We’d rather stay home tonight.","Would you rather be an actor or a director?"]},
+  {id:"r3",title:"present perfect",s:["Have you ever been to a film festival?","I’ve never seen Top Gun.","We’ve just watched the new episode.","He’s already read the review.","I haven’t finished the series yet.","She’s loved films since she was a child.","I’ve watched this film three times."]}]};
+function monHTML(){return videoDay("mon","الخميس · الفيديو","فيديو: الحديث عن الأفلام","شاهد الفيديو مرة كاملة، ثم شاهده مرة ثانية وأجب عن الأسئلة. يمكنك تشغيل الترجمة من إعدادات يوتيوب.",V5B)}
+function tueHTML(){return gramDay("tue","الجمعة · القواعد",E("would rather"),"اقرأ الملخص السريع أولًا، ثم أنجز المهام الأربع.",GL5B1)}
+function wedHTML(){return gramDay("wed","السبت · القواعد","مراجعة "+E("present perfect")+" و "+E("for / since"),"اقرأ الملخص السريع في كل قسم، ثم أنجز المهام. انتقل بين القسمين من الأزرار في الأعلى.",GL5B2)}
+function thuHTML(){return readDay("thu","الأحد · القراءة","نص القراءة: توم كروز","اقرأ النص بهدوء، واستعن بقائمة الكلمات إذا احتجت. ثم أجب عن الأسئلة، وطابق الكلمات، واكتب رأيك في النهاية.",RD5B)}
+function friHTML(){return vocabDay("fri","الاثنين · المفردات","مراجعة مفردات الأفلام والصفات","أنجز المهام الثلاث، ثم استمع إلى الجمل وكرّرها.",V5B2)}
+var LISTEN_IDS=V5B2.rep.map(function(f){return f.id+"-listen"});
+
+
+/* ---------------- SPEECH ---------------- */
+var tts={ok:("speechSynthesis" in window)&&("SpeechSynthesisUtterance" in window),voice:null,voice2:null};
+function pickVoice(){
+  if(!tts.ok) return;
+  try{
+    var vs=speechSynthesis.getVoices();
+    var en=vs.filter(function(v){return /^en[-_]US/i.test(v.lang)});if(!en.length)en=vs.filter(function(v){return /^en/i.test(v.lang)});
+    tts.voice=en[0]||null;tts.voice2=en.filter(function(v){return v!==en[0]})[0]||null;
+  }catch(e){}
+}
+if(tts.ok){pickVoice();try{speechSynthesis.onvoiceschanged=pickVoice}catch(e){}}
+function stopSpeech(){S.stop=true;if(tts.ok){try{speechSynthesis.cancel()}catch(e){}}$$(".row.speaking").forEach(function(r){r.classList.remove("speaking")})}
+function say(text,rowEl,done,spk){
+  if(!tts.ok){toast("هذا المتصفح لا يحتوي على صوت مدمج. جرّب Chrome أو Edge أو Safari.");return}
+  try{speechSynthesis.cancel()}catch(e){}
+  $$(".row.speaking").forEach(function(r){r.classList.remove("speaking")});
+  var u=new SpeechSynthesisUtterance(text);
+  u.lang="en-US";var vv=(spk==="B"&&tts.voice2)?tts.voice2:tts.voice;if(vv)u.voice=vv;if(spk==="B"&&!tts.voice2)u.pitch=1.35;
+  u.rate=S.slow?0.62:0.9;
+  var fin=function(){if(rowEl)rowEl.classList.remove("speaking");if(done)done()};
+  u.onend=fin;u.onerror=fin;
+  if(rowEl)rowEl.classList.add("speaking");
+  setTimeout(function(){try{speechSynthesis.speak(u)}catch(e){fin()}},40);
+}
+function playAll(box){
+  var items=$$("[data-say]",box);var i=0;S.stop=false;
+  (function next(){
+    if(S.stop||i>=items.length) return;
+    var el=items[i++];var row=el.closest(".row");
+    if(row&&row.scrollIntoView){try{row.scrollIntoView({block:"center",behavior:"smooth"})}catch(e){}}
+    say(el.getAttribute("data-say"),row,function(){if(!S.stop)setTimeout(next,700)},el.getAttribute("data-spk"));
+  })();
+}
+
+
+
+/* ================= HELPERS ================= */
+var toastT;
+function toast(msg){var t=$("#toast");t.textContent=msg;t.hidden=false;clearTimeout(toastT);toastT=setTimeout(function(){t.hidden=true},3600)}
+function playBtn(text){return '<button class="play" type="button" data-say="'+esc(text)+'" aria-label="استمع">'+PLAY+'</button>'}
+function rateBtn(){return '<button class="btn sm ghost" type="button" data-rate>السرعة: <span class="rl">'+(S.slow?"بطيئة":"عادية")+'</span></button>'}
+function voiceNote(){return tts.ok?"":'<p class="novoice">متصفحك لا يحتوي على صوت مدمج. افتح الصفحة في Chrome أو Edge أو Safari لسماع الجمل.</p>'}
+function reg(t){TASKS[t.id]=t;ORDER[t.day].push(t.id);return t}
+function actions(id,noCheck){return '<div class="actions">'+(noCheck?'':'<button class="btn primary" type="button" data-check="'+id+'">تحقّق من الإجابات</button>')+'<button class="btn ghost" type="button" data-reset="'+id+'">حاول مرة أخرى</button><span class="score" id="'+id+'-score" role="status"></span></div>'}
+function head(day,kick,title,desc){
+  return '<div class="phead"><span class="kick">'+kick+'</span><h2>'+title+'</h2><p>'+desc+'</p><div class="dayprog"><span class="meter" role="progressbar" aria-label="تقدّم اليوم"><i id="pf-'+day+'"></i></span><span class="txt2" id="pt-'+day+'"></span><button class="btn sm ghost" type="button" data-report="'+day+'">تقرير اليوم PDF</button></div></div>';
+}
+function finCard(day){
+  return '<div class="card fin" id="fin-'+day+'" hidden><h3>أحسنت! أنهيت يوم '+DN[day]+'</h3><p>نتيجتك محفوظة. حمّل تقرير اليوم بصيغة PDF وأرسله لمعلمك.</p><button class="btn primary" type="button" data-report="'+day+'">تحميل تقرير يوم '+DN[day]+' PDF</button></div>';
+}
+
+/* quiz (radio) */
+function quizInner(id,items,o){
+  o=o||{};
+  return '<ol class="qlist" data-task="'+id+'">'+items.map(function(it,i){
+    return '<li class="qi" data-i="'+i+'"><p class="qt">'+esc(it.q)+'</p><div class="opts '+(o.inline?"inline":"")+'">'+it.o.map(function(t,j){
+      return '<label class="opt"><input type="radio" id="'+id+'-'+i+'-'+j+'" name="'+id+'-'+i+'" value="'+j+'"><span>'+(o.inline?"":'<b>'+L[j]+'</b>')+'<span>'+esc(t)+'</span></span></label>';
+    }).join("")+'</div><p class="fb" hidden></p></li>';
+  }).join("")+'</ol>'+actions(id);
+}
+function quizTask(day,id,title,items,o){reg({id:id,day:day,title:title,kind:"mcq",items:items,total:items.length});return quizInner(id,items,o)}
+/* typed gap-fill */
+function gapTask(day,id,title,items){
+  reg({id:id,day:day,title:title,kind:"gap",items:items,total:items.length});
+  return '<ol class="qlist" data-task="'+id+'">'+items.map(function(it,i){
+    var p=it[0].split("____");
+    return '<li class="qi" data-i="'+i+'"><p class="qt">'+esc(p[0])+'<input class="gap'+(it[1].length>12?" wide":"")+'" type="text" id="'+id+'-'+i+'" autocomplete="off" autocapitalize="none" spellcheck="false" aria-label="الكلمة الناقصة '+(i+1)+'">'+esc(p[1]||"")+'</p><p class="fb" hidden></p></li>';
+  }).join("")+'</ol>'+actions(id);
+}
+/* listen & repeat ticks */
+function tickTask(day,id,title,total){reg({id:id,day:day,title:title,kind:"tick",total:total})}
+function writeTask(day,id,title,prompt){reg({id:id,day:day,title:title,kind:"write",total:1,prompt:prompt});
+  return '<p class="q-en">'+esc(prompt)+'</p><textarea id="'+id+'" rows="4" dir="ltr" aria-label="إجابتك"></textarea><div class="actions"><span class="count" id="'+id+'-score"></span></div>'}
+
+
+
+
+/* ================= PANELS ================= */
+function playBtnS(text,spk){return '<button class="play" type="button" data-say="'+esc(text)+'"'+(spk?' data-spk="'+spk+'"':'')+' aria-label="استمع">'+PLAY+'</button>'}
+function hl(s){return esc(s).replace(/\*\*(.+?)\*\*/g,'<b class="hl">$1</b>')}
+function plain(s){return s.replace(/\*\*/g,"")}
+function isAr(s){return /[؀-ۿ]/.test(s)}
+function card(tag,body){return '<div class="card"><span class="tag">'+tag+'</span>'+body+'</div>'}
+/* match task: items = [[left, right], ...] */
+function matchTask(day,id,title,items,instr){
+  reg({id:id,day:day,title:title,kind:"match",items:items,total:items.length});
+  M[id]={pairs:[],wrong:0};
+  var ids=items.map(function(x,i){return i}),rs=shuffle(ids,id.length*37+items.length*11);
+  var emo=!isAr(items[0][1]);
+  return '<div class="match" data-task="'+id+'"><p class="instr">'+instr+'</p><div class="mgrid"><div class="mcol">'+
+    ids.map(function(k){return '<button class="mi en" type="button" data-k="'+k+'"><span>'+esc(items[k][0])+'</span></button>'}).join("")+'</div><div class="mcol">'+
+    rs.map(function(k){return '<button class="mi ar'+(emo?" emo":"")+'" type="button" data-k="'+k+'"'+(emo?"":' lang="ar"')+'><span>'+esc(items[k][1])+'</span></button>'}).join("")+'</div></div><p class="score" style="margin-top:12px" id="mscore-'+id+'">0 / '+items.length+' تمت مطابقتها</p></div>';
+}
+function scriptBox(id,lines){
+  return '<div class="actions"><button class="btn" type="button" data-script="'+id+'" aria-expanded="false">إظهار النص المكتوب</button></div><div class="script" id="'+id+'" hidden>'+
+   lines.map(function(l){return '<p>'+(l[0]?'<span class="sp">'+esc(l[0])+'</span>':'')+esc(l[1])+'</p>'}).join("")+'</div>';
+}
+function bankHTML(words){return '<div class="bank" data-notr>'+words.map(function(w){return '<span>'+esc(w)+'</span>'}).join("")+'</div>'}
+/* one task card */
+function taskCard(day,t,n,prefix){
+  var tt="المهمة "+n+" · "+t.title,full=(prefix?prefix+" · ":"")+t.title,b="";
+  if(t.bank)b+=bankHTML(t.bank);
+  if(t.kind==="match")return card(tt,b+matchTask(day,t.id,full,t.items,t.instr));
+  b+='<p class="instr" style="margin-top:8px">'+t.instr+'</p>';
+  if(t.kind==="gap")return card(tt,b+gapTask(day,t.id,full,t.items));
+  if(t.kind==="write")return card(tt,b+writeTask(day,t.id,full,t.prompt));
+  return card(tt,b+quizTask(day,t.id,full,t.items,{inline:t.inline!=null?t.inline:t.items[0].o.length<=2}));
+}
+function tasksHTML(day,list,prefix,start){var n=start||0;return list.map(function(t){n++;return taskCard(day,t,n,prefix)}).join("")}
+function audioCard(L){
+  return '<div class="card"><span class="tag">'+L.tag+'</span><h3 style="margin-top:8px">'+E(L.title)+'</h3><p class="sub">'+L.sub+'</p>'+
+    '<audio controls preload="none" src="'+AUD[L.id]+'" aria-label="'+esc(L.title)+'" style="width:100%;max-width:460px"></audio>'+
+    '<div class="toolbar" style="margin-top:8px"><span class="count">سرعة التسجيل:</span><button class="btn sm ghost" type="button" data-arate="0.75" aria-pressed="false">بطيئة</button><button class="btn sm" type="button" data-arate="1" aria-pressed="true">عادية</button></div>'+
+    scriptBox("s-"+L.id,SCR[L.id])+'</div>';
+}
+function glossCard(tag,g){
+  return '<div class="card"><span class="tag">'+tag+'</span><table class="gloss" style="margin-top:8px">'+g.map(function(x){return '<tr><td>'+esc(x[0])+'</td><td class="ar" lang="ar">'+esc(x[1])+'</td></tr>'}).join("")+'</table></div>';
+}
+function listenDay(day,kick,title,desc,L){
+  var h=head(day,kick,title,desc);
+  if(L.gloss)h+=glossCard("كلمات مفيدة قبل الاستماع",L.gloss);
+  h+=audioCard(L)+tasksHTML(day,L.tasks,L.tab);
+  return h+finCard(day);
+}
+function videoDay(day,kick,title,desc,V){
+  var h=head(day,kick,title,desc);
+  if(V.gloss)h+=glossCard("كلمات مفيدة قبل المشاهدة",V.gloss);
+  h+='<div class="card"><span class="tag">'+V.tag+'</span><h3 style="margin-top:8px">'+E(V.title)+'</h3><p class="sub">'+V.sub+'</p>'+
+    '<div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/'+V.yt+'?rel=0" title="'+esc(V.title)+'" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; fullscreen" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe></div>'+
+    '<div class="actions"><a class="btn" href="https://www.youtube.com/watch?v='+V.yt+'" target="_blank" rel="noopener">افتح الفيديو على يوتيوب</a></div></div>';
+  h+=tasksHTML(day,V.tasks,V.tab);
+  return h+finCard(day);
+}
+function summaryCard(g){
+  return '<div class="card"><span class="tag">'+g.unit+'</span><h3 style="margin-top:8px;font-size:1.4rem">'+E(g.title)+'</h3>'+
+    '<p class="sec">ملخص سريع</p><div class="forms">'+g.forms.map(function(f){return '<div class="form"><h4>'+f.h+'</h4><div class="formula" style="white-space:pre-line">'+esc(f.f)+'</div><ul>'+f.e.map(function(e){return '<li>'+esc(e)+'</li>'}).join("")+'</ul></div>'}).join("")+'</div>'+
+    (g.note?'<div class="tip"><p><b>تذكّر:</b> '+g.note+'</p></div>':'')+'</div>';
+}
+function gramDay(day,kick,title,desc,GL){
+  var h=head(day,kick,title,desc),multi=GL.length>1;
+  if(multi)h+='<div class="sub-tabs" role="tablist" aria-label="أقسام القواعد">'+GL.map(function(g,i){return '<button class="pill" role="tab" type="button" data-gr="'+g.id+'" aria-selected="'+(i===0)+'">'+(i+1)+'. '+E(g.tab)+'</button>'}).join("")+'</div>';
+  GL.forEach(function(g,i){
+    h+='<section class="gsec" id="g-'+g.id+'" '+(i&&multi?"hidden":"")+'>'+summaryCard(g)+tasksHTML(day,g.tasks,g.tab);
+    if(multi&&i<GL.length-1)h+='<div class="actions" style="margin:0 0 16px"><button class="btn primary" type="button" data-gr="'+GL[i+1].id+'">التالي: '+E(GL[i+1].tab)+'</button></div>';
+    h+='</section>';
+  });
+  return h+finCard(day);
+}
+function repCards(day,groups,c0){
+  var c=c0||0;
+  return voiceNote()+groups.map(function(f){
+    tickTask(day,f.id+"-listen","استمع وكرّر · "+f.title,f.s.length);
+    return '<div class="card"><span class="tag">استمع وكرّر · '+f.title+' · '+f.s.length+' جملة</span>'+
+      '<div class="toolbar" style="margin-top:10px"><button class="btn primary sm" type="button" data-playall="'+f.id+'-list">تشغيل الكل</button><button class="btn sm" type="button" data-stopall>إيقاف</button>'+rateBtn()+'<span class="grow"></span><span class="count" id="'+f.id+'-listen-count"></span></div><div id="'+f.id+'-list">'+
+      f.s.map(function(s,k){c++;return '<div class="row"><div>'+playBtnS(s)+'</div><p class="txt"><span class="n">'+(c<10?"0":"")+c+'</span>'+esc(s)+'</p><label class="done"><input type="checkbox" id="'+f.id+'-listen-'+k+'" data-tick="'+f.id+'-listen"> كرّرتها</label></div>'}).join("")+'</div></div>';
+  }).join("");
+}
+function vocabDay(day,kick,title,desc,V){
+  var h=head(day,kick,title,desc);
+  if(V.words)h+=glossCard("كلمات المراجعة",V.words);
+  h+=tasksHTML(day,V.tasks,V.tab);
+  if(V.rep){h+='<p class="sec" style="margin:18px 0 8px">استمع وكرّر: '+V.repCount+' جملة. استمع إلى كل جملة وكرّرها بصوت عالٍ، ثم ضع علامة.</p>'+repCards(day,V.rep)}
+  return h+finCard(day);
+}
+function readDay(day,kick,title,desc,R){
+  var h=head(day,kick,title,desc);
+  h+='<div class="card"><span class="tag">'+R.unit+'</span>'+
+    '<div class="rd" id="'+R.id+'-text"><h3>'+esc(R.title)+'</h3>'+R.p.map(function(p){return '<p style="margin:0 0 12px">'+esc(p)+'</p>'}).join("")+'</div>'+
+    '<details class="hint"><summary>قائمة كلمات مساعدة</summary><table class="gloss" style="margin-top:8px">'+R.gloss.map(function(g){return '<tr><td>'+esc(g[0])+'</td><td class="ar" lang="ar">'+esc(g[1])+'</td></tr>'}).join("")+'</table></details></div>';
+  h+=tasksHTML(day,R.tasks,R.tab);
+  return h+finCard(day);
+}
+
+var BUILD={mon:monHTML,tue:tueHTML,wed:wedHTML,thu:thuHTML,fri:friHTML};
+function shuffle(a,seed){var r=a.slice(),s=seed||Math.floor(Math.random()*100000)+7;for(var i=r.length-1;i>0;i--){s=(s*9301+49297)%233280;var j=Math.floor(s/233280*(i+1));var t=r[i];r[i]=r[j];r[j]=t}return r}
+
+/* ================= TASK STATUS ================= */
+function normG(s){return String(s||"").toLowerCase().replace(/[’‘`]/g,"'").replace(/[.,!?;:]/g,"").replace(/'/g,"").replace(/\s+/g," ").trim()}
+function gokay(v,it){var n=normG(v);if(n===normG(it[1]))return true;var a=it[2]||[];for(var i=0;i<a.length;i++){if(n===normG(a[i]))return true}return false}
+function norm(s){return String(s||"").trim().toLowerCase().replace(/\s+/g," ")}
+function rowsOf(t){
+  var rows=[];
+  if(t.kind==="mcq"){
+    t.items.forEach(function(it,i){
+      var sel=$('input[name="'+t.id+'-'+i+'"]:checked');
+      rows.push({q:it.q,yours:sel?it.o[+sel.value]:"—",right:it.o[it.a],ok:!!sel&&+sel.value===it.a});
+    });
+  }else if(t.kind==="gap"){
+    t.items.forEach(function(it,i){
+      var v=($("#"+t.id+"-"+i)||{}).value||"";
+      rows.push({q:it[0].replace("____","_____"),yours:v.trim()||"—",right:it[3]||it[1],ok:gokay(v,it)});
+    });
+  }else if(t.kind==="dlg"){
+    t.items.forEach(function(it,i){
+      var v=($("#"+t.id+"-"+i)||{}).value||"";
+      rows.push({q:it.q,yours:v||"—",right:it.a,ok:v===it.a});
+    });
+  }else if(t.kind==="match"){
+    var got=M[t.id]?M[t.id].pairs:[];
+    t.items.forEach(function(v,k){var ok=got.indexOf(k)>-1;rows.push({q:v[0],yours:ok?"✓":"—",right:v[1],ok:ok,arRight:isAr(v[1])})});
+  }
+  return rows;
+}
+function status(t){
+  var done=false,score=0,total=t.total,rows=null;
+  if(t.kind==="mcq"||t.kind==="gap"||t.kind==="dlg"){
+    rows=rowsOf(t);rows.forEach(function(r){if(r.ok)score++});done=!!STATE.checked[t.id];
+  }else if(t.kind==="match"){
+    score=M[t.id]?M[t.id].pairs.length:0;done=score===total;rows=rowsOf(t);
+  }else if(t.kind==="tick"){
+    score=$$('input[data-tick="'+t.id+'"]:checked').length;done=score===total;
+  }else if(t.kind==="write"){
+    var v=($("#"+t.id)||{}).value||"";score=v.trim().length>0?1:0;done=score===1;
+  }
+  return {done:done,score:score,total:total,rows:rows};
+}
+function dayStatus(day){
+  var ids=ORDER[day],d=0;ids.forEach(function(id){if(status(TASKS[id]).done)d++});
+  return {done:d,total:ids.length,complete:d===ids.length};
+}
+
+/* ================= CHECKING ================= */
+function checkDlg(id){
+  var t=TASKS[id],rows=rowsOf(t),right=0,fb=$("#"+id+"-fb");
+  fb.innerHTML="";
+  rows.forEach(function(r,i){
+    var s=$("#"+id+"-"+i);s.classList.toggle("ok",r.ok);s.classList.toggle("bad",!r.ok);
+    if(r.ok)right++;
+    var li=document.createElement("li");li.className=r.ok?"ok":"bad";
+    li.innerHTML=r.ok?"الفراغ "+(i+1)+": صحيح":"الفراغ "+(i+1)+": "+(r.yours==="—"?"اختر إجابة أولًا. ":"غير صحيح. ")+"الإجابة الصحيحة: "+E(r.right);
+    fb.appendChild(li);
+  });
+  fb.hidden=false;
+  $("#"+id+"-score").textContent=right+" / "+t.total+" صحيحة";
+  $("#"+id+"-rep").hidden=false;
+  STATE.checked[id]=true;
+}
+function checkTask(id,silent){
+  var t=TASKS[id],box=$('[data-task="'+id+'"]');
+  if(t.kind==="dlg"){checkDlg(id);return}
+  var rows=rowsOf(t),right=0;
+  $$(".qi",box).forEach(function(li,i){
+    var r=rows[i],answered=r.yours!=="—",html;
+    if(r.ok)right++;
+    if(r.ok)html="صحيح";
+    else if(t.kind==="gap")html=(answered?"غير صحيح. ":"اكتب الكلمة أولًا. ")+"الإجابة الصحيحة: "+E(r.right);
+    else html=(answered?"غير صحيح. ":"اختر إجابة أولًا. ")+"الإجابة الصحيحة: "+(t.items[i].o.length>2||t.items[i].o[0].length>3?E(L[t.items[i].a]+") ")+" ":"")+E(r.right);
+    li.classList.toggle("ok",r.ok);li.classList.toggle("bad",!r.ok);
+    var fb=$(".fb",li);fb.innerHTML=html;fb.hidden=false;
+  });
+  $("#"+id+"-score").textContent=right+" / "+t.total+" صحيحة";
+  STATE.checked[id]=true;
+}
+function resetTask(id){
+  var box=$('[data-task="'+id+'"]');
+  $$("input",box).forEach(function(i){if(i.type==="checkbox"||i.type==="radio")i.checked=false;else i.value=""});
+  $$("select",box).forEach(function(s){s.value="";s.classList.remove("ok","bad")});
+  var fbx=$("#"+id+"-fb");if(fbx){fbx.hidden=true;fbx.innerHTML=""}
+  var rpx=$("#"+id+"-rep");if(rpx)rpx.hidden=true;
+  $$(".qi",box).forEach(function(li){li.classList.remove("ok","bad");var f=$(".fb",li);if(f)f.hidden=true});
+  var sc=$("#"+id+"-score");if(sc)sc.textContent="";
+  delete STATE.checked[id];
+}
+
+/* ================= MATCH ================= */
+var sel={};
+function matchClick(el){
+  var card=el.closest(".match"),id=card.getAttribute("data-task"),side=el.classList.contains("en")?"en":"ar";
+  if(side==="en")say(TASKS[id].items[+el.getAttribute("data-k")][0]);
+  var cur=sel[id];
+  if(!cur||cur.side===side){
+    $$(".mi."+side,card).forEach(function(b){b.classList.remove("sel")});
+    if(cur&&cur.el===el){sel[id]=null;return}
+    el.classList.add("sel");sel[id]={side:side,el:el};return;
+  }
+  var a=cur.el,b=el;sel[id]=null;
+  $$(".mi",card).forEach(function(x){x.classList.remove("sel")});
+  if(a.getAttribute("data-k")===b.getAttribute("data-k")){
+    a.classList.add("good");b.classList.add("good");
+    var k=+a.getAttribute("data-k");if(M[id].pairs.indexOf(k)<0)M[id].pairs.push(k);
+    matchScore(card,id);
+  }else{
+    M[id].wrong++;
+    [a,b].forEach(function(x){x.classList.add("nope");setTimeout(function(){x.classList.remove("nope")},400)});
+  }
+}
+function matchScore(card,id){var n=$$(".mi.en.good",card).length,tot=TASKS[id].items.length;$("#mscore-"+id).textContent=n+" / "+tot+" تمت مطابقتها"+(n===tot?" · اكتملت":"")}
+
+/* ================= SAVE / RESTORE ================= */
+var saveT,savedT,storageOK=true;
+function collect(){
+  var inputs={};
+  $$("#panels input[id], #panels textarea[id], #panels select[id]").forEach(function(el){
+    if(el.type==="checkbox"||el.type==="radio"){if(el.checked)inputs[el.id]=1}
+    else if(el.value)inputs[el.id]=el.value;
+  });
+  STATE.inputs=inputs;
+  STATE.name=$("#studentName").value;
+  STATE.match={};Object.keys(M).forEach(function(id){STATE.match[id]={pairs:M[id].pairs.slice(),wrong:M[id].wrong}});
+}
+function save(){
+  clearTimeout(saveT);
+  saveT=setTimeout(function(){
+    collect();
+    try{localStorage.setItem(KEY,JSON.stringify(STATE));storageOK=true;var s=$("#saved");s.textContent="تم الحفظ الآن";s.classList.add("flash");clearTimeout(savedT);savedT=setTimeout(function(){s.textContent="يُحفظ تقدّمك تلقائيًا";s.classList.remove("flash")},1800)}
+    catch(e){if(storageOK){storageOK=false;$("#saved").textContent="الحفظ التلقائي غير متاح في هذا المتصفح";toast("تعذّر الحفظ التلقائي. لا تغلق الصفحة قبل تحميل تقريرك.")}}
+  },250);
+}
+function load(){
+  try{var raw=localStorage.getItem(KEY);if(raw){var o=JSON.parse(raw);if(o&&o.v===1){STATE=o;STATE.inputs=STATE.inputs||{};STATE.checked=STATE.checked||{};STATE.match=STATE.match||{}}}}catch(e){}
+}
+function restore(){
+  Object.keys(STATE.inputs).forEach(function(id){
+    var el=document.getElementById(id);if(!el)return;
+    if(el.type==="checkbox"||el.type==="radio")el.checked=true;else el.value=STATE.inputs[id];
+  });
+  Object.keys(M).forEach(function(id){
+    var sm=STATE.match[id];if(!sm)return;
+    M[id].pairs=sm.pairs.slice();M[id].wrong=sm.wrong||0;
+    $$('.match[data-task="'+id+'"]').forEach(function(card){
+      $$(".mi",card).forEach(function(b){if(M[id].pairs.indexOf(+b.getAttribute("data-k"))>-1)b.classList.add("good")});
+      matchScore(card,id);
+    });
+  });
+  Object.keys(STATE.checked).forEach(function(id){if(TASKS[id]&&(TASKS[id].kind==="mcq"||TASKS[id].kind==="gap"||TASKS[id].kind==="dlg"))checkTask(id,true)});
+  $("#studentName").value=STATE.name||"";
+}
+
+/* ================= REFRESH UI ================= */
+function refresh(){
+  var tot=0,dn=0,full=0;
+  DAYS.forEach(function(d){
+    var ds=dayStatus(d);tot+=ds.total;dn+=ds.done;if(ds.complete)full++;
+    var chip=$("#chip-"+d);chip.textContent=ds.complete?"مكتمل":ds.done+" / "+ds.total;chip.classList.toggle("done",ds.complete);
+    var pct=ds.total?Math.round(ds.done/ds.total*100):0;
+    $("#pf-"+d).style.width=pct+"%";$("#pt-"+d).textContent="المهام المنجزة: "+ds.done+" من "+ds.total;
+    $("#fin-"+d).hidden=!ds.complete;
+  });
+  LISTEN_IDS.forEach(function(id){var c=$("#"+id+"-count");if(c){var s=status(TASKS[id]);c.textContent=s.score+" / "+s.total+" تم تكرارها"}});
+  Object.keys(TASKS).forEach(function(k){if(TASKS[k].kind==="write"){var wr=$("#"+k+"-score");if(wr){wr.textContent=status(TASKS[k]).done?"تم الحفظ تلقائيًا":""}}})
+  var pct=tot?Math.round(dn/tot*100):0;
+  $("#slimFill").style.width=pct+"%";$("#slimMeter").setAttribute("aria-valuenow",pct);
+  $("#slimTxt").textContent="أنهيت "+full+" من "+DAYS.length+" أيام · "+pct+"%";
+  var nm=($("#studentName").value||"").trim();
+  $("#greet").textContent=nm?"مرحبًا، "+nm+"! تابع من حيث توقفت.":"فيديو · قواعد · قراءة · مفردات";
+  $("#slimGreet").textContent=nm?"مرحبًا، "+nm:"مرحبًا بك";
+}
+function showWelcome(){$("#welcome").hidden=STATE.welcome;$("#slim").hidden=!STATE.welcome}
+function showDay(d){
+  stopSpeech();STATE.day=d;
+  DAYS.forEach(function(x){$("#p-"+x).hidden=x!==d;$("#tab-"+x).setAttribute("aria-selected",x===d?"true":"false")});
+  window.scrollTo(0,0);save();
+}
+
+/* ================= BUILD + EVENTS ================= */
+function buildAll(){
+  Object.keys(TASKS).forEach(function(k){delete TASKS[k]});DAYS.forEach(function(d){ORDER[d]=[]});Object.keys(M).forEach(function(k){delete M[k]});
+  var host=$("#panels");host.innerHTML="";
+  DAYS.forEach(function(d){
+    var s=document.createElement("section");s.className="panel";s.id="p-"+d;s.setAttribute("role","tabpanel");s.setAttribute("aria-labelledby","tab-"+d);
+    s.innerHTML=BUILD[d]();s.hidden=true;host.appendChild(s);
+  });
+}
+function init(){
+  load();buildAll();restore();showWelcome();
+  var d=DAYS.indexOf(STATE.day)>-1?STATE.day:"mon";
+  DAYS.forEach(function(x){$("#p-"+x).hidden=x!==d;$("#tab-"+x).setAttribute("aria-selected",x===d?"true":"false")});
+  refresh();
+}
+function roleplay(box,me){
+  stopSpeech();S.stop=false;
+  var rows=$$(".crow",box),i=0;
+  (function next(){
+    if(S.stop||i>=rows.length)return;
+    var row=rows[i++],spk=row.getAttribute("data-spk"),text=row.getAttribute("data-text");
+    try{row.scrollIntoView({block:"center",behavior:"smooth"})}catch(e){}
+    if(spk===me){
+      row.classList.add("yourturn");
+      var wait=Math.max(2600,text.split(/\s+/).length*650+1400);
+      setTimeout(function(){row.classList.remove("yourturn");if(!S.stop)next()},wait);
+    }else{
+      say(text,row,function(){if(!S.stop)setTimeout(next,450)},spk);
+    }
+  })();
+}
+var resetArm=0;
+document.addEventListener("click",function(e){
+  var t=e.target,el;
+  if((el=t.closest(".tab"))){showDay(el.getAttribute("data-day"));refresh();return}
+  if((el=t.closest("[data-say]"))){var row=el.closest(".row");S.stop=true;say(el.getAttribute("data-say"),row,null,el.getAttribute("data-spk"));return}
+  if((el=t.closest("[data-arate]"))){var card=el.closest(".card"),au=$("audio",card);if(au)au.playbackRate=+el.getAttribute("data-arate");$$("[data-arate]",card).forEach(function(b){var on=b===el;b.setAttribute("aria-pressed",String(on));b.classList.toggle("ghost",!on)});return}
+  if((el=t.closest("[data-playall]"))){stopSpeech();S.stop=false;playAll(document.getElementById(el.getAttribute("data-playall")));return}
+  if(t.closest("[data-stopall]")){stopSpeech();return}
+  if(t.closest("[data-rate]")){S.slow=!S.slow;$$(".rl").forEach(function(r){r.textContent=S.slow?"بطيئة":"عادية"});return}
+  if((el=t.closest("[data-check]"))){checkTask(el.getAttribute("data-check"));refresh();save();return}
+  if((el=t.closest("[data-reset]"))){var id=el.getAttribute("data-reset");resetTask(id);refresh();save();return}
+  if((el=t.closest("[data-script]"))){var b=document.getElementById(el.getAttribute("data-script"));b.hidden=!b.hidden;el.textContent=b.hidden?"إظهار النص المكتوب":"إخفاء النص المكتوب";el.setAttribute("aria-expanded",String(!b.hidden));return}
+  if((el=t.closest("[data-reveal]"))){var rw=el.closest(".row");if(rw)rw.classList.toggle("reveal");return}
+  if((el=t.closest("[data-gr]"))){var g=el.getAttribute("data-gr");stopSpeech();var pn=el.closest('[id^="p-"]')||document;$$("audio",pn).forEach(function(x){x.pause()});$$(".gsec",pn).forEach(function(x){x.hidden=x.id!=="g-"+g});$$(".pill[data-gr]",pn).forEach(function(p){p.setAttribute("aria-selected",String(p.getAttribute("data-gr")===g))});if(!el.classList.contains("pill")){var stb=$(".sub-tabs",pn);if(stb)stb.scrollIntoView({block:"start"})};return}
+  if((el=t.closest("[data-role]"))){roleplay(document.getElementById(el.getAttribute("data-box")),el.getAttribute("data-role"));return}
+  if((el=t.closest(".mi"))){matchClick(el);refresh();save();return}
+  if(t.closest("#startBtn")){STATE.welcome=true;showWelcome();refresh();save();return}
+  if((el=t.closest("[data-report]"))){exportReport(el.getAttribute("data-report"),el);return}
+  if(t.closest("#weekBtn")){exportReport("all",t.closest("#weekBtn"));return}
+  if(t.closest("#resetBtn")){
+    var rb=$("#resetBtn");
+    if(!resetArm){resetArm=1;rb.textContent="اضغط مرة أخرى للتأكيد: سيُمسح كل تقدّمك";setTimeout(function(){resetArm=0;rb.textContent="بدء من جديد (يمسح تقدّمك)"},4000);return}
+    resetArm=0;rb.textContent="بدء من جديد (يمسح تقدّمك)";
+    try{localStorage.removeItem(KEY)}catch(err){}
+    STATE={v:1,name:"",day:"mon",welcome:false,inputs:{},checked:{},match:{}};
+    $("#studentName").value="";buildAll();showWelcome();
+    DAYS.forEach(function(x){$("#p-"+x).hidden=x!=="mon";$("#tab-"+x).setAttribute("aria-selected",x==="mon"?"true":"false")});
+    refresh();window.scrollTo(0,0);toast("تم مسح التقدّم. ابدأ من جديد.");return;
+  }
+});
+document.addEventListener("input",function(e){if(e.target.closest("#panels")||e.target.id==="studentName"){refresh();save()}});
+document.addEventListener("change",function(e){
+  var t=e.target;
+  if(t.matches("[data-blind]")){$("#fList").classList.toggle("blind",t.checked);$$("#fList .row").forEach(function(r){r.classList.remove("reveal")})}
+  if(t.closest("#panels")){refresh();save()}
+});
+
+/* ================= REPORT (PDF) ================= */
+var AR=/[؀-ۿ]/;
+function reportDay(day){
+  var h='<div class="dayh"><h2>'+DN[day]+' · '+DT[day]+'</h2></div>';
+  ORDER[day].forEach(function(id){
+    var t=TASKS[id],s=status(t);
+    var state=s.done?"مكتملة":"غير مكتملة";
+    h+='<div class="xi"><h3>'+t.title+'</h3><p class="instr">'+state+(t.kind==="write"?"":" · النتيجة: "+s.score+" / "+s.total)+(t.kind==="match"?" · محاولات خاطئة: "+(M[id]?M[id].wrong:0):"")+'</p></div>';
+    if(t.kind==="mcq"||t.kind==="gap"||t.kind==="dlg"||t.kind==="match"){
+      var checked=t.kind==="match"||STATE.checked[id];
+      h+='<table class="rep"><tr><th style="width:5%">#</th><th style="width:'+(t.kind==="match"?"25%":"39%")+'">'+(t.kind==="match"?"الكلمة":"الجملة")+'</th><th style="width:'+(t.kind==="match"?"20%":"22%")+'">'+(t.kind==="match"?"الحالة":"إجابتك")+'</th><th style="width:'+(t.kind==="match"?"40%":"22%")+'">'+(t.kind==="match"?"المعنى":"الإجابة الصحيحة")+'</th><th style="width:12%">النتيجة</th></tr>'+
+        s.rows.map(function(r,i){
+          var res=checked?(r.ok?'<td class="ar okc">صحيح</td>':'<td class="ar badc">خطأ</td>'):'<td class="ar">لم يُصحَّح</td>';
+          return '<tr class="xi"><td>'+(i+1)+'</td><td>'+esc(r.q)+'</td><td>'+esc(r.yours)+'</td>'+(r.arRight?'<td class="ar">'+esc(r.right)+'</td>':'<td>'+esc(r.right)+'</td>')+res+'</tr>';
+        }).join("")+'</table>';
+    }else if(t.kind==="tick"){
+      h+='<p class="instr">'+(t.total===1?(s.score?'كرّر الطالب هذه المحادثة.':'لم يضع الطالب علامة التكرار بعد.'):'الجمل التي كرّرها الطالب: '+s.score+' من '+s.total+'.')+'</p>';
+    }else if(t.kind==="write"){
+      h+='<p class="instr">السؤال: '+E(t.prompt)+'</p><div class="ans">'+esc(($("#"+id)||{}).value||"—")+'</div>';
+    }
+  });
+  return h;
+}
+function buildReport(scope){
+  var nm=($("#studentName").value||"").trim()||"—";
+  var date=new Date().toLocaleDateString("en-GB");
+  var days=scope==="all"?DAYS:[scope];
+  var h='<div class="paper"><div class="cover"><h1>تقرير واجبات المستوى الخامس</h1><p>'+(scope==="all"?"تقرير الأسبوع كاملًا":"تقرير يوم "+DN[scope])+'</p><div class="who"><span>الاسم: '+esc(nm)+'</span><span>التاريخ: '+date+'</span></div></div>';
+  h+='<h3>الملخص</h3><table class="sumt"><tr><th>اليوم</th><th>المهمة</th><th>الحالة</th><th>النتيجة</th></tr>';
+  days.forEach(function(d){ORDER[d].forEach(function(id){var t=TASKS[id],s=status(t);h+='<tr class="xi"><td class="ar">'+DN[d]+'</td><td class="ar">'+esc(t.title)+'</td><td class="ar '+(s.done?"okc":"")+'">'+(s.done?"مكتملة":"غير مكتملة")+'</td><td>'+(t.kind==="write"?(s.done?"✓":"—"):s.score+" / "+s.total)+'</td></tr>'})});
+  h+='</table>';
+  days.forEach(function(d,i){h+='<div class="pb"></div>'+reportDay(d)});
+  return h+'</div>';
+}
+var PRINT_OPT=function(name){return {margin:[10,10,12,10],filename:name,image:{type:"jpeg",quality:0.92},html2canvas:{scale:2,useCORS:true,backgroundColor:"#ffffff",windowWidth:718,scrollX:0,scrollY:0,x:0,y:0},jsPDF:{unit:"mm",format:"a4",orientation:"portrait"},pagebreak:{mode:["css","legacy"],before:".pb",avoid:[".xi","h3",".dayh"]}}};
+/* html2canvas cannot lay out right-to-left text (it drops spaces and moves punctuation),
+   so every Arabic run in the printable sheet is drawn with the browser's own text engine
+   onto a canvas and swapped for an image before the PDF is captured. */
+var AR=/[\u0600-\u06FF]/;
+function rasterizeArabic(root){
+  var sel=".cover h1,.cover p,.dayh h2,.dayh p,.paper h3,.instr,.who span,th,td.ar,.qrrow p,.gtag,.fm b";
+  $$(sel,root).forEach(function(el){
+    var text=Array.prototype.map.call(el.childNodes,function(n){return n.nodeName==="BDI"?"\u2066"+n.textContent+"\u2069":n.textContent}).join("").replace(/\s+/g," ").trim();
+    if(!AR.test(text)) return;
+    var cs=getComputedStyle(el),inline=cs.display.indexOf("inline")===0;
+    var fs=parseFloat(cs.fontSize),lh=parseFloat(cs.lineHeight);if(!(lh>0))lh=fs*1.5;
+    var padX=parseFloat(cs.paddingLeft)+parseFloat(cs.paddingRight);
+    var avail=inline?9999:Math.max(40,el.clientWidth-padX);
+    var k=2,c=document.createElement("canvas"),x=c.getContext("2d");
+    var font=cs.fontWeight+" "+cs.fontSize+" "+cs.fontFamily;
+    x.font=font;x.direction="rtl";
+    var words=text.split(" "),lines=[],cur="";
+    words.forEach(function(w){
+      var t=cur?cur+" "+w:w;
+      if(cur&&x.measureText(t).width>avail){lines.push(cur);cur=w}else cur=t;
+    });
+    lines.push(cur);
+    var wpx=inline?Math.ceil(x.measureText(lines[0]).width)+2:Math.floor(avail);
+    c.width=wpx*k;c.height=Math.ceil(lines.length*lh)*k;
+    x=c.getContext("2d");x.scale(k,k);x.font=font;x.direction="rtl";x.fillStyle=cs.color;x.textBaseline="middle";
+    var al=cs.textAlign,right=(al==="right"||(al==="start"&&cs.direction==="rtl")||(al==="end"&&cs.direction==="ltr"));
+    x.textAlign=right?"right":"left";
+    lines.forEach(function(l,i){x.fillText(l,right?wpx:0,i*lh+lh/2)});
+    var img=new Image();img.src=c.toDataURL("image/png");
+    img.style.cssText="display:"+(inline?"inline-block":"block")+";width:"+wpx+"px;height:"+Math.ceil(lines.length*lh)+"px;"+(inline?"vertical-align:middle;":"");
+    img.alt=el.textContent.trim();
+    el.textContent="";el.appendChild(img);
+  });
+}
+
+/* Keep each heading with the block that follows it, so a heading is never left alone at the foot of a page. */
+function keepTogether(root){
+  var H=function(n){return n.getBoundingClientRect().height};
+  $$("h3",root).forEach(function(h){
+    var grp=[h],n=h.nextElementSibling,sum=H(h);
+    if(n&&n.classList.contains("instr")){grp.push(n);sum+=H(n);n=n.nextElementSibling}
+    if(n&&n.tagName==="P"&&n.classList.contains("en")){grp.push(n);sum+=H(n);n=n.nextElementSibling}
+    var wrap=document.createElement("div");wrap.className="xi";
+    if(n&&(n.tagName==="TABLE"||n.tagName==="DIV")&&sum+H(n)<980){grp.push(n)}
+    else if(n&&(n.tagName==="OL"||n.tagName==="UL")){
+      var li=n.firstElementChild;
+      if(li){
+        var mini=document.createElement(n.tagName.toLowerCase());mini.className=n.className;mini.setAttribute("style",n.getAttribute("style")||"");
+        mini.style.marginBottom="0";
+        var start=n.start||1;mini.appendChild(li);n.start=start+1;mini.start=start;
+        n.parentNode.insertBefore(mini,n);grp.push(mini);
+      }
+    }
+    h.parentNode.insertBefore(wrap,h);
+    grp.forEach(function(g){wrap.appendChild(g)});
+  });
+}
+function waitImages(root){
+  return Promise.all($$("img",root).map(function(im){return im.complete?1:new Promise(function(r){im.onload=im.onerror=r})}));
+}
+function getDownloads(){
+  try{if(window.claude&&typeof window.claude.use==="function"){return window.claude.use("downloads")}}catch(e){}
+  return Promise.resolve(null);
+}
+
+function reportSheet(blob,name){
+  var L=document.documentElement.getAttribute("data-ui")||"ar";
+  var TX={ar:{h:"تقريرك جاهز",p:"أرسل ملف PDF نفسه إلى معلمك. لا تنسخ رابطًا ولا ترسله: رابط التقرير يعمل على هاتفك أنت فقط.",s:"إرسال الملف إلى المعلم",d:"حفظ الملف على الجهاز",c:"إغلاق"},
+    en:{h:"Your report is ready",p:"Send the PDF file itself to your teacher. Do not copy or send a link: a link to the report only works on your own phone.",s:"Send the file to my teacher",d:"Save the file on this device",c:"Close"},
+    fa:{h:"گزارشت آماده است",p:"خودِ فایل PDF را برای معلمت بفرست. لینک را کپی نکن و نفرست: لینک گزارش فقط روی گوشی خودت باز می‌شود.",s:"فرستادن فایل برای معلم",d:"ذخیرهٔ فایل روی این دستگاه",c:"بستن"},
+    ko:{h:"리포트가 준비되었습니다",p:"PDF 파일 자체를 선생님께 보내세요. 링크를 복사해서 보내지 마세요. 리포트 링크는 본인 휴대폰에서만 열립니다.",s:"선생님께 파일 보내기",d:"이 기기에 파일 저장",c:"닫기"}};
+  var t=TX[L]||TX.ar,file=null,url=URL.createObjectURL(blob);
+  try{file=new File([blob],name,{type:"application/pdf"})}catch(e){}
+  var can=false;try{can=!!(file&&navigator.share&&navigator.canShare&&navigator.canShare({files:[file]}))}catch(e){}
+  function dl(){var a=document.createElement("a");a.href=url;a.download=name;a.style.display="none";document.body.appendChild(a);a.click();setTimeout(function(){a.remove()},1000)}
+  if(!can){dl();toast("تم تجهيز التقرير");setTimeout(function(){URL.revokeObjectURL(url)},60000);return}
+  if(!document.getElementById("rsheet-css")){var st=document.createElement("style");st.id="rsheet-css";st.textContent=".rsheet{position:fixed;inset:0;background:rgba(15,23,42,.55);display:flex;align-items:flex-end;justify-content:center;z-index:9999;padding:16px}.rsheet .rbox{background:#fff;color:#1d2433;border-radius:16px;padding:20px;max-width:440px;width:100%;box-shadow:0 12px 40px rgba(0,0,0,.25)}.rsheet h3{margin:0 0 8px;font-size:1.2rem}.rsheet p{margin:0;line-height:1.7}.rsheet .rbtns{display:flex;flex-direction:column;gap:10px;margin-top:16px}.rsheet .rbtns .btn{width:100%;justify-content:center;text-align:center;min-height:48px}@media(min-width:600px){.rsheet{align-items:center}}";document.head.appendChild(st)}
+  var ov=document.createElement("div");ov.className="rsheet";ov.setAttribute("data-notr","");ov.setAttribute("role","dialog");ov.setAttribute("aria-modal","true");ov.setAttribute("aria-label",t.h);ov.dir=(L==="ar"||L==="fa")?"rtl":"ltr";ov.lang=L;
+  var box=document.createElement("div");box.className="rbox";
+  var h=document.createElement("h3");h.textContent=t.h;var p=document.createElement("p");p.textContent=t.p;
+  var bs=document.createElement("div");bs.className="rbtns";
+  function mk(cls,txt,fn){var b=document.createElement("button");b.type="button";b.className=cls;b.textContent=txt;b.addEventListener("click",fn);bs.appendChild(b);return b}
+  function close(){ov.remove();setTimeout(function(){URL.revokeObjectURL(url)},60000)}
+  var first=mk("btn primary",t.s,function(){navigator.share({files:[file],title:name}).catch(function(){})});
+  mk("btn",t.d,dl);mk("btn ghost",t.c,close);
+  box.appendChild(h);box.appendChild(p);box.appendChild(bs);ov.appendChild(box);
+  ov.addEventListener("click",function(e){if(e.target===ov)close()});
+  ov.addEventListener("keydown",function(e){if(e.key==="Escape")close()});
+  document.body.appendChild(ov);first.focus();
+}
+function exportReport(scope,btn){
+  var root=$("#exportRoot"),old=(window.I18N?I18N.origHTML(btn):btn.innerHTML);
+  if(btn.disabled) return;
+  collect();
+  btn.disabled=true;btn.textContent="جارٍ تجهيز التقرير…";
+  var name="Level-5B-Report-"+(scope==="all"?"Week":DE[scope])+".pdf";
+  var reset=function(){btn.disabled=false;btn.innerHTML=old;root.innerHTML=""};
+  if(!window.html2pdf){toast("لم تُحمَّل أداة إنشاء التقرير. تأكد من الاتصال بالإنترنت وأعد تحميل الصفحة.");reset();return}
+  getDownloads().then(function(dl){
+    if(!dl&&!STANDALONE){toast("تحميل التقرير غير متاح في هذا العرض.");return}
+    root.innerHTML=buildReport(scope);if(window.I18N)I18N.sync();
+    var el=root.firstElementChild,opt=PRINT_OPT(name);
+    return Promise.resolve(document.fonts&&document.fonts.ready).then(function(){rasterizeArabic(root);keepTogether(root);return waitImages(root)}).then(function(){
+      if(!dl){return html2pdf().set(opt).from(el).outputPdf("blob").then(function(blob){reportSheet(blob,name)})}
+      return html2pdf().set(opt).from(el).outputPdf("blob").then(function(blob){
+        return dl.save({filename:name,data:blob}).then(function(){toast("التقرير جاهز")});
+      });
+    });
+  }).catch(function(err){
+    if(err&&err.code==="declined"){toast("تم إلغاء التحميل.")}
+    else if(err&&err.code==="rate_limited"){toast("انتظر قليلًا ثم حاول مرة أخرى.")}
+    else{toast("تعذّر إنشاء التقرير. حاول مرة أخرى.")}
+  }).then(reset);
+}
+init();
+})();
+</script>
+
+</body></html>
